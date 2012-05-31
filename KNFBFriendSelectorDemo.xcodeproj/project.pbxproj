@@ -28,17 +28,17 @@
 		8BE7B1841577EDAF00BC7787 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8BE7B1861577EDAF00BC7787 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8BE7B1881577EDAF00BC7787 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		8BE7B18C1577EDAF00BC7787 /* KNFBFriendSelectorDemo-Info.plist */ = {isa = PBXFileReference; path = "KNFBFriendSelectorDemo-Info.plist"; sourceTree = "<group>"; };
+		8BE7B18C1577EDAF00BC7787 /* KNFBFriendSelectorDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KNFBFriendSelectorDemo-Info.plist"; sourceTree = "<group>"; };
 		8BE7B18E1577EDAF00BC7787 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8BE7B1901577EDAF00BC7787 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8BE7B1921577EDAF00BC7787 /* KNFBFriendSelectorDemo-Prefix.pch */ = {isa = PBXFileReference; path = "KNFBFriendSelectorDemo-Prefix.pch"; sourceTree = "<group>"; };
-		8BE7B1931577EDAF00BC7787 /* KNFBAppDelegate.h */ = {isa = PBXFileReference; path = KNFBAppDelegate.h; sourceTree = "<group>"; };
+		8BE7B1921577EDAF00BC7787 /* KNFBFriendSelectorDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KNFBFriendSelectorDemo-Prefix.pch"; sourceTree = "<group>"; };
+		8BE7B1931577EDAF00BC7787 /* KNFBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KNFBAppDelegate.h; sourceTree = "<group>"; };
 		8BE7B1941577EDAF00BC7787 /* KNFBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KNFBAppDelegate.m; sourceTree = "<group>"; };
-		8BE7B1961577EDAF00BC7787 /* KNFBFirstViewController.h */ = {isa = PBXFileReference; path = KNFBFirstViewController.h; sourceTree = "<group>"; };
+		8BE7B1961577EDAF00BC7787 /* KNFBFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KNFBFirstViewController.h; sourceTree = "<group>"; };
 		8BE7B1971577EDAF00BC7787 /* KNFBFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KNFBFirstViewController.m; sourceTree = "<group>"; };
 		8BE7B1991577EDAF00BC7787 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		8BE7B19B1577EDAF00BC7787 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		8BE7B19D1577EDAF00BC7787 /* KNFBSecondViewController.h */ = {isa = PBXFileReference; path = KNFBSecondViewController.h; sourceTree = "<group>"; };
+		8BE7B19D1577EDAF00BC7787 /* KNFBSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KNFBSecondViewController.h; sourceTree = "<group>"; };
 		8BE7B19E1577EDAF00BC7787 /* KNFBSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KNFBSecondViewController.m; sourceTree = "<group>"; };
 		8BE7B1A01577EDAF00BC7787 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		8BE7B1A21577EDAF00BC7787 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
@@ -274,6 +274,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KNFBFriendSelectorDemo/KNFBFriendSelectorDemo-Prefix.pch";
 				INFOPLIST_FILE = "KNFBFriendSelectorDemo/KNFBFriendSelectorDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -285,6 +286,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KNFBFriendSelectorDemo/KNFBFriendSelectorDemo-Prefix.pch";
 				INFOPLIST_FILE = "KNFBFriendSelectorDemo/KNFBFriendSelectorDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
