@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FBConnect.h"
 
-@interface KNFBAppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
+@interface KNFBAppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate, FBSessionDelegate> {
+  Facebook * facebook;
+}
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (strong, nonatomic) Facebook *facebook;
 @property (strong, nonatomic) UITabBarController *tabBarController;
 
 @end
