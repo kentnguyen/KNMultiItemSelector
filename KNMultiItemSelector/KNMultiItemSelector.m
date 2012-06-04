@@ -115,7 +115,7 @@
   textFieldWrapper.frame = CGRectMake(0, 0, f.size.width, 44);
   self.searchTextField.frame = CGRectMake(6,6, f.size.width-12, 32);
   self.searchTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-  self.tableView.frame = CGRectMake(0, textFieldWrapper.frame.size.height, f.size.width, f.size.height - textFieldWrapper.frame.size.height - 44);
+  self.tableView.frame = CGRectMake(0, textFieldWrapper.frame.size.height, f.size.width, f.size.height - textFieldWrapper.frame.size.height);
 
   normalModeButton.frame = CGRectMake(f.size.width/2-90, f.size.height-44, 90, 44);
   selectedModeButton.frame = CGRectMake(f.size.width/2, f.size.height-44, 90, 44);
