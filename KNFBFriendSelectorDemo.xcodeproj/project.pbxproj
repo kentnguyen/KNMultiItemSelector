@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8B775EB7157C90A700112752 /* KNMultiItemSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B775EB6157C90A700112752 /* KNMultiItemSelector.m */; };
 		8B775EBA157C926500112752 /* KNSelectorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B775EB9157C926500112752 /* KNSelectorItem.m */; };
+		8B775EC1157CDE1F00112752 /* KNSelectorTip.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B775EBF157CDE1F00112752 /* KNSelectorTip.png */; };
+		8B775EC2157CDE1F00112752 /* KNSelectorTip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B775EC0157CDE1F00112752 /* KNSelectorTip@2x.png */; };
 		8BE7B1851577EDAF00BC7787 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE7B1841577EDAF00BC7787 /* UIKit.framework */; };
 		8BE7B1871577EDAF00BC7787 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE7B1861577EDAF00BC7787 /* Foundation.framework */; };
 		8BE7B1891577EDAF00BC7787 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE7B1881577EDAF00BC7787 /* CoreGraphics.framework */; };
@@ -70,6 +72,8 @@
 		8B775EB6157C90A700112752 /* KNMultiItemSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNMultiItemSelector.m; sourceTree = "<group>"; };
 		8B775EB8157C926500112752 /* KNSelectorItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNSelectorItem.h; sourceTree = "<group>"; };
 		8B775EB9157C926500112752 /* KNSelectorItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNSelectorItem.m; sourceTree = "<group>"; };
+		8B775EBF157CDE1F00112752 /* KNSelectorTip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KNSelectorTip.png; sourceTree = "<group>"; };
+		8B775EC0157CDE1F00112752 /* KNSelectorTip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KNSelectorTip@2x.png"; sourceTree = "<group>"; };
 		8BE7B1801577EDAF00BC7787 /* KNFBFriendSelectorDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KNFBFriendSelectorDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BE7B1841577EDAF00BC7787 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8BE7B1861577EDAF00BC7787 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -196,6 +200,8 @@
 		8B775EB3157C907200112752 /* KNMultiItemSelector */ = {
 			isa = PBXGroup;
 			children = (
+				8B775EBF157CDE1F00112752 /* KNSelectorTip.png */,
+				8B775EC0157CDE1F00112752 /* KNSelectorTip@2x.png */,
 				8B775EB8157C926500112752 /* KNSelectorItem.h */,
 				8B775EB9157C926500112752 /* KNSelectorItem.m */,
 				8B775EB5157C90A700112752 /* KNMultiItemSelector.h */,
@@ -503,6 +509,8 @@
 				8BE7B21A1577EEE400BC7787 /* second@2x.png in Resources */,
 				8BE7B2251577EEE400BC7787 /* FBDialog.bundle in Resources */,
 				8BE7B2331577EEE400BC7787 /* SVProgressHUD.bundle in Resources */,
+				8B775EC1157CDE1F00112752 /* KNSelectorTip.png in Resources */,
+				8B775EC2157CDE1F00112752 /* KNSelectorTip@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -30,6 +30,10 @@ typedef enum {
 @interface KNMultiItemSelector : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate> {
   NSMutableArray * items;
   NSArray * filteredItems;
+  UIButton * normalModeButton;
+  UIButton * selectedModeButton;
+  UIImageView * modeIndicatorImageView;
+
   KNSelectorMode selectorMode;
   id<KNMultiItemSelectorDelegate> delegate;
 }
