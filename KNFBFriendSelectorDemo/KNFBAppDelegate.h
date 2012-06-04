@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "FBConnect.h"
 
+#define ApplicationDelegate ((KNFBAppDelegate *)[UIApplication sharedApplication].delegate)
+
 @interface KNFBAppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate, FBSessionDelegate> {
   Facebook * facebook;
 }

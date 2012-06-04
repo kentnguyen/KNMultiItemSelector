@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KNMultiItemSelector.h"
 
-@interface KNFBFirstViewController : UIViewController
+@interface KNFBFirstViewController : UIViewController <KNMultiItemSelectorDelegate> {
+  NSMutableArray * friends;
+}
+
+@property (unsafe_unretained, nonatomic) IBOutlet UITextView *textView;
+@property (unsafe_unretained, nonatomic) IBOutlet UIButton *pickerButton;
+
+- (IBAction)pickerButtonDidTouch:(id)sender;
 
 @end

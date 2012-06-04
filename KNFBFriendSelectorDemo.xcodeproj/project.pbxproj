@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B775EB7157C90A700112752 /* KNMultiItemSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B775EB6157C90A700112752 /* KNMultiItemSelector.m */; };
+		8B775EBA157C926500112752 /* KNSelectorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B775EB9157C926500112752 /* KNSelectorItem.m */; };
 		8BE7B1851577EDAF00BC7787 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE7B1841577EDAF00BC7787 /* UIKit.framework */; };
 		8BE7B1871577EDAF00BC7787 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE7B1861577EDAF00BC7787 /* Foundation.framework */; };
 		8BE7B1891577EDAF00BC7787 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE7B1881577EDAF00BC7787 /* CoreGraphics.framework */; };
@@ -64,6 +66,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B775EB5157C90A700112752 /* KNMultiItemSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNMultiItemSelector.h; sourceTree = "<group>"; };
+		8B775EB6157C90A700112752 /* KNMultiItemSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNMultiItemSelector.m; sourceTree = "<group>"; };
+		8B775EB8157C926500112752 /* KNSelectorItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNSelectorItem.h; sourceTree = "<group>"; };
+		8B775EB9157C926500112752 /* KNSelectorItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNSelectorItem.m; sourceTree = "<group>"; };
 		8BE7B1801577EDAF00BC7787 /* KNFBFriendSelectorDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KNFBFriendSelectorDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BE7B1841577EDAF00BC7787 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8BE7B1861577EDAF00BC7787 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -187,6 +193,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B775EB3157C907200112752 /* KNMultiItemSelector */ = {
+			isa = PBXGroup;
+			children = (
+				8B775EB8157C926500112752 /* KNSelectorItem.h */,
+				8B775EB9157C926500112752 /* KNSelectorItem.m */,
+				8B775EB5157C90A700112752 /* KNMultiItemSelector.h */,
+				8B775EB6157C90A700112752 /* KNMultiItemSelector.m */,
+			);
+			path = KNMultiItemSelector;
+			sourceTree = SOURCE_ROOT;
+		};
 		8BE7B1751577EDAF00BC7787 = {
 			isa = PBXGroup;
 			children = (
@@ -276,6 +293,7 @@
 		8BE7B1C11577EEE400BC7787 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				8B775EB3157C907200112752 /* KNMultiItemSelector */,
 				8BE7B1C21577EEE400BC7787 /* ASIHTTPRequest */,
 				8BE7B1DB1577EEE400BC7787 /* facebook-ios-sdk */,
 				8BE7B1EB1577EEE400BC7787 /* JSONKit */,
@@ -405,9 +423,9 @@
 				8BE7B1941577EDAF00BC7787 /* KNFBAppDelegate.m */,
 				8BE7B1961577EDAF00BC7787 /* KNFBFirstViewController.h */,
 				8BE7B1971577EDAF00BC7787 /* KNFBFirstViewController.m */,
+				8BE7B1A41577EDAF00BC7787 /* KNFBFirstViewController.xib */,
 				8BE7B19D1577EDAF00BC7787 /* KNFBSecondViewController.h */,
 				8BE7B19E1577EDAF00BC7787 /* KNFBSecondViewController.m */,
-				8BE7B1A41577EDAF00BC7787 /* KNFBFirstViewController.xib */,
 				8BE7B1A71577EDAF00BC7787 /* KNFBSecondViewController.xib */,
 			);
 			name = ViewControllers;
@@ -518,6 +536,8 @@
 				8BE7B2301577EEE400BC7787 /* UIButton+WebCache.m in Sources */,
 				8BE7B2311577EEE400BC7787 /* UIImageView+WebCache.m in Sources */,
 				8BE7B2341577EEE400BC7787 /* SVProgressHUD.m in Sources */,
+				8B775EB7157C90A700112752 /* KNMultiItemSelector.m in Sources */,
+				8B775EBA157C926500112752 /* KNSelectorItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,6 +667,7 @@
 				8BE7B1AE1577EDAF00BC7787 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
