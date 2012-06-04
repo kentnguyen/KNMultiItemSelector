@@ -89,9 +89,6 @@
   cell.textLabel.text = item.displayValue;
   if (item.imageUrl) {
     [cell.imageView setImageWithURL:[NSURL URLWithString:item.imageUrl]];
-    cell.imageView.clipsToBounds = YES;
-    cell.imageView.contentMode = UIViewContentModeScaleToFill;
-    cell.imageView.frame = CGRectMake(0,0, 44, 44);
   }
 
   // Selected?

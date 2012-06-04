@@ -17,4 +17,7 @@
               selectValue:(NSString*)selectVal
                  imageUrl:(NSString*)image;
 
+-(NSComparisonResult)compareByDisplayValue:(KNSelectorItem*)other;
+-(NSComparisonResult)compareBySelectedValue:(KNSelectorItem*)other;
+
 @end

@@ -43,6 +43,7 @@
                                                           selectValue:[f objectForKey:@"id"]
                                                              imageUrl:[NSString stringWithFormat:@"http://graph.facebook.com/%@/picture?type=normal", [f objectForKey:@"id"]]]];
     }
+    [friends sortUsingSelector:@selector(compareByDisplayValue:)];
   }];
   [request setFailedBlock:^{
     [SVProgressHUD dismissWithError:@"Facebook Error"];

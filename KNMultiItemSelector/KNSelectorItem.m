@@ -23,5 +23,13 @@
   return self;
 }
 
+#pragma mark - Sort comparison
 
+-(NSComparisonResult)compareByDisplayValue:(KNSelectorItem*)other {
+  return [self.displayValue compare:other.displayValue];
+}
+
+-(NSComparisonResult)compareBySelectedValue:(KNSelectorItem*)other {
+  return [self.selectValue compare:other.selectValue];
+}
 @end
