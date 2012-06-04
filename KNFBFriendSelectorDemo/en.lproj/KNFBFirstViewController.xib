@@ -79,10 +79,10 @@
 					<object class="IBUITextView" id="255779567">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">290</int>
-						<string key="NSFrame">{{20, 137}, {280, 104}}</string>
+						<string key="NSFrame">{{20, 137}, {280, 143}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="418188348"/>
+						<reference key="NSNextKeyView" ref="775691703"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
@@ -103,15 +103,15 @@ ZnJpZW5kJ3MgRmFjZWJvb2sgSURzIHdpbGwgYXBwZWFyIGhlcmUgYWZ0ZXIgc2VsZWN0aW9uA</strin
 						</object>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<int key="type">1</int>
-							<int key="size">4</int>
+							<double key="pointSize">13</double>
 						</object>
 						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">Helvetica</string>
-							<double key="NSSize">14</double>
+							<double key="NSSize">13</double>
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
-					<object class="IBUIButton" id="418188348">
+					<object class="IBUIButton" id="775691703">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">-2147483345</int>
 						<string key="NSFrame">{{102, 288}, {117, 37}}</string>
@@ -124,7 +124,7 @@ ZnJpZW5kJ3MgRmFjZWJvb2sgSURzIHdpbGwgYXBwZWFyIGhlcmUgYWZ0ZXIgc2VsZWN0aW9uA</strin
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<int key="IBUIButtonType">1</int>
 						<string key="IBUINormalTitle">Pick friends</string>
-						<object class="NSColor" key="IBUIHighlightedTitleColor" id="652635857">
+						<object class="NSColor" key="IBUIHighlightedTitleColor" id="765524755">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
 						</object>
@@ -151,7 +151,7 @@ ZnJpZW5kJ3MgRmFjZWJvb2sgSURzIHdpbGwgYXBwZWFyIGhlcmUgYWZ0ZXIgc2VsZWN0aW9uA</strin
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="483052203"/>
-				<reference key="IBUIBackgroundColor" ref="652635857"/>
+				<reference key="IBUIBackgroundColor" ref="765524755"/>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 				<object class="IBUISimulatedTabBarMetrics" key="IBUISimulatedBottomBarMetrics"/>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -179,14 +179,14 @@ ZnJpZW5kJ3MgRmFjZWJvb2sgSURzIHdpbGwgYXBwZWFyIGhlcmUgYWZ0ZXIgc2VsZWN0aW9uA</strin
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">pickerButton</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="418188348"/>
+						<reference key="destination" ref="775691703"/>
 					</object>
 					<int key="connectionID">11</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">pickerButtonDidTouch:</string>
-						<reference key="source" ref="418188348"/>
+						<reference key="source" ref="775691703"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">7</int>
 					</object>
@@ -207,7 +207,7 @@ ZnJpZW5kJ3MgRmFjZWJvb2sgSURzIHdpbGwgYXBwZWFyIGhlcmUgYWZ0ZXIgc2VsZWN0aW9uA</strin
 						<array class="NSMutableArray" key="children">
 							<reference ref="483052203"/>
 							<reference ref="255779567"/>
-							<reference ref="418188348"/>
+							<reference ref="775691703"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -234,7 +234,7 @@ ZnJpZW5kJ3MgRmFjZWJvb2sgSURzIHdpbGwgYXBwZWFyIGhlcmUgYWZ0ZXIgc2VsZWN0aW9uA</strin
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">8</int>
-						<reference key="object" ref="418188348"/>
+						<reference key="object" ref="775691703"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</array>
