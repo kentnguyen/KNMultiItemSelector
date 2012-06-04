@@ -34,9 +34,15 @@
 
     // Initialize item arrays
     items = [_items mutableCopy];
-    for (KNSelectorItem * i in selectedItems) {
-      if ([items containsObject:i]) {
-        i.selected = YES;
+    if (selectedItems) {
+      for (KNSelectorItem * i in selectedItems) {
+        if ([items containsObject:i]) {
+          i.selected = YES;
+        }
+      }
+    } else {
+      for (KNSelectorItem * i in self.selectedItems) {
+        i.selected = NO;
       }
     }
 
@@ -234,6 +240,9 @@
 #pragma mark - Cancel or Done button event
 
 -(void)didCancel {
+  for (KNSelectorItem * i in self.selectedItems) {
+    i.selected = NO;
+  }
   if ([delegate respondsToSelector:@selector(selectorDidCancelSelection)]) {
     [delegate selectorDidCancelSelection];
   }
