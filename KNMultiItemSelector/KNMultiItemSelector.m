@@ -64,11 +64,14 @@
     self.searchTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     self.searchTextField.returnKeyType = UIReturnKeyDone;
     self.searchTextField.clearButtonMode = UITextFieldViewModeAlways;
+    self.searchTextField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     self.searchTextField.delegate = self;
     [self.view addSubview:self.searchTextField];
 
     // Image indicator
     modeIndicatorImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"KNSelectorTip"]];
+    modeIndicatorImageView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
+    modeIndicatorImageView.contentMode = UIViewContentModeCenter;
     [self.view addSubview:modeIndicatorImageView];
 
     // Two mode buttons
@@ -82,7 +85,9 @@
     [selectedModeButton setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
     [normalModeButton addTarget:self action:@selector(modeButtonDidTouch:) forControlEvents:UIControlEventTouchUpInside];
     [selectedModeButton addTarget:self action:@selector(modeButtonDidTouch:) forControlEvents:UIControlEventTouchUpInside];
-    normalModeButton.titleLabel.font = selectedModeButton.titleLabel.font = [UIFont boldSystemFontOfSize:14];
+    normalModeButton.titleLabel.font = selectedModeButton.titleLabel.font = [UIFont boldSystemFontOfSize:13];
+    normalModeButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+    selectedModeButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     [normalModeButton setSelected:YES];
     [self.view addSubview:normalModeButton];
     [self.view addSubview:selectedModeButton];
@@ -106,8 +111,8 @@
   self.searchTextField.frame = CGRectMake(0, 0, f.size.width, 32);
   self.tableView.frame = CGRectMake(0, self.searchTextField.frame.size.height, f.size.width, f.size.height - self.searchTextField.frame.size.height - 44);
 
-  normalModeButton.frame = CGRectMake(f.size.width/2-80, f.size.height-44, 80, 44);
-  selectedModeButton.frame = CGRectMake(f.size.width/2, f.size.height-44, 80, 44);
+  normalModeButton.frame = CGRectMake(f.size.width/2-90, f.size.height-44, 90, 44);
+  selectedModeButton.frame = CGRectMake(f.size.width/2, f.size.height-44, 90, 44);
   modeIndicatorImageView.center = CGPointMake(normalModeButton.center.x, f.size.height-44+modeIndicatorImageView.frame.size.height/2);
 }
 
