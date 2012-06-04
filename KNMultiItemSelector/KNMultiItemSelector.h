@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "KNSelectorItem.h"
 
+typedef enum {
+  KNSelectorModeNormal,
+  KNSelectorModeSearch,
+  KNSelectorModeSelected
+} KNSelectorMode;
+
 #pragma mark - MultiItemSelectorDelegate protocol
 
 @protocol KNMultiItemSelectorDelegate <NSObject>
@@ -21,8 +27,10 @@
 
 #pragma mark - MultiItemSelector Interface
 
-@interface KNMultiItemSelector : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface KNMultiItemSelector : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate> {
   NSMutableArray * items;
+  NSArray * filteredItems;
+  KNSelectorMode selectorMode;
   id<KNMultiItemSelectorDelegate> delegate;
 }
 
