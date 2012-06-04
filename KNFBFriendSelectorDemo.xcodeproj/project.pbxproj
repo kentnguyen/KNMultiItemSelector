@@ -65,6 +65,8 @@
 		8BE7B23D1577EF9600BC7787 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE7B23C1577EF9600BC7787 /* libz.dylib */; };
 		8BE7B23F1577F01B00BC7787 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE7B23E1577F01B00BC7787 /* CoreImage.framework */; };
 		8BE7B2411577F03000BC7787 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE7B2401577F03000BC7787 /* ImageIO.framework */; };
+		8BEFA483157D0EB200FBBDA6 /* KNZoomIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BEFA481157D0EB200FBBDA6 /* KNZoomIcon.png */; };
+		8BEFA484157D0EB200FBBDA6 /* KNZoomIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BEFA482157D0EB200FBBDA6 /* KNZoomIcon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -174,6 +176,8 @@
 		8BE7B23C1577EF9600BC7787 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		8BE7B23E1577F01B00BC7787 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		8BE7B2401577F03000BC7787 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		8BEFA481157D0EB200FBBDA6 /* KNZoomIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KNZoomIcon.png; sourceTree = "<group>"; };
+		8BEFA482157D0EB200FBBDA6 /* KNZoomIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KNZoomIcon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +204,8 @@
 		8B775EB3157C907200112752 /* KNMultiItemSelector */ = {
 			isa = PBXGroup;
 			children = (
+				8BEFA481157D0EB200FBBDA6 /* KNZoomIcon.png */,
+				8BEFA482157D0EB200FBBDA6 /* KNZoomIcon@2x.png */,
 				8B775EBF157CDE1F00112752 /* KNSelectorTip.png */,
 				8B775EC0157CDE1F00112752 /* KNSelectorTip@2x.png */,
 				8B775EB8157C926500112752 /* KNSelectorItem.h */,
@@ -511,6 +517,8 @@
 				8BE7B2331577EEE400BC7787 /* SVProgressHUD.bundle in Resources */,
 				8B775EC1157CDE1F00112752 /* KNSelectorTip.png in Resources */,
 				8B775EC2157CDE1F00112752 /* KNSelectorTip@2x.png in Resources */,
+				8BEFA483157D0EB200FBBDA6 /* KNZoomIcon.png in Resources */,
+				8BEFA484157D0EB200FBBDA6 /* KNZoomIcon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

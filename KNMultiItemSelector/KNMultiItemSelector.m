@@ -45,19 +45,19 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    self.tableView.layer.shadowColor = [[UIColor blackColor] CGColor];
-    self.tableView.layer.shadowOffset = CGSizeMake(0,1);
-    self.tableView.layer.shadowRadius = 3.0f;
-    self.tableView.layer.shadowOpacity = 0.15;
     [self.view addSubview:self.tableView];
 
     // Initialize search text field
+    textFieldWrapper = [[UIView alloc] initWithFrame:CGRectZero];
+    textFieldWrapper.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    textFieldWrapper.autoresizesSubviews = YES;
+    textFieldWrapper.backgroundColor = [UIColor whiteColor];
+    textFieldWrapper.layer.shadowColor = [[UIColor blackColor] CGColor];
+    textFieldWrapper.layer.shadowOffset = CGSizeMake(0,1);
+    textFieldWrapper.layer.shadowRadius = 5.0f;
+    textFieldWrapper.layer.shadowOpacity = 0.2;
     self.searchTextField = [[UITextField alloc] initWithFrame:CGRectZero];
     self.searchTextField.backgroundColor = [UIColor whiteColor];
-    self.searchTextField.layer.shadowColor = [[UIColor blackColor] CGColor];
-    self.searchTextField.layer.shadowOffset = CGSizeMake(0,1);
-    self.searchTextField.layer.shadowRadius = 5.0f;
-    self.searchTextField.layer.shadowOpacity = 0.2;
     self.searchTextField.clipsToBounds = NO;
     self.searchTextField.keyboardType = UIKeyboardTypeASCIICapable;
     self.searchTextField.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -66,7 +66,11 @@
     self.searchTextField.clearButtonMode = UITextFieldViewModeAlways;
     self.searchTextField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     self.searchTextField.delegate = self;
-    [self.view addSubview:self.searchTextField];
+    self.searchTextField.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"KNZoomIcon"]];
+    self.searchTextField.leftViewMode = UITextFieldViewModeAlways;
+    self.searchTextField.placeholder = @"Search by keywords";
+    [self.view addSubview:textFieldWrapper];
+    [textFieldWrapper addSubview:self.searchTextField];
 
     // Image indicator
     modeIndicatorImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"KNSelectorTip"]];
@@ -108,8 +112,10 @@
 
   // Layout UI elements
   CGRect f = self.view.frame;
-  self.searchTextField.frame = CGRectMake(0, 0, f.size.width, 32);
-  self.tableView.frame = CGRectMake(0, self.searchTextField.frame.size.height, f.size.width, f.size.height - self.searchTextField.frame.size.height - 44);
+  textFieldWrapper.frame = CGRectMake(0, 0, f.size.width, 44);
+  self.searchTextField.frame = CGRectMake(6,6, f.size.width-12, 32);
+  self.searchTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+  self.tableView.frame = CGRectMake(0, textFieldWrapper.frame.size.height, f.size.width, f.size.height - textFieldWrapper.frame.size.height - 44);
 
   normalModeButton.frame = CGRectMake(f.size.width/2-90, f.size.height-44, 90, 44);
   selectedModeButton.frame = CGRectMake(f.size.width/2, f.size.height-44, 90, 44);
@@ -252,10 +258,10 @@
     [self.tableView reloadData];
     [UIView animateWithDuration:0.3 animations:^{
       CGRect f = self.tableView.frame;
-      f.origin.y = self.searchTextField.frame.size.height;
+      f.origin.y = textFieldWrapper.frame.size.height;
       f.size.height -= f.origin.y;
       self.tableView.frame = f;
-      self.searchTextField.alpha = 1;
+      textFieldWrapper.alpha = 1;
       modeIndicatorImageView.center = CGPointMake(normalModeButton.center.x, modeIndicatorImageView.center.y);
     }];
   } else {
@@ -266,9 +272,9 @@
     [UIView animateWithDuration:0.3 animations:^{
       CGRect f = self.tableView.frame;
       f.origin.y = 0;
-      f.size.height += self.searchTextField.frame.size.height;
+      f.size.height += textFieldWrapper.frame.size.height;
       self.tableView.frame = f;
-      self.searchTextField.alpha = 0;
+      textFieldWrapper.alpha = 0;
       modeIndicatorImageView.center = CGPointMake(selectedModeButton.center.x, modeIndicatorImageView.center.y);
     }];
   }
@@ -277,7 +283,7 @@
 #pragma mark - Other memory stuff
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-  return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+  return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 - (void)viewDidUnload {

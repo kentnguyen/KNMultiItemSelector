@@ -33,6 +33,7 @@ typedef enum {
   UIButton * normalModeButton;
   UIButton * selectedModeButton;
   UIImageView * modeIndicatorImageView;
+  UIView * textFieldWrapper;
 
   KNSelectorMode selectorMode;
   id<KNMultiItemSelectorDelegate> delegate;
