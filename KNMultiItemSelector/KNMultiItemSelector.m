@@ -46,6 +46,17 @@
       }
     }
 
+    // Preparing indices
+    indices = [NSMutableDictionary dictionary];
+    for (KNSelectorItem * i in items) {
+      NSString * letter = [i.displayValue substringToIndex:1];
+      if (![indices objectForKey:letter]) {
+        [indices setObject:[NSMutableArray array] forKey:letter];
+      }
+      NSMutableArray * a = [indices objectForKey:letter];
+      [a addObject:i];
+    }
+
     // Initialize tableView
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     self.tableView.delegate = self;
@@ -121,7 +132,7 @@
   textFieldWrapper.frame = CGRectMake(0, 0, f.size.width, 44);
   self.searchTextField.frame = CGRectMake(6,6, f.size.width-12, 32);
   self.searchTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-  self.tableView.frame = CGRectMake(0, textFieldWrapper.frame.size.height, f.size.width, f.size.height - textFieldWrapper.frame.size.height);
+  self.tableView.frame = CGRectMake(0, textFieldWrapper.frame.size.height, f.size.width, f.size.height - textFieldWrapper.frame.size.height - 40);
 
   normalModeButton.frame = CGRectMake(f.size.width/2-90, f.size.height-44, 90, 44);
   selectedModeButton.frame = CGRectMake(f.size.width/2, f.size.height-44, 90, 44);
@@ -132,7 +143,7 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
   if (selectorMode == KNSelectorModeNormal) {
-    return useTableIndex ? items.count : items.count;
+    return useTableIndex ? [[self sortedIndices] count] : items.count;
   } else {
     return 1;
   }
@@ -142,7 +153,12 @@
   if (selectorMode == KNSelectorModeSearch) {
     return filteredItems.count;
   } else if (selectorMode == KNSelectorModeNormal) {
-    return useTableIndex ? items.count : items.count;
+    if (useTableIndex) {
+      NSMutableArray * rows = [indices objectForKey:[[self sortedIndices] objectAtIndex:section]];
+      return rows.count;
+    } else {
+      return items.count;
+    }
   } else {
     return self.selectedItems.count;
   }
@@ -160,7 +176,12 @@
   if (selectorMode == KNSelectorModeSearch) {
     item = [filteredItems objectAtIndex:indexPath.row];
   } else if (selectorMode == KNSelectorModeNormal) {
-    item = [items objectAtIndex:indexPath.row];
+    if (useTableIndex) {
+      NSMutableArray * rows = [indices objectForKey:[[self sortedIndices] objectAtIndex:indexPath.section]];
+      item = [rows objectAtIndex:indexPath.row];
+    } else {
+      item = [items objectAtIndex:indexPath.row];
+    }
   } else {
     item = [self.selectedItems objectAtIndex:indexPath.row];
   }
@@ -239,6 +260,10 @@
   return [items filteredArrayUsingPredicate:pred];
 }
 
+-(NSArray*)sortedIndices {
+  return [indices.allKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+}
+
 #pragma mark - Cancel or Done button event
 
 -(void)didCancel {
@@ -289,6 +314,19 @@
       modeIndicatorImageView.center = CGPointMake(selectedModeButton.center.x, modeIndicatorImageView.center.y);
     }];
   }
+}
+
+#pragma mark - Table indices
+
+- (NSString *)tableView:(UITableView *)aTableView titleForHeaderInSection:(NSInteger)section {
+	return [[self sortedIndices] objectAtIndex:section];
+}
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+  return selectorMode == KNSelectorModeNormal ? [self sortedIndices] : nil;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
+  return index;
 }
 
 #pragma mark - Other memory stuff

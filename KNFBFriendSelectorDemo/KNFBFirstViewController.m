@@ -66,6 +66,7 @@
                                                              preselectedItems:nil
                                                                         title:@"Select friends"
                                                                      delegate:self];
+  selector.useTableIndex = YES;
   UINavigationController * uinav = [[UINavigationController alloc] initWithRootViewController:selector];
   uinav.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
   [self presentModalViewController:uinav animated:YES];
