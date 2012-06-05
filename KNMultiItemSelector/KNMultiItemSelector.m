@@ -204,7 +204,12 @@
   if (selectorMode == KNSelectorModeSearch) {
     item = [filteredItems objectAtIndex:indexPath.row];
   } else if (selectorMode == KNSelectorModeNormal) {
-    item = [items objectAtIndex:indexPath.row];
+    if (useTableIndex) {
+      NSMutableArray * rows = [indices objectForKey:[[self sortedIndices] objectAtIndex:indexPath.section]];
+      item = [rows objectAtIndex:indexPath.row];
+    } else {
+      item = [items objectAtIndex:indexPath.row];
+    }
   } else {
     item = [self.selectedItems objectAtIndex:indexPath.row];
   }
@@ -320,7 +325,7 @@
 #pragma mark - Table indices
 
 - (NSString *)tableView:(UITableView *)aTableView titleForHeaderInSection:(NSInteger)section {
-	return [[self sortedIndices] objectAtIndex:section];
+	return selectorMode == KNSelectorModeNormal ? [[self sortedIndices] objectAtIndex:section] : nil;
 }
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
   return selectorMode == KNSelectorModeNormal ? [self sortedIndices] : nil;
