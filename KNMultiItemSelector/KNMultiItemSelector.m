@@ -210,7 +210,9 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
   if (self.searchTextField.text.length > 0) {
     selectorMode = KNSelectorModeSearch;
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"displayValue CONTAINS[cd] %@", self.searchTextField.text];
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"displayValue LIKE[cd] %@ OR displayValue LIKE[cd] %@",
+                         [self.searchTextField.text stringByAppendingString:@"*"],
+                         [NSString stringWithFormat:@"* %@*",self.searchTextField.text]];
     filteredItems = [items filteredArrayUsingPredicate:pred];
   } else {
     selectorMode = KNSelectorModeNormal;
