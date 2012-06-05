@@ -168,7 +168,7 @@
   // Change the cell appearance
   cell.textLabel.text = item.displayValue;
   if (item.imageUrl) {
-    [cell.imageView setImageWithURL:[NSURL URLWithString:item.imageUrl]];
+    [cell.imageView setImageWithURL:[NSURL URLWithString:item.imageUrl] placeholderImage:[UIImage imageNamed:@"KNDefaultImage"]];
   }
   cell.accessoryType = item.selected ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
 
