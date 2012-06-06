@@ -71,8 +71,10 @@
                                                               placeholderText:@"Search by name"
                                                                      delegate:self];
   // Again, the two optional settings
-  selector.useTableIndex = YES;
-  selector.useRecentItems = YES;
+  selector.allowSearchControl = YES;
+  selector.useTableIndex      = YES;
+  selector.useRecentItems     = YES;
+  selector.maxNumberOfRecentItems = 4;
   UINavigationController * uinav = [[UINavigationController alloc] initWithRootViewController:selector];
   uinav.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
   [self presentModalViewController:uinav animated:YES];

@@ -199,7 +199,7 @@
 					<object class="IBUITextView" id="181897885">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 297}, {280, 28}}</string>
+						<string key="NSFrame">{{10, 296}, {300, 28}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="673917463"/>
@@ -212,7 +212,7 @@
 						<bool key="IBUIScrollEnabled">NO</bool>
 						<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
 						<bool key="IBUIShowsVerticalScrollIndicator">NO</bool>
-						<string key="IBUIText">Now also enable recent items</string>
+						<string key="IBUIText">Now also enable recent items, and searching</string>
 						<int key="IBUITextAlignment">1</int>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 							<int key="IBUIAutocapitalizationType">2</int>
@@ -289,6 +289,7 @@
 						<string key="NSFrame">{{100, 347}, {120, 28}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<int key="IBUIContentMode">4</int>
@@ -387,8 +388,8 @@
 							<reference ref="76964245"/>
 							<reference ref="319974166"/>
 							<reference ref="362986946"/>
-							<reference ref="181897885"/>
 							<reference ref="673917463"/>
+							<reference ref="181897885"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>

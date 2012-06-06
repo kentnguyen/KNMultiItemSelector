@@ -20,7 +20,7 @@
 
 @implementation KNMultiItemSelector
 
-@synthesize tableView, useTableIndex, selectedItems, searchTextField;
+@synthesize tableView, useTableIndex, selectedItems, searchTextField, allowSearchControl;
 @synthesize useRecentItems, maxNumberOfRecentItems, recentItemStorageKey;
 
 -(id)initWithItems:(NSArray*)_items
@@ -107,6 +107,7 @@
     self.searchTextField.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"KNZoomIcon"]];
     self.searchTextField.leftViewMode = UITextFieldViewModeAlways;
     self.searchTextField.placeholder = _placeholder ? _placeholder : @"Search by keywords";
+    self.searchTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [self.view addSubview:textFieldWrapper];
     [textFieldWrapper addSubview:self.searchTextField];
 
@@ -152,8 +153,13 @@
   CGRect f = self.view.frame;
   textFieldWrapper.frame = CGRectMake(0, 0, f.size.width, 44);
   self.searchTextField.frame = CGRectMake(6,6, f.size.width-12, 32);
-  self.searchTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-  self.tableView.frame = CGRectMake(0, textFieldWrapper.frame.size.height, f.size.width, f.size.height - textFieldWrapper.frame.size.height - 40);
+
+  // Show or hide search control
+  if ((textFieldWrapper.hidden = !self.allowSearchControl)) {
+    self.tableView.frame = CGRectMake(0, 0, f.size.width, f.size.height - 40);
+  } else {
+    self.tableView.frame = CGRectMake(0, textFieldWrapper.frame.size.height, f.size.width, f.size.height - textFieldWrapper.frame.size.height - 40);
+  }
 
   normalModeButton.frame = CGRectMake(f.size.width/2-90, f.size.height-44, 90, 44);
   selectedModeButton.frame = CGRectMake(f.size.width/2, f.size.height-44, 90, 44);
@@ -349,7 +355,7 @@
   }
 }
 
-#pragma mark - Handle mode switching
+#pragma mark - Handle mode switching UI
 
 -(void)modeButtonDidTouch:(id)sender {
   UIButton * s = (UIButton*)sender;
@@ -361,11 +367,13 @@
     selectedModeButton.selected = NO;
     [self.tableView reloadData];
     [UIView animateWithDuration:0.3 animations:^{
-      CGRect f = self.tableView.frame;
-      f.origin.y = textFieldWrapper.frame.size.height;
-      f.size.height -= f.origin.y;
-      self.tableView.frame = f;
-      textFieldWrapper.alpha = 1;
+      if (!textFieldWrapper.hidden) {
+        CGRect f = self.tableView.frame;
+        f.origin.y = textFieldWrapper.frame.size.height;
+        f.size.height -= f.origin.y;
+        self.tableView.frame = f;
+        textFieldWrapper.alpha = 1;
+      }
       modeIndicatorImageView.center = CGPointMake(normalModeButton.center.x, modeIndicatorImageView.center.y);
     }];
   } else {
@@ -374,11 +382,13 @@
     selectedModeButton.selected = YES;
     [self.tableView reloadData];
     [UIView animateWithDuration:0.3 animations:^{
-      CGRect f = self.tableView.frame;
-      f.origin.y = 0;
-      f.size.height += textFieldWrapper.frame.size.height;
-      self.tableView.frame = f;
-      textFieldWrapper.alpha = 0;
+      if (!textFieldWrapper.hidden) {
+        CGRect f = self.tableView.frame;
+        f.origin.y = 0;
+        f.size.height += textFieldWrapper.frame.size.height;
+        self.tableView.frame = f;
+        textFieldWrapper.alpha = 0;
+      }
       modeIndicatorImageView.center = CGPointMake(selectedModeButton.center.x, modeIndicatorImageView.center.y);
     }];
   }

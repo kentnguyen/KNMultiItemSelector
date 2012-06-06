@@ -67,8 +67,9 @@
   // Finally we can also track the recent selected items with a simple switch
   NSArray * sortedItems = [items sortedArrayUsingSelector:@selector(compareByDisplayValue:)];
   KNMultiItemSelector * selector = [[KNMultiItemSelector alloc] initWithItems:sortedItems delegate:self];
-  selector.useTableIndex = YES;
-  selector.useRecentItems = YES;
+  selector.allowSearchControl = YES;
+  selector.useTableIndex      = YES;
+  selector.useRecentItems     = YES;
   selector.maxNumberOfRecentItems = 5;
 
   [self presentModalHelper:selector];
