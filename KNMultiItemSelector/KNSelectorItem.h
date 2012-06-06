@@ -13,10 +13,16 @@
 @property (strong,nonatomic) NSString * imageUrl;
 @property (nonatomic) BOOL selected;
 
+// Init with a simple value and no image
+-(id)initWithDisplayValue:(NSString*)displayVal;
+
+// Init with a display value that is different from actual value and with optional image
 -(id)initWithDisplayValue:(NSString*)displayVal
               selectValue:(NSString*)selectVal
                  imageUrl:(NSString*)image;
 
+// You can use these to sort items using [NSArray sortedArrayUsingSelector:]
+// Refer to Facebook Friend selector example
 -(NSComparisonResult)compareByDisplayValue:(KNSelectorItem*)other;
 -(NSComparisonResult)compareBySelectedValue:(KNSelectorItem*)other;
 

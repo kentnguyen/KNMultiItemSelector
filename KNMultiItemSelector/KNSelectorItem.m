@@ -12,6 +12,10 @@
 
 @synthesize displayValue, selectValue, imageUrl, selected;
 
+-(id)initWithDisplayValue:(NSString*)displayVal {
+  return [self initWithDisplayValue:displayVal selectValue:displayVal imageUrl:nil];
+}
+
 -(id)initWithDisplayValue:(NSString*)displayVal
               selectValue:(NSString*)selectVal
                  imageUrl:(NSString*)image {

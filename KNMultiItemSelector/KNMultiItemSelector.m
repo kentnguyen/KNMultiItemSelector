@@ -23,8 +23,18 @@
 @synthesize tableView, useTableIndex, selectedItems, searchTextField;
 
 -(id)initWithItems:(NSArray*)_items
+          delegate:(id)_delegate {
+  return [self initWithItems:_items
+            preselectedItems:nil
+                       title:@"Select items"
+             placeholderText:@"Search by keywords"
+                    delegate:_delegate];
+}
+
+-(id)initWithItems:(NSArray*)_items
   preselectedItems:(NSArray*)_preselectedItems
              title:(NSString*)title
+   placeholderText:(NSString*)_placeholder
           delegate:(id)delegateObject {
   self = [super init];
   if (self) {
@@ -85,7 +95,7 @@
     self.searchTextField.delegate = self;
     self.searchTextField.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"KNZoomIcon"]];
     self.searchTextField.leftViewMode = UITextFieldViewModeAlways;
-    self.searchTextField.placeholder = @"Search by keywords";
+    self.searchTextField.placeholder = _placeholder ? _placeholder : @"Search by keywords";
     [self.view addSubview:textFieldWrapper];
     [textFieldWrapper addSubview:self.searchTextField];
 

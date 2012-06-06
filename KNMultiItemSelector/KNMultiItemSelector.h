@@ -48,8 +48,12 @@ typedef enum {
 @property (nonatomic) BOOL useTableIndex;
 
 -(id)initWithItems:(NSArray*)_items
+          delegate:(id)delegate;
+
+-(id)initWithItems:(NSArray*)_items
   preselectedItems:(NSArray*)_preselectedItems
              title:(NSString*)_title
+   placeholderText:(NSString*)_placeholder
           delegate:(id)delegateObject;
 
 @end
