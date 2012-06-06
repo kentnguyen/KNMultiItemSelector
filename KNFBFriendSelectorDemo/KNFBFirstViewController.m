@@ -68,6 +68,7 @@
                                                               placeholderText:@"Search by name"
                                                                      delegate:self];
   selector.useTableIndex = YES;
+  selector.useRecentItems = YES;
   UINavigationController * uinav = [[UINavigationController alloc] initWithRootViewController:selector];
   uinav.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
   [self presentModalViewController:uinav animated:YES];

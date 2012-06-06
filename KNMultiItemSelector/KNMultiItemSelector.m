@@ -21,6 +21,7 @@
 @implementation KNMultiItemSelector
 
 @synthesize tableView, useTableIndex, selectedItems, searchTextField;
+@synthesize useRecentItems, maxNumberOfRecentItems, recentItemStorageKey;
 
 -(id)initWithItems:(NSArray*)_items
           delegate:(id)_delegate {
@@ -41,6 +42,9 @@
     delegate = delegateObject;
     self.title = title;
     self.view.backgroundColor = [UIColor whiteColor];
+    self.maxNumberOfRecentItems = 5;
+    self.useRecentItems = NO;
+    self.recentItemStorageKey = @"recent_selected_items";
 
     // Initialize item arrays
     items = [_items mutableCopy];
@@ -56,12 +60,19 @@
       }
     }
 
-    // Preparing indices
+    // Recent selected items section
+    recentItems = [NSMutableArray array];
+    NSMutableArray * rArr =[[NSUserDefaults standardUserDefaults] objectForKey:self.recentItemStorageKey];
+
+    // Preparing indices and Recent items
     indices = [NSMutableDictionary dictionary];
     for (KNSelectorItem * i in items) {
       NSString * letter = [i.displayValue substringToIndex:1];
       if (![indices objectForKey:letter]) {
         [indices setObject:[NSMutableArray array] forKey:letter];
+      }
+      if ([rArr containsObject:i.selectValue]) {
+        [recentItems addObject:i];
       }
       NSMutableArray * a = [indices objectForKey:letter];
       [a addObject:i];
@@ -153,7 +164,8 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
   if (selectorMode == KNSelectorModeNormal) {
-    return useTableIndex ? [[self sortedIndices] count] : items.count;
+    int noSec = useTableIndex ? [[self sortedIndices] count] : 1;
+    return self.useRecentItems && recentItems.count ? noSec+1 : noSec;
   } else {
     return 1;
   }
@@ -163,7 +175,10 @@
   if (selectorMode == KNSelectorModeSearch) {
     return filteredItems.count;
   } else if (selectorMode == KNSelectorModeNormal) {
-    if (useTableIndex) {
+    if (useRecentItems && section==0 && recentItems.count) {
+      return recentItems.count;
+    } else if (useTableIndex) {
+      if (useRecentItems && recentItems.count) section -= 1;
       NSMutableArray * rows = [indices objectForKey:[[self sortedIndices] objectAtIndex:section]];
       return rows.count;
     } else {
@@ -182,19 +197,7 @@
   }
 
   // Which item?
-  KNSelectorItem * item;
-  if (selectorMode == KNSelectorModeSearch) {
-    item = [filteredItems objectAtIndex:indexPath.row];
-  } else if (selectorMode == KNSelectorModeNormal) {
-    if (useTableIndex) {
-      NSMutableArray * rows = [indices objectForKey:[[self sortedIndices] objectAtIndex:indexPath.section]];
-      item = [rows objectAtIndex:indexPath.row];
-    } else {
-      item = [items objectAtIndex:indexPath.row];
-    }
-  } else {
-    item = [self.selectedItems objectAtIndex:indexPath.row];
-  }
+  KNSelectorItem * item = [self itemAtIndexPath:indexPath];
 
   // Change the cell appearance
   cell.textLabel.text = item.displayValue;
@@ -210,19 +213,7 @@
 
 -(void)tableView:(UITableView *)_tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   // Which item?
-  KNSelectorItem * item;
-  if (selectorMode == KNSelectorModeSearch) {
-    item = [filteredItems objectAtIndex:indexPath.row];
-  } else if (selectorMode == KNSelectorModeNormal) {
-    if (useTableIndex) {
-      NSMutableArray * rows = [indices objectForKey:[[self sortedIndices] objectAtIndex:indexPath.section]];
-      item = [rows objectAtIndex:indexPath.row];
-    } else {
-      item = [items objectAtIndex:indexPath.row];
-    }
-  } else {
-    item = [self.selectedItems objectAtIndex:indexPath.row];
-  }
+  KNSelectorItem * item = [self itemAtIndexPath:indexPath];
   item.selected = !item.selected;
 
   // Recount selected items
@@ -294,20 +285,67 @@
   return [indices.allKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
 }
 
+#pragma mark - Helpers
+
+-(KNSelectorItem*)itemAtIndexPath:(NSIndexPath*)indexPath {
+  // Determine the correct item at different settings
+  int r = indexPath.row;
+  int s = indexPath.section;
+  if (selectorMode == KNSelectorModeSearch) {
+    return [filteredItems objectAtIndex:r];
+  }
+
+  if (selectorMode == KNSelectorModeNormal) {
+    if (self.useRecentItems && recentItems.count && s==0) {
+      return [recentItems objectAtIndex:r];
+    }
+    if (useTableIndex) {
+      if(self.useRecentItems && recentItems.count) s-=1;
+      NSMutableArray * rows = [indices objectForKey:[[self sortedIndices] objectAtIndex:s]];
+      return [rows objectAtIndex:r];
+    }
+    return [items objectAtIndex:r];
+  }
+
+  if (selectorMode == KNSelectorModeSelected) {
+    return [self.selectedItems objectAtIndex:r];
+  }
+
+  return [items objectAtIndex:r];
+}
+
 #pragma mark - Cancel or Done button event
 
 -(void)didCancel {
+  // Clear all selections
   for (KNSelectorItem * i in self.selectedItems) {
     i.selected = NO;
   }
+  // Delegate callback
   if ([delegate respondsToSelector:@selector(selectorDidCancelSelection)]) {
     [delegate selectorDidCancelSelection];
   }
 }
 
 -(void)didFinish {
+  // Delegate callback
   if ([delegate respondsToSelector:@selector(selectorDidFinishSelectionWithItems:)]) {
     [delegate selectorDidFinishSelectionWithItems:self.selectedItems];
+  }
+
+  // Store recent items FIFO
+  if (self.useRecentItems && self.maxNumberOfRecentItems < items.count) {
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray * array = [(NSMutableArray*)[defaults objectForKey:self.recentItemStorageKey] mutableCopy];
+    if (!array) array = [NSMutableArray array];
+    for (KNSelectorItem * i in self.selectedItems) {
+      [array insertObject:i.selectValue atIndex:0];
+    }
+    while (array.count > self.maxNumberOfRecentItems) {
+      [array removeLastObject];
+    }
+    [defaults setObject:array forKey:self.recentItemStorageKey];
+    [defaults synchronize];
   }
 }
 
@@ -316,7 +354,7 @@
 -(void)modeButtonDidTouch:(id)sender {
   UIButton * s = (UIButton*)sender;
   if (s.selected) return;
-  
+
   if (s == normalModeButton) {
     selectorMode = self.searchTextField.text.length > 0 ? KNSelectorModeSearch : KNSelectorModeNormal;
     normalModeButton.selected = YES;
@@ -349,10 +387,30 @@
 #pragma mark - Table indices
 
 - (NSString *)tableView:(UITableView *)aTableView titleForHeaderInSection:(NSInteger)section {
-	return selectorMode == KNSelectorModeNormal ? [[self sortedIndices] objectAtIndex:section] : nil;
+  if (selectorMode == KNSelectorModeNormal) {
+    if (self.useRecentItems && recentItems.count) {
+      if (section==0) return @"Recent";
+      if (!useTableIndex) return @" ";
+    }
+    if (useTableIndex) {
+      if(self.useRecentItems && recentItems.count) section-=1;
+      return [[self sortedIndices] objectAtIndex:section];
+    }
+  }
+  return nil;
 }
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-  return selectorMode == KNSelectorModeNormal ? [self sortedIndices] : nil;
+  if (selectorMode == KNSelectorModeNormal && useTableIndex) {
+    if (self.useRecentItems && recentItems.count) {
+      NSMutableArray * iArr = [[self sortedIndices] mutableCopy];
+      [iArr insertObject:@"★" atIndex:0];
+      return iArr;
+    } else {
+      return [self sortedIndices];
+    }
+  }
+  return nil;
+  return selectorMode == KNSelectorModeNormal && useTableIndex ? [self sortedIndices] : nil;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
@@ -368,6 +426,7 @@
 - (void)viewDidUnload {
   [self.tableView removeFromSuperview];
   [self.searchTextField removeFromSuperview];
+  [textFieldWrapper removeFromSuperview];
   [modeIndicatorImageView removeFromSuperview];
   [normalModeButton removeFromSuperview];
   [selectedModeButton removeFromSuperview];

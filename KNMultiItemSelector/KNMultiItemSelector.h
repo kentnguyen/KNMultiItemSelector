@@ -30,6 +30,7 @@ typedef enum {
 @interface KNMultiItemSelector : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate> {
   NSMutableArray * items;
   NSArray * filteredItems;
+  NSMutableArray * recentItems;
   NSMutableDictionary * indices;
 
   UIButton * normalModeButton;
@@ -41,11 +42,23 @@ typedef enum {
   id<KNMultiItemSelectorDelegate> delegate;
 }
 
+#pragma mark - Public properties
+
 @property (nonatomic, strong) UITableView * tableView;
 @property (nonatomic, strong) UITextField * searchTextField;
 @property (nonatomic, readonly) NSArray * selectedItems;
 
+// Turn on/off table index for items, default to NO
 @property (nonatomic) BOOL useTableIndex;
+
+// Turn on/off displaying and storing of recent selected items.
+// recentItemStorageKey   : If you have multiple selectors in your app, you need to set different storage key for each of the selectors.
+// maxNumberOfRecentItems : Defaults to 5.
+@property (nonatomic) BOOL useRecentItems;
+@property (nonatomic) NSString * recentItemStorageKey;
+@property (nonatomic) NSInteger maxNumberOfRecentItems;
+
+#pragma mark - Init methods
 
 -(id)initWithItems:(NSArray*)_items
           delegate:(id)delegate;
