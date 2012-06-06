@@ -28,7 +28,6 @@
 		8BE7B1851577EDAF00BC7787 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE7B1841577EDAF00BC7787 /* UIKit.framework */; };
 		8BE7B1871577EDAF00BC7787 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE7B1861577EDAF00BC7787 /* Foundation.framework */; };
 		8BE7B1891577EDAF00BC7787 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE7B1881577EDAF00BC7787 /* CoreGraphics.framework */; };
-		8BE7B18F1577EDAF00BC7787 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8BE7B18D1577EDAF00BC7787 /* InfoPlist.strings */; };
 		8BE7B1911577EDAF00BC7787 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE7B1901577EDAF00BC7787 /* main.m */; };
 		8BE7B1951577EDAF00BC7787 /* KNFBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE7B1941577EDAF00BC7787 /* KNFBAppDelegate.m */; };
 		8BE7B1981577EDAF00BC7787 /* KNFBDemoFacebookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE7B1971577EDAF00BC7787 /* KNFBDemoFacebookController.m */; };
@@ -92,7 +91,6 @@
 		8BE7B1861577EDAF00BC7787 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8BE7B1881577EDAF00BC7787 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		8BE7B18C1577EDAF00BC7787 /* KNFBFriendSelectorDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KNFBFriendSelectorDemo-Info.plist"; sourceTree = "<group>"; };
-		8BE7B18E1577EDAF00BC7787 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8BE7B1901577EDAF00BC7787 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8BE7B1921577EDAF00BC7787 /* KNFBFriendSelectorDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KNFBFriendSelectorDemo-Prefix.pch"; sourceTree = "<group>"; };
 		8BE7B1931577EDAF00BC7787 /* KNFBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KNFBAppDelegate.h; sourceTree = "<group>"; };
@@ -223,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				8BE7B18A1577EDAF00BC7787 /* KNFBFriendSelectorDemo */,
+				8BE7B1C11577EEE400BC7787 /* Libraries */,
 				8BE7B1831577EDAF00BC7787 /* Frameworks */,
 				8BE7B1811577EDAF00BC7787 /* Products */,
 			);
@@ -257,7 +256,6 @@
 			children = (
 				8BE7B2351577EEEB00BC7787 /* ViewControllers */,
 				8BE7B1AF1577EEE400BC7787 /* Images */,
-				8BE7B1C11577EEE400BC7787 /* Libraries */,
 				8BE7B18B1577EDAF00BC7787 /* Supporting Files */,
 			);
 			path = KNFBFriendSelectorDemo;
@@ -266,9 +264,8 @@
 		8BE7B18B1577EDAF00BC7787 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8BE7B18C1577EDAF00BC7787 /* KNFBFriendSelectorDemo-Info.plist */,
-				8BE7B18D1577EDAF00BC7787 /* InfoPlist.strings */,
 				8BE7B1901577EDAF00BC7787 /* main.m */,
+				8BE7B18C1577EDAF00BC7787 /* KNFBFriendSelectorDemo-Info.plist */,
 				8BE7B1921577EDAF00BC7787 /* KNFBFriendSelectorDemo-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -300,7 +297,8 @@
 				8BE7B1F21577EEE400BC7787 /* SDWebImage */,
 				8BE7B2061577EEE400BC7787 /* SVProgressHUD */,
 			);
-			path = Libraries;
+			name = Libraries;
+			path = KNFBFriendSelectorDemo/Libraries;
 			sourceTree = "<group>";
 		};
 		8BE7B1C21577EEE400BC7787 /* ASIHTTPRequest */ = {
@@ -485,7 +483,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BE7B18F1577EDAF00BC7787 /* InfoPlist.strings in Resources */,
 				8BE7B1A61577EDAF00BC7787 /* KNFBDemoFacebookController.xib in Resources */,
 				8BE7B1A91577EDAF00BC7787 /* KNFBIntroViewController.xib in Resources */,
 				8BE7B2251577EEE400BC7787 /* FBDialog.bundle in Resources */,
@@ -547,14 +544,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8BE7B18D1577EDAF00BC7787 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8BE7B18E1577EDAF00BC7787 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		8BE7B1A41577EDAF00BC7787 /* KNFBDemoFacebookController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
