@@ -45,11 +45,11 @@
   return YES;
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-  // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
+#pragma mark - Standard Facebook stuff found in facebook-ios-sdk tutorial
 
-#pragma mark - Facebook Session Delegate
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+  [facebook extendAccessTokenIfNeeded];
+}
 
 - (void)fbDidLogin {
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -70,8 +70,6 @@
 
 - (void)fbDidLogout {}
 - (void)fbSessionInvalidated {}
-
-#pragma mark - Extending Facebook Token
 
 -(void)fbDidExtendToken:(NSString *)accessToken expiresAt:(NSDate *)expiresAt {
   NSLog(@"TOKEN EXTENDED");
