@@ -99,7 +99,7 @@
 		8BE7B1921577EDAF00BC7787 /* KNFBFriendSelectorDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KNFBFriendSelectorDemo-Prefix.pch"; sourceTree = "<group>"; };
 		8BE7B1931577EDAF00BC7787 /* KNFBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KNFBAppDelegate.h; sourceTree = "<group>"; };
 		8BE7B1941577EDAF00BC7787 /* KNFBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KNFBAppDelegate.m; sourceTree = "<group>"; };
-		8BE7B1961577EDAF00BC7787 /* KNFBDemoFacebookController.h */ = {isa = PBXFileReference; path = KNFBDemoFacebookController.h; sourceTree = "<group>"; };
+		8BE7B1961577EDAF00BC7787 /* KNFBDemoFacebookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KNFBDemoFacebookController.h; sourceTree = "<group>"; };
 		8BE7B1971577EDAF00BC7787 /* KNFBDemoFacebookController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KNFBDemoFacebookController.m; sourceTree = "<group>"; };
 		8BE7B19D1577EDAF00BC7787 /* KNFBSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KNFBSecondViewController.h; sourceTree = "<group>"; };
 		8BE7B19E1577EDAF00BC7787 /* KNFBSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KNFBSecondViewController.m; sourceTree = "<group>"; };
@@ -467,6 +467,7 @@
 			attributes = {
 				CLASSPREFIX = KNFB;
 				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Kent Nguyen";
 			};
 			buildConfigurationList = 8BE7B17A1577EDAF00BC7787 /* Build configuration list for PBXProject "KNFBFriendSelectorDemo" */;
 			compatibilityVersion = "Xcode 3.2";
