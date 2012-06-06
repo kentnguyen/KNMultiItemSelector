@@ -60,7 +60,7 @@
 		8BE7B2391577EF5300BC7787 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE7B2381577EF5300BC7787 /* SystemConfiguration.framework */; };
 		8BE7B23B1577EF5800BC7787 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE7B23A1577EF5800BC7787 /* MobileCoreServices.framework */; };
 		8BE7B23D1577EF9600BC7787 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE7B23C1577EF9600BC7787 /* libz.dylib */; };
-		8BE7B23F1577F01B00BC7787 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE7B23E1577F01B00BC7787 /* CoreImage.framework */; };
+		8BE7B23F1577F01B00BC7787 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE7B23E1577F01B00BC7787 /* CoreImage.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8BE7B2411577F03000BC7787 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE7B2401577F03000BC7787 /* ImageIO.framework */; };
 /* End PBXBuildFile section */
 

@@ -68,7 +68,6 @@
   NSArray * sortedItems = [items sortedArrayUsingSelector:@selector(compareByDisplayValue:)];
   KNMultiItemSelector * selector = [[KNMultiItemSelector alloc] initWithItems:sortedItems delegate:self];
   selector.allowSearchControl = YES;
-  selector.useTableIndex      = YES;
   selector.useRecentItems     = YES;
   selector.maxNumberOfRecentItems = 5;
 
