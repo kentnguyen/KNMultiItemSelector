@@ -178,13 +178,13 @@
 			files = (
 				8BE7B2411577F03000BC7787 /* ImageIO.framework in Frameworks */,
 				8BE7B23F1577F01B00BC7787 /* CoreImage.framework in Frameworks */,
-				8BE7B23D1577EF9600BC7787 /* libz.dylib in Frameworks */,
 				8BE7B23B1577EF5800BC7787 /* MobileCoreServices.framework in Frameworks */,
 				8BE7B2391577EF5300BC7787 /* SystemConfiguration.framework in Frameworks */,
 				8BE7B2371577EF4D00BC7787 /* CFNetwork.framework in Frameworks */,
 				8BE7B1851577EDAF00BC7787 /* UIKit.framework in Frameworks */,
 				8BE7B1871577EDAF00BC7787 /* Foundation.framework in Frameworks */,
 				8BE7B1891577EDAF00BC7787 /* CoreGraphics.framework in Frameworks */,
+				8BE7B23D1577EF9600BC7787 /* libz.dylib in Frameworks */,
 				8BE7B2261577EEE400BC7787 /* libfacebook_ios_sdk.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -491,7 +491,6 @@
 				8B59C4EB157E2CA700532405 /* KNSelectorTip@2x.png in Resources */,
 				8B59C4EC157E2CA700532405 /* KNZoomIcon.png in Resources */,
 				8B59C4ED157E2CA700532405 /* KNZoomIcon@2x.png in Resources */,
-				8B443DF8157FB59800095931 /* KNFBDemoBasicController.xib in Resources */,
 				8B443DFC157FB6A400095931 /* KNButtonBG.png in Resources */,
 				8B443DFD157FB6A400095931 /* KNButtonBG@2x.png in Resources */,
 				8B443E00157FB6C300095931 /* LoginWithFacebookNormal.png in Resources */,
@@ -500,6 +499,7 @@
 				8B443E09157FC0F700095931 /* TabFacebook@2x.png in Resources */,
 				8B443E0C157FC10800095931 /* TabBasic.png in Resources */,
 				8B443E0D157FC10800095931 /* TabBasic@2x.png in Resources */,
+				8B443DF8157FB59800095931 /* KNFBDemoBasicController.xib in Resources */,
 				8B2B6EE8157FD2990002B700 /* KNFBDemoFacebookController.xib in Resources */,
 				8B2B6EED157FD2B30002B700 /* KNFBIntroViewController.xib in Resources */,
 			);
@@ -548,8 +548,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = (
+					"$(ARCHS_STANDARD_32_BIT)",
+					armv6,
+				);
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -564,7 +568,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -573,17 +578,23 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = (
+					"$(ARCHS_STANDARD_32_BIT)",
+					armv6,
+				);
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -595,7 +606,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KNFBFriendSelectorDemo/KNFBFriendSelectorDemo-Prefix.pch";
 				INFOPLIST_FILE = "KNFBFriendSelectorDemo/KNFBFriendSelectorDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/KNFBFriendSelectorDemo/Libraries/facebook-ios-sdk\"",
@@ -611,7 +622,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KNFBFriendSelectorDemo/KNFBFriendSelectorDemo-Prefix.pch";
 				INFOPLIST_FILE = "KNFBFriendSelectorDemo/KNFBFriendSelectorDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/KNFBFriendSelectorDemo/Libraries/facebook-ios-sdk\"",
