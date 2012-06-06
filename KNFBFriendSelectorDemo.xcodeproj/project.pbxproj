@@ -32,11 +32,9 @@
 		8BE7B1911577EDAF00BC7787 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE7B1901577EDAF00BC7787 /* main.m */; };
 		8BE7B1951577EDAF00BC7787 /* KNFBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE7B1941577EDAF00BC7787 /* KNFBAppDelegate.m */; };
 		8BE7B1981577EDAF00BC7787 /* KNFBDemoFacebookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE7B1971577EDAF00BC7787 /* KNFBDemoFacebookController.m */; };
-		8BE7B19F1577EDAF00BC7787 /* KNFBSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE7B19E1577EDAF00BC7787 /* KNFBSecondViewController.m */; };
+		8BE7B19F1577EDAF00BC7787 /* KNFBIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE7B19E1577EDAF00BC7787 /* KNFBIntroViewController.m */; };
 		8BE7B1A61577EDAF00BC7787 /* KNFBDemoFacebookController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE7B1A41577EDAF00BC7787 /* KNFBDemoFacebookController.xib */; };
-		8BE7B1A91577EDAF00BC7787 /* KNFBSecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE7B1A71577EDAF00BC7787 /* KNFBSecondViewController.xib */; };
-		8BE7B2191577EEE400BC7787 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE7B1BF1577EEE400BC7787 /* second.png */; };
-		8BE7B21A1577EEE400BC7787 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE7B1C01577EEE400BC7787 /* second@2x.png */; };
+		8BE7B1A91577EDAF00BC7787 /* KNFBIntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE7B1A71577EDAF00BC7787 /* KNFBIntroViewController.xib */; };
 		8BE7B21B1577EEE400BC7787 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE7B1C41577EEE400BC7787 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8BE7B21C1577EEE400BC7787 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE7B1C71577EEE400BC7787 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8BE7B21D1577EEE400BC7787 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE7B1C91577EEE400BC7787 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -101,12 +99,10 @@
 		8BE7B1941577EDAF00BC7787 /* KNFBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KNFBAppDelegate.m; sourceTree = "<group>"; };
 		8BE7B1961577EDAF00BC7787 /* KNFBDemoFacebookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KNFBDemoFacebookController.h; sourceTree = "<group>"; };
 		8BE7B1971577EDAF00BC7787 /* KNFBDemoFacebookController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KNFBDemoFacebookController.m; sourceTree = "<group>"; };
-		8BE7B19D1577EDAF00BC7787 /* KNFBSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KNFBSecondViewController.h; sourceTree = "<group>"; };
-		8BE7B19E1577EDAF00BC7787 /* KNFBSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KNFBSecondViewController.m; sourceTree = "<group>"; };
+		8BE7B19D1577EDAF00BC7787 /* KNFBIntroViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KNFBIntroViewController.h; sourceTree = "<group>"; };
+		8BE7B19E1577EDAF00BC7787 /* KNFBIntroViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KNFBIntroViewController.m; sourceTree = "<group>"; };
 		8BE7B1A51577EDAF00BC7787 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/KNFBDemoFacebookController.xib; sourceTree = "<group>"; };
-		8BE7B1A81577EDAF00BC7787 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/KNFBSecondViewController.xib; sourceTree = "<group>"; };
-		8BE7B1BF1577EEE400BC7787 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
-		8BE7B1C01577EEE400BC7787 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		8BE7B1A81577EDAF00BC7787 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/KNFBIntroViewController.xib; sourceTree = "<group>"; };
 		8BE7B1C31577EEE400BC7787 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		8BE7B1C41577EEE400BC7787 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		8BE7B1C51577EEE400BC7787 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -289,8 +285,6 @@
 				8B443E0B157FC10800095931 /* TabBasic@2x.png */,
 				8B443E06157FC0F700095931 /* TabFacebook.png */,
 				8B443E07157FC0F700095931 /* TabFacebook@2x.png */,
-				8BE7B1BF1577EEE400BC7787 /* second.png */,
-				8BE7B1C01577EEE400BC7787 /* second@2x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -426,15 +420,15 @@
 			children = (
 				8BE7B1931577EDAF00BC7787 /* KNFBAppDelegate.h */,
 				8BE7B1941577EDAF00BC7787 /* KNFBAppDelegate.m */,
+				8BE7B19D1577EDAF00BC7787 /* KNFBIntroViewController.h */,
+				8BE7B19E1577EDAF00BC7787 /* KNFBIntroViewController.m */,
+				8BE7B1A71577EDAF00BC7787 /* KNFBIntroViewController.xib */,
 				8B443DF4157FB59800095931 /* KNFBDemoBasicController.h */,
 				8B443DF5157FB59800095931 /* KNFBDemoBasicController.m */,
 				8B443DF6157FB59800095931 /* KNFBDemoBasicController.xib */,
 				8BE7B1961577EDAF00BC7787 /* KNFBDemoFacebookController.h */,
 				8BE7B1971577EDAF00BC7787 /* KNFBDemoFacebookController.m */,
 				8BE7B1A41577EDAF00BC7787 /* KNFBDemoFacebookController.xib */,
-				8BE7B19D1577EDAF00BC7787 /* KNFBSecondViewController.h */,
-				8BE7B19E1577EDAF00BC7787 /* KNFBSecondViewController.m */,
-				8BE7B1A71577EDAF00BC7787 /* KNFBSecondViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -493,9 +487,7 @@
 			files = (
 				8BE7B18F1577EDAF00BC7787 /* InfoPlist.strings in Resources */,
 				8BE7B1A61577EDAF00BC7787 /* KNFBDemoFacebookController.xib in Resources */,
-				8BE7B1A91577EDAF00BC7787 /* KNFBSecondViewController.xib in Resources */,
-				8BE7B2191577EEE400BC7787 /* second.png in Resources */,
-				8BE7B21A1577EEE400BC7787 /* second@2x.png in Resources */,
+				8BE7B1A91577EDAF00BC7787 /* KNFBIntroViewController.xib in Resources */,
 				8BE7B2251577EEE400BC7787 /* FBDialog.bundle in Resources */,
 				8BE7B2331577EEE400BC7787 /* SVProgressHUD.bundle in Resources */,
 				8B59C4E8157E2CA700532405 /* KNDefaultImage.png in Resources */,
@@ -526,7 +518,7 @@
 				8BE7B1911577EDAF00BC7787 /* main.m in Sources */,
 				8BE7B1951577EDAF00BC7787 /* KNFBAppDelegate.m in Sources */,
 				8BE7B1981577EDAF00BC7787 /* KNFBDemoFacebookController.m in Sources */,
-				8BE7B19F1577EDAF00BC7787 /* KNFBSecondViewController.m in Sources */,
+				8BE7B19F1577EDAF00BC7787 /* KNFBIntroViewController.m in Sources */,
 				8BE7B2291577EEE400BC7787 /* UIViewAdditions.m in Sources */,
 				8BE7B2241577EEE400BC7787 /* Reachability.m in Sources */,
 				8BE7B21B1577EEE400BC7787 /* ASIAuthenticationDialog.m in Sources */,
@@ -571,12 +563,12 @@
 			name = KNFBDemoFacebookController.xib;
 			sourceTree = "<group>";
 		};
-		8BE7B1A71577EDAF00BC7787 /* KNFBSecondViewController.xib */ = {
+		8BE7B1A71577EDAF00BC7787 /* KNFBIntroViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				8BE7B1A81577EDAF00BC7787 /* en */,
 			);
-			name = KNFBSecondViewController.xib;
+			name = KNFBIntroViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

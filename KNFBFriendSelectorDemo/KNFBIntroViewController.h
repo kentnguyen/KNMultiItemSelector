@@ -1,13 +1,13 @@
 //
-//  KNFBSecondViewController.h
+//  KNFBIntroViewController.h
 //  KNFBFriendSelectorDemo
 //
 //  Created by Kent Nguyen on 1/6/12.
 //  Copyright (c) 2012 Kent Nguyen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@interface KNFBIntroViewController : UIViewController
 
-@interface KNFBSecondViewController : UIViewController
+-(IBAction)facebookButtonDidTouch:(id)sender;
 
 @end

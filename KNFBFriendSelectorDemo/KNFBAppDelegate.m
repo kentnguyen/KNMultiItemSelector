@@ -10,7 +10,7 @@
 
 #import "KNFBDemoFacebookController.h"
 #import "KNFBDemoBasicController.h"
-#import "KNFBSecondViewController.h"
+#import "KNFBIntroViewController.h"
 
 @implementation KNFBAppDelegate
 
@@ -29,10 +29,6 @@
     facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
     facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
   }
-  if (![facebook isSessionValid]) {
-    [SVProgressHUD show];
-    [facebook authorize:[NSArray arrayWithObjects:@"user_about_me",@"friends_about_me", nil]];
-  }
 
   // The tabs
   UIViewController *vc1 = [[KNFBDemoBasicController alloc] initWithNibName:@"KNFBDemoBasicController" bundle:nil];
@@ -42,7 +38,18 @@
   self.window.rootViewController = self.tabBarController;
   [self.window makeKeyAndVisible];
 
+  // Intro screen, connect to Facebook
+  if (![facebook isSessionValid]) {
+    [self.window.rootViewController presentModalViewController:[[KNFBIntroViewController alloc] initWithNibName:@"KNFBIntroViewController" bundle:nil]
+                                                      animated:NO];
+  }
+
   return YES;
+}
+
+-(void)beginFacebookAuthorization {
+  [self.window.rootViewController dismissModalViewControllerAnimated:YES];
+  [facebook authorize:[NSArray arrayWithObjects:@"user_about_me",@"friends_about_me", nil]];
 }
 
 #pragma mark - Standard Facebook stuff found in facebook-ios-sdk tutorial
