@@ -20,8 +20,8 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
-    self.title = @"Demo 1";
-    self.tabBarItem.image = [UIImage imageNamed:@"first"];
+    self.title = @"FB Friends";
+    self.tabBarItem.image = [UIImage imageNamed:@"TabFacebook"];
     friends = [NSMutableArray array];
   }
   return self;
@@ -49,7 +49,8 @@
     [friends sortUsingSelector:@selector(compareByDisplayValue:)];
   }];
   [request setFailedBlock:^{
-    [SVProgressHUD dismissWithError:@"Facebook Error"];
+    [SVProgressHUD showErrorWithStatus:@"Facebook error, try again!"];
+    [SVProgressHUD dismissWithError:nil afterDelay:10];
   }];
   [request startAsynchronous];
   [SVProgressHUD showWithStatus:@"Fetching friends"];
@@ -62,11 +63,14 @@
 #pragma mark - Presenting the selector
 
 - (IBAction)pickerButtonDidTouch:(id)sender {
+
+  // You can even change the title and placeholder text for the selector
   KNMultiItemSelector * selector = [[KNMultiItemSelector alloc] initWithItems:friends
                                                              preselectedItems:nil
                                                                         title:@"Select friends"
                                                               placeholderText:@"Search by name"
                                                                      delegate:self];
+  // Again, the two optional settings
   selector.useTableIndex = YES;
   selector.useRecentItems = YES;
   UINavigationController * uinav = [[UINavigationController alloc] initWithRootViewController:selector];

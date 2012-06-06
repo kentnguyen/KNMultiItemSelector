@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B443DF7157FB59800095931 /* KNFBDemoBasicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B443DF5157FB59800095931 /* KNFBDemoBasicController.m */; };
+		8B443DF8157FB59800095931 /* KNFBDemoBasicController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B443DF6157FB59800095931 /* KNFBDemoBasicController.xib */; };
+		8B443DFC157FB6A400095931 /* KNButtonBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B443DFA157FB6A400095931 /* KNButtonBG.png */; };
+		8B443DFD157FB6A400095931 /* KNButtonBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B443DFB157FB6A400095931 /* KNButtonBG@2x.png */; };
+		8B443E00157FB6C300095931 /* LoginWithFacebookNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B443DFE157FB6C300095931 /* LoginWithFacebookNormal.png */; };
+		8B443E01157FB6C300095931 /* LoginWithFacebookNormal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B443DFF157FB6C300095931 /* LoginWithFacebookNormal@2x.png */; };
+		8B443E08157FC0F700095931 /* TabFacebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B443E06157FC0F700095931 /* TabFacebook.png */; };
+		8B443E09157FC0F700095931 /* TabFacebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B443E07157FC0F700095931 /* TabFacebook@2x.png */; };
+		8B443E0C157FC10800095931 /* TabBasic.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B443E0A157FC10800095931 /* TabBasic.png */; };
+		8B443E0D157FC10800095931 /* TabBasic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B443E0B157FC10800095931 /* TabBasic@2x.png */; };
 		8B59C4E8157E2CA700532405 /* KNDefaultImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B59C4E2157E2CA700532405 /* KNDefaultImage.png */; };
 		8B59C4E9157E2CA700532405 /* KNDefaultImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B59C4E3157E2CA700532405 /* KNDefaultImage@2x.png */; };
 		8B59C4EA157E2CA700532405 /* KNSelectorTip.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B59C4E4157E2CA700532405 /* KNSelectorTip.png */; };
@@ -25,20 +35,6 @@
 		8BE7B19F1577EDAF00BC7787 /* KNFBSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE7B19E1577EDAF00BC7787 /* KNFBSecondViewController.m */; };
 		8BE7B1A61577EDAF00BC7787 /* KNFBFirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE7B1A41577EDAF00BC7787 /* KNFBFirstViewController.xib */; };
 		8BE7B1A91577EDAF00BC7787 /* KNFBSecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE7B1A71577EDAF00BC7787 /* KNFBSecondViewController.xib */; };
-		8BE7B20B1577EEE400BC7787 /* LoginNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE7B1B11577EEE400BC7787 /* LoginNormal.png */; };
-		8BE7B20C1577EEE400BC7787 /* LoginNormal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE7B1B21577EEE400BC7787 /* LoginNormal@2x.png */; };
-		8BE7B20D1577EEE400BC7787 /* LoginPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE7B1B31577EEE400BC7787 /* LoginPressed.png */; };
-		8BE7B20E1577EEE400BC7787 /* LoginPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE7B1B41577EEE400BC7787 /* LoginPressed@2x.png */; };
-		8BE7B20F1577EEE400BC7787 /* LoginWithFacebookNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE7B1B51577EEE400BC7787 /* LoginWithFacebookNormal.png */; };
-		8BE7B2101577EEE400BC7787 /* LoginWithFacebookNormal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE7B1B61577EEE400BC7787 /* LoginWithFacebookNormal@2x.png */; };
-		8BE7B2111577EEE400BC7787 /* LoginWithFacebookPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE7B1B71577EEE400BC7787 /* LoginWithFacebookPressed.png */; };
-		8BE7B2121577EEE400BC7787 /* LoginWithFacebookPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE7B1B81577EEE400BC7787 /* LoginWithFacebookPressed@2x.png */; };
-		8BE7B2131577EEE400BC7787 /* LogoutNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE7B1B91577EEE400BC7787 /* LogoutNormal.png */; };
-		8BE7B2141577EEE400BC7787 /* LogoutNormal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE7B1BA1577EEE400BC7787 /* LogoutNormal@2x.png */; };
-		8BE7B2151577EEE400BC7787 /* LogoutPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE7B1BB1577EEE400BC7787 /* LogoutPressed.png */; };
-		8BE7B2161577EEE400BC7787 /* LogoutPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE7B1BC1577EEE400BC7787 /* LogoutPressed@2x.png */; };
-		8BE7B2171577EEE400BC7787 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE7B1BD1577EEE400BC7787 /* first.png */; };
-		8BE7B2181577EEE400BC7787 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE7B1BE1577EEE400BC7787 /* first@2x.png */; };
 		8BE7B2191577EEE400BC7787 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE7B1BF1577EEE400BC7787 /* second.png */; };
 		8BE7B21A1577EEE400BC7787 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE7B1C01577EEE400BC7787 /* second@2x.png */; };
 		8BE7B21B1577EEE400BC7787 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE7B1C41577EEE400BC7787 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -72,6 +68,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B443DF4157FB59800095931 /* KNFBDemoBasicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KNFBDemoBasicController.h; path = Controllers/KNFBDemoBasicController.h; sourceTree = "<group>"; };
+		8B443DF5157FB59800095931 /* KNFBDemoBasicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KNFBDemoBasicController.m; path = Controllers/KNFBDemoBasicController.m; sourceTree = "<group>"; };
+		8B443DF6157FB59800095931 /* KNFBDemoBasicController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KNFBDemoBasicController.xib; path = Controllers/KNFBDemoBasicController.xib; sourceTree = "<group>"; };
+		8B443DFA157FB6A400095931 /* KNButtonBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KNButtonBG.png; sourceTree = "<group>"; };
+		8B443DFB157FB6A400095931 /* KNButtonBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KNButtonBG@2x.png"; sourceTree = "<group>"; };
+		8B443DFE157FB6C300095931 /* LoginWithFacebookNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginWithFacebookNormal.png; sourceTree = "<group>"; };
+		8B443DFF157FB6C300095931 /* LoginWithFacebookNormal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginWithFacebookNormal@2x.png"; sourceTree = "<group>"; };
+		8B443E06157FC0F700095931 /* TabFacebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabFacebook.png; sourceTree = "<group>"; };
+		8B443E07157FC0F700095931 /* TabFacebook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabFacebook@2x.png"; sourceTree = "<group>"; };
+		8B443E0A157FC10800095931 /* TabBasic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabBasic.png; sourceTree = "<group>"; };
+		8B443E0B157FC10800095931 /* TabBasic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBasic@2x.png"; sourceTree = "<group>"; };
 		8B59C4E2157E2CA700532405 /* KNDefaultImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KNDefaultImage.png; sourceTree = "<group>"; };
 		8B59C4E3157E2CA700532405 /* KNDefaultImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KNDefaultImage@2x.png"; sourceTree = "<group>"; };
 		8B59C4E4157E2CA700532405 /* KNSelectorTip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KNSelectorTip.png; sourceTree = "<group>"; };
@@ -98,20 +105,6 @@
 		8BE7B19E1577EDAF00BC7787 /* KNFBSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KNFBSecondViewController.m; sourceTree = "<group>"; };
 		8BE7B1A51577EDAF00BC7787 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/KNFBFirstViewController.xib; sourceTree = "<group>"; };
 		8BE7B1A81577EDAF00BC7787 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/KNFBSecondViewController.xib; sourceTree = "<group>"; };
-		8BE7B1B11577EEE400BC7787 /* LoginNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginNormal.png; sourceTree = "<group>"; };
-		8BE7B1B21577EEE400BC7787 /* LoginNormal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginNormal@2x.png"; sourceTree = "<group>"; };
-		8BE7B1B31577EEE400BC7787 /* LoginPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginPressed.png; sourceTree = "<group>"; };
-		8BE7B1B41577EEE400BC7787 /* LoginPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginPressed@2x.png"; sourceTree = "<group>"; };
-		8BE7B1B51577EEE400BC7787 /* LoginWithFacebookNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginWithFacebookNormal.png; sourceTree = "<group>"; };
-		8BE7B1B61577EEE400BC7787 /* LoginWithFacebookNormal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginWithFacebookNormal@2x.png"; sourceTree = "<group>"; };
-		8BE7B1B71577EEE400BC7787 /* LoginWithFacebookPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginWithFacebookPressed.png; sourceTree = "<group>"; };
-		8BE7B1B81577EEE400BC7787 /* LoginWithFacebookPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginWithFacebookPressed@2x.png"; sourceTree = "<group>"; };
-		8BE7B1B91577EEE400BC7787 /* LogoutNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LogoutNormal.png; sourceTree = "<group>"; };
-		8BE7B1BA1577EEE400BC7787 /* LogoutNormal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LogoutNormal@2x.png"; sourceTree = "<group>"; };
-		8BE7B1BB1577EEE400BC7787 /* LogoutPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LogoutPressed.png; sourceTree = "<group>"; };
-		8BE7B1BC1577EEE400BC7787 /* LogoutPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LogoutPressed@2x.png"; sourceTree = "<group>"; };
-		8BE7B1BD1577EEE400BC7787 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
-		8BE7B1BE1577EEE400BC7787 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		8BE7B1BF1577EEE400BC7787 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		8BE7B1C01577EEE400BC7787 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		8BE7B1C31577EEE400BC7787 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
@@ -288,32 +281,18 @@
 		8BE7B1AF1577EEE400BC7787 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				8BE7B1B01577EEE400BC7787 /* FBConnect */,
-				8BE7B1BD1577EEE400BC7787 /* first.png */,
-				8BE7B1BE1577EEE400BC7787 /* first@2x.png */,
+				8B443DFE157FB6C300095931 /* LoginWithFacebookNormal.png */,
+				8B443DFF157FB6C300095931 /* LoginWithFacebookNormal@2x.png */,
+				8B443DFA157FB6A400095931 /* KNButtonBG.png */,
+				8B443DFB157FB6A400095931 /* KNButtonBG@2x.png */,
+				8B443E0A157FC10800095931 /* TabBasic.png */,
+				8B443E0B157FC10800095931 /* TabBasic@2x.png */,
+				8B443E06157FC0F700095931 /* TabFacebook.png */,
+				8B443E07157FC0F700095931 /* TabFacebook@2x.png */,
 				8BE7B1BF1577EEE400BC7787 /* second.png */,
 				8BE7B1C01577EEE400BC7787 /* second@2x.png */,
 			);
 			path = Images;
-			sourceTree = "<group>";
-		};
-		8BE7B1B01577EEE400BC7787 /* FBConnect */ = {
-			isa = PBXGroup;
-			children = (
-				8BE7B1B11577EEE400BC7787 /* LoginNormal.png */,
-				8BE7B1B21577EEE400BC7787 /* LoginNormal@2x.png */,
-				8BE7B1B31577EEE400BC7787 /* LoginPressed.png */,
-				8BE7B1B41577EEE400BC7787 /* LoginPressed@2x.png */,
-				8BE7B1B51577EEE400BC7787 /* LoginWithFacebookNormal.png */,
-				8BE7B1B61577EEE400BC7787 /* LoginWithFacebookNormal@2x.png */,
-				8BE7B1B71577EEE400BC7787 /* LoginWithFacebookPressed.png */,
-				8BE7B1B81577EEE400BC7787 /* LoginWithFacebookPressed@2x.png */,
-				8BE7B1B91577EEE400BC7787 /* LogoutNormal.png */,
-				8BE7B1BA1577EEE400BC7787 /* LogoutNormal@2x.png */,
-				8BE7B1BB1577EEE400BC7787 /* LogoutPressed.png */,
-				8BE7B1BC1577EEE400BC7787 /* LogoutPressed@2x.png */,
-			);
-			path = FBConnect;
 			sourceTree = "<group>";
 		};
 		8BE7B1C11577EEE400BC7787 /* Libraries */ = {
@@ -447,6 +426,9 @@
 			children = (
 				8BE7B1931577EDAF00BC7787 /* KNFBAppDelegate.h */,
 				8BE7B1941577EDAF00BC7787 /* KNFBAppDelegate.m */,
+				8B443DF4157FB59800095931 /* KNFBDemoBasicController.h */,
+				8B443DF5157FB59800095931 /* KNFBDemoBasicController.m */,
+				8B443DF6157FB59800095931 /* KNFBDemoBasicController.xib */,
 				8BE7B1961577EDAF00BC7787 /* KNFBFirstViewController.h */,
 				8BE7B1971577EDAF00BC7787 /* KNFBFirstViewController.m */,
 				8BE7B1A41577EDAF00BC7787 /* KNFBFirstViewController.xib */,
@@ -511,20 +493,6 @@
 				8BE7B18F1577EDAF00BC7787 /* InfoPlist.strings in Resources */,
 				8BE7B1A61577EDAF00BC7787 /* KNFBFirstViewController.xib in Resources */,
 				8BE7B1A91577EDAF00BC7787 /* KNFBSecondViewController.xib in Resources */,
-				8BE7B20B1577EEE400BC7787 /* LoginNormal.png in Resources */,
-				8BE7B20C1577EEE400BC7787 /* LoginNormal@2x.png in Resources */,
-				8BE7B20D1577EEE400BC7787 /* LoginPressed.png in Resources */,
-				8BE7B20E1577EEE400BC7787 /* LoginPressed@2x.png in Resources */,
-				8BE7B20F1577EEE400BC7787 /* LoginWithFacebookNormal.png in Resources */,
-				8BE7B2101577EEE400BC7787 /* LoginWithFacebookNormal@2x.png in Resources */,
-				8BE7B2111577EEE400BC7787 /* LoginWithFacebookPressed.png in Resources */,
-				8BE7B2121577EEE400BC7787 /* LoginWithFacebookPressed@2x.png in Resources */,
-				8BE7B2131577EEE400BC7787 /* LogoutNormal.png in Resources */,
-				8BE7B2141577EEE400BC7787 /* LogoutNormal@2x.png in Resources */,
-				8BE7B2151577EEE400BC7787 /* LogoutPressed.png in Resources */,
-				8BE7B2161577EEE400BC7787 /* LogoutPressed@2x.png in Resources */,
-				8BE7B2171577EEE400BC7787 /* first.png in Resources */,
-				8BE7B2181577EEE400BC7787 /* first@2x.png in Resources */,
 				8BE7B2191577EEE400BC7787 /* second.png in Resources */,
 				8BE7B21A1577EEE400BC7787 /* second@2x.png in Resources */,
 				8BE7B2251577EEE400BC7787 /* FBDialog.bundle in Resources */,
@@ -535,6 +503,15 @@
 				8B59C4EB157E2CA700532405 /* KNSelectorTip@2x.png in Resources */,
 				8B59C4EC157E2CA700532405 /* KNZoomIcon.png in Resources */,
 				8B59C4ED157E2CA700532405 /* KNZoomIcon@2x.png in Resources */,
+				8B443DF8157FB59800095931 /* KNFBDemoBasicController.xib in Resources */,
+				8B443DFC157FB6A400095931 /* KNButtonBG.png in Resources */,
+				8B443DFD157FB6A400095931 /* KNButtonBG@2x.png in Resources */,
+				8B443E00157FB6C300095931 /* LoginWithFacebookNormal.png in Resources */,
+				8B443E01157FB6C300095931 /* LoginWithFacebookNormal@2x.png in Resources */,
+				8B443E08157FC0F700095931 /* TabFacebook.png in Resources */,
+				8B443E09157FC0F700095931 /* TabFacebook@2x.png in Resources */,
+				8B443E0C157FC10800095931 /* TabBasic.png in Resources */,
+				8B443E0D157FC10800095931 /* TabBasic@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,6 +547,7 @@
 				8BE7B2341577EEE400BC7787 /* SVProgressHUD.m in Sources */,
 				8B775EB7157C90A700112752 /* KNMultiItemSelector.m in Sources */,
 				8B775EBA157C926500112752 /* KNSelectorItem.m in Sources */,
+				8B443DF7157FB59800095931 /* KNFBDemoBasicController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

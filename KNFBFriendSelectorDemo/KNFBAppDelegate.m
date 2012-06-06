@@ -9,7 +9,7 @@
 #import "KNFBAppDelegate.h"
 
 #import "KNFBFirstViewController.h"
-
+#import "KNFBDemoBasicController.h"
 #import "KNFBSecondViewController.h"
 
 @implementation KNFBAppDelegate
@@ -34,11 +34,11 @@
     [facebook authorize:[NSArray arrayWithObjects:@"user_about_me",@"friends_about_me", nil]];
   }
 
-  // Override point for customization after application launch.
-  UIViewController *viewController1 = [[KNFBFirstViewController alloc] initWithNibName:@"KNFBFirstViewController" bundle:nil];
-  UIViewController *viewController2 = [[KNFBSecondViewController alloc] initWithNibName:@"KNFBSecondViewController" bundle:nil];
+  // The tabs
+  UIViewController *vc1 = [[KNFBDemoBasicController alloc] initWithNibName:@"KNFBDemoBasicController" bundle:nil];
+  UIViewController *vc2 = [[KNFBFirstViewController alloc] initWithNibName:@"KNFBFirstViewController" bundle:nil];
   self.tabBarController = [[UITabBarController alloc] init];
-  self.tabBarController.viewControllers = [NSArray arrayWithObjects:viewController1, viewController2, nil];
+  self.tabBarController.viewControllers = [NSArray arrayWithObjects:vc1, vc2, nil];
   self.window.rootViewController = self.tabBarController;
   [self.window makeKeyAndVisible];
 
