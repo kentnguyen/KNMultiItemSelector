@@ -65,6 +65,7 @@
   KNMultiItemSelector * selector = [[KNMultiItemSelector alloc] initWithItems:friends
                                                              preselectedItems:nil
                                                                         title:@"Select friends"
+                                                              placeholderText:@"Search by name"
                                                                      delegate:self];
   selector.useTableIndex = YES;
   UINavigationController * uinav = [[UINavigationController alloc] initWithRootViewController:selector];

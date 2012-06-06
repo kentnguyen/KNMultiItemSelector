@@ -228,9 +228,15 @@
   // Recount selected items
   [selectedModeButton setTitle:[NSString stringWithFormat:@"Selected (%d)", self.selectedItems.count] forState:UIControlStateNormal];
 
-  // Delegate callback
+  // Update UI
   [_tableView deselectRowAtIndexPath:indexPath animated:YES];
   [_tableView cellForRowAtIndexPath:indexPath].accessoryType = item.selected ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+  if ([self.searchTextField isFirstResponder]) {
+    self.searchTextField.tag = 1;
+    [self.searchTextField resignFirstResponder];
+  }
+
+  // Delegate callback
   if (item.selected) {
     if ([delegate respondsToSelector:@selector(selectorDidSelectItem:)]) [delegate selectorDidSelectItem:item];
   } else {
@@ -266,6 +272,14 @@
 - (BOOL)textFieldShouldClear:(UITextField *)textField {
   selectorMode = KNSelectorModeNormal;
   [self.tableView reloadData];
+  return YES;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+  if (self.searchTextField.tag == 1) {
+    self.searchTextField.tag = 0;
+    self.searchTextField.text = @"";
+  }
   return YES;
 }
 
