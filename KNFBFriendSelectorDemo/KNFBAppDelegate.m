@@ -8,7 +8,7 @@
 
 #import "KNFBAppDelegate.h"
 
-#import "KNFBFirstViewController.h"
+#import "KNFBDemoFacebookController.h"
 #import "KNFBDemoBasicController.h"
 #import "KNFBSecondViewController.h"
 
@@ -36,7 +36,7 @@
 
   // The tabs
   UIViewController *vc1 = [[KNFBDemoBasicController alloc] initWithNibName:@"KNFBDemoBasicController" bundle:nil];
-  UIViewController *vc2 = [[KNFBFirstViewController alloc] initWithNibName:@"KNFBFirstViewController" bundle:nil];
+  UIViewController *vc2 = [[KNFBDemoFacebookController alloc] initWithNibName:@"KNFBDemoFacebookController" bundle:nil];
   self.tabBarController = [[UITabBarController alloc] init];
   self.tabBarController.viewControllers = [NSArray arrayWithObjects:vc1, vc2, nil];
   self.window.rootViewController = self.tabBarController;

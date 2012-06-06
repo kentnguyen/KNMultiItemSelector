@@ -1,5 +1,5 @@
 //
-//  KNFBFirstViewController.h
+//  KNFBDemoFacebookController.h
 //  KNFBFriendSelectorDemo
 //
 //  Created by Kent Nguyen on 1/6/12.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "KNMultiItemSelector.h"
 
-@interface KNFBFirstViewController : UIViewController <KNMultiItemSelectorDelegate> {
+@interface KNFBDemoFacebookController : UIViewController <KNMultiItemSelectorDelegate> {
   NSMutableArray * friends;
 }
 

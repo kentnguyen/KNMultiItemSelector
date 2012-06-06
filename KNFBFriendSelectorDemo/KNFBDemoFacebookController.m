@@ -1,19 +1,19 @@
 //
-//  KNFBFirstViewController.m
+//  KNFBDemoFacebookController.m
 //  KNFBFriendSelectorDemo
 //
 //  Created by Kent Nguyen on 1/6/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "KNFBFirstViewController.h"
+#import "KNFBDemoFacebookController.h"
 #import "KNFBAppDelegate.h"
 #import "ASIHTTPRequest.h"
 #import "JSONKit.h"
 
 #import "KNMultiItemSelector.h"
 
-@implementation KNFBFirstViewController
+@implementation KNFBDemoFacebookController
 @synthesize textView;
 @synthesize pickerButton;
 
@@ -89,7 +89,7 @@
 
   textView.text = @"You have selected:\n";
   for (KNSelectorItem * i in selectedItems) {
-    textView.text = [textView.text stringByAppendingFormat:@"- ID %@\n", i.selectValue];
+    textView.text = [textView.text stringByAppendingFormat:@"%@ - %@\n", i.selectValue, i.displayValue];
   }
 }
 

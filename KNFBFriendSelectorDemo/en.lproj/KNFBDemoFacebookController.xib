@@ -40,14 +40,12 @@
 					<object class="IBUITextView" id="255779567">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">290</int>
-						<string key="NSFrame">{{20, 205}, {280, 186}}</string>
+						<string key="NSFrame">{{20, 220}, {280, 171}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
 						<bool key="IBUIDelaysContentTouches">NO</bool>
@@ -127,8 +125,9 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string type="base64-UTF8" key="IBUIText">VGhpcyBkZW1vIGFsbG93cyB5b3UgdG8gcGljayBtdWx0aXBsZSBGYWNlYm9vayBmcmllbmRzLiBNYWtp
-bmcgdXNlIG9mIHRoZSBvcHRpb25hbCBpbWFnZSBwYXJhbWV0ZXIKCllvdSBjYW4gZXZlbiBjaGFuZ2Ug
-dGhlIHRpdGxlIGFuZCBwbGFjZWhvbGRlciB0ZXh0IGZvciB0aGUgc2VsZWN0b3I</string>
+bmcgdXNlIG9mIEFMTCBwb3NzaWJsZSBjb25maWd1cmF0aW9ucyAoc29ydCxpbmRleCxzZWFyY2gscmVj
+ZW50IGl0ZW1zKQoKWW91IGNhbiBldmVuIGNoYW5nZSB0aGUgdGl0bGUgYW5kIHBsYWNlaG9sZGVyIHRl
+eHQgZm9yIHRoZSBzZWxlY3Rvcg</string>
 						<reference key="IBUITextColor" ref="830174093"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
@@ -278,7 +277,7 @@ dGhlIHRpdGxlIGFuZCBwbGFjZWhvbGRlciB0ZXh0IGZvciB0aGUgc2VsZWN0b3I</string>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
-				<string key="-1.CustomClassName">KNFBFirstViewController</string>
+				<string key="-1.CustomClassName">KNFBDemoFacebookController</string>
 				<string key="-1.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="-2.CustomClassName">UIResponder</string>
 				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -287,6 +286,7 @@ dGhlIHRpdGxlIGFuZCBwbGFjZWhvbGRlciB0ZXh0IGZvciB0aGUgc2VsZWN0b3I</string>
 				<string key="13.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="7.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<real value="0.0" key="8.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
@@ -297,7 +297,7 @@ dGhlIHRpdGxlIGFuZCBwbGFjZWhvbGRlciB0ZXh0IGZvciB0aGUgc2VsZWN0b3I</string>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
-					<string key="className">KNFBFirstViewController</string>
+					<string key="className">KNFBDemoFacebookController</string>
 					<string key="superclassName">UIViewController</string>
 					<object class="NSMutableDictionary" key="actions">
 						<string key="NS.key.0">pickerButtonDidTouch:</string>
@@ -326,7 +326,7 @@ dGhlIHRpdGxlIGFuZCBwbGFjZWhvbGRlciB0ZXh0IGZvciB0aGUgc2VsZWN0b3I</string>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/KNFBFirstViewController.h</string>
+						<string key="minorKey">./Classes/KNFBDemoFacebookController.h</string>
 					</object>
 				</object>
 			</array>

@@ -15,7 +15,7 @@
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
     self.title = @"Basics";
-    self.tabBarItem.image = [UIImage imageNamed:@"Basic"];
+    self.tabBarItem.image = [UIImage imageNamed:@"TabBasic"];
 
     // This is how to initiate the items
     items = [NSMutableArray array];
