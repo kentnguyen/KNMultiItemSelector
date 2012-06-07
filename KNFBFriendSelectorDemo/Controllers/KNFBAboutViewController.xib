@@ -36,21 +36,21 @@
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUILabel" id="331350535">
+					<object class="IBUILabel" id="221352942">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">290</int>
-						<string key="NSFrame">{{54, 57}, {212, 43}}</string>
+						<string key="NSFrame">{{54, 53}, {212, 43}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="128372068"/>
+						<reference key="NSNextKeyView" ref="697439511"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">Thank you</string>
-						<object class="NSColor" key="IBUITextColor" id="957903277">
+						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MCAwIDAAA</bytes>
+							<bytes key="NSRGB">MC45ODg4NTQ0NDk3IDAgMC4xODYzOTc5NTA5AA</bytes>
 						</object>
 						<object class="NSColor" key="IBUIHighlightedColor">
 							<int key="NSColorSpace">1</int>
@@ -59,22 +59,23 @@
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUITextAlignment">1</int>
-						<object class="IBUIFontDescription" key="IBUIFontDescription" id="137406727">
+						<object class="IBUIFontDescription" key="IBUIFontDescription" id="402306558">
 							<int key="type">2</int>
 							<double key="pointSize">20</double>
 						</object>
-						<object class="NSFont" key="IBUIFont" id="193303944">
+						<object class="NSFont" key="IBUIFont" id="281621998">
 							<string key="NSName">Helvetica-Bold</string>
 							<double key="NSSize">20</double>
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
-					<object class="IBUITextView" id="128372068">
+					<object class="IBUITextView" id="697439511">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">290</int>
-						<string key="NSFrame">{{13, 101}, {295, 339}}</string>
+						<string key="NSFrame">{{13, 93}, {295, 339}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
@@ -92,11 +93,11 @@
 aG91cnMgb2YgZGV2ZWxvcG1lbnQgdGltZSBpbiB5b3VyIHByb2plY3RzLgoKSGVyZSBhcmUgc29tZXRo
 aW5nIGluIHRoZSBwaXBlbGluZSBhbmQgeW91J2xsIGdldCBpdCBpbiB0aGUgZnV0dXJlIHVwZGF0ZXMg
 dG8gdGhpcyBsaWJyYXJ5IGZvciBmcmVlOgoK4pePIEN1c3RvbSBVSXRhYmxlVmlld0NlbGwgY2xhc3MK
-4pePIEhpZ2hsaWdodGVkIHNlYXJjaCB0ZXJtIGluIHJlc3VsdCByb3dzCuKXjyBNb3JlIGxhbmd1YWdl
-IGN1c3RvbWl6YXRpb24K4pePIE9wdGlvbiB0byB1c2UgVUlTZWdtZW50ZWRDb250cm9sIHRvIHN3aXRj
-aCBtb2RlcwoKRm9yIGJ1ZyByZXBvcnQgYW5kIHN1Z2dlc3Rpb25zIHRvIGltcHJvdmUgdGhlIGxpYnJh
-cnksIHBsZWFzZSBjb250YWN0IG1lIHRocm91Z2ggbXkgVHdpdHRlciBAbnRsdWFuIG9yIG15IHdlYnNp
-dGUga2VudG5ndXllbi5jb20</bytes>
+4pePIEN1c3RvbSByb3cgaGVpZ2h0CuKXjyBIaWdobGlnaHRlZCBzZWFyY2ggdGVybSBpbiByZXN1bHQg
+cm93cwril48gTW9yZSBsYW5ndWFnZSBjdXN0b21pemF0aW9uCuKXjyBPcHRpb24gdG8gdXNlIFVJU2Vn
+bWVudGVkQ29udHJvbCB0byBzd2l0Y2ggbW9kZXMKCkZvciBidWcgcmVwb3J0IGFuZCBzdWdnZXN0aW9u
+cyB0byBpbXByb3ZlIHRoZSBsaWJyYXJ5LCBwbGVhc2UgY29udGFjdCBtZSB0aHJvdWdoIG15IFR3aXR0
+ZXIgQG50bHVhbiBvciBteSB3ZWJzaXRlIGtlbnRuZ3V5ZW4uY29tA</bytes>
 						</object>
 						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">1</int>
@@ -115,13 +116,13 @@ dGUga2VudG5ndXllbi5jb20</bytes>
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
-					<object class="IBUILabel" id="810883833">
+					<object class="IBUILabel" id="23513285">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">290</int>
 						<string key="NSFrameSize">{320, 43}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="331350535"/>
+						<reference key="NSNextKeyView" ref="221352942"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -133,21 +134,24 @@ dGUga2VudG5ndXllbi5jb20</bytes>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">KNMultiItemSelector</string>
-						<reference key="IBUITextColor" ref="957903277"/>
+						<object class="NSColor" key="IBUITextColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MCAwIDAAA</bytes>
+						</object>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
 						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUITextAlignment">1</int>
 						<int key="IBUILineBreakMode">2</int>
-						<reference key="IBUIFontDescription" ref="137406727"/>
-						<reference key="IBUIFont" ref="193303944"/>
+						<reference key="IBUIFontDescription" ref="402306558"/>
+						<reference key="IBUIFont" ref="281621998"/>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 					</object>
 				</array>
 				<string key="NSFrame">{{0, 20}, {320, 460}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="810883833"/>
+				<reference key="NSNextKeyView" ref="23513285"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
@@ -182,9 +186,9 @@ dGUga2VudG5ndXllbi5jb20</bytes>
 						<int key="objectID">1</int>
 						<reference key="object" ref="191373211"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="810883833"/>
-							<reference ref="128372068"/>
-							<reference ref="331350535"/>
+							<reference ref="23513285"/>
+							<reference ref="697439511"/>
+							<reference ref="221352942"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -201,17 +205,17 @@ dGUga2VudG5ndXllbi5jb20</bytes>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">4</int>
-						<reference key="object" ref="331350535"/>
+						<reference key="object" ref="221352942"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">5</int>
-						<reference key="object" ref="128372068"/>
+						<reference key="object" ref="697439511"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">6</int>
-						<reference key="object" ref="810883833"/>
+						<reference key="object" ref="23513285"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</array>
