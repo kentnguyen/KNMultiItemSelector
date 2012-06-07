@@ -18,16 +18,14 @@ View a demo clip [here](http://bit.ly/knselector)
 
 ### iPhone and iPad screenshots
 
-<a href='http://kentnguyen.wordpress.s3.amazonaws.com/KNMultiItemSelector/screenshots/ss1.png' target='_blank' title='click to zoom'><img src='http://kentnguyen.wordpress.s3.amazonaws.com/KNMultiItemSelector/screenshots/ss1.png' height='480px' /></a>.
-<a href='http://kentnguyen.wordpress.s3.amazonaws.com/KNMultiItemSelector/screenshots/ss2.png' target='_blank' title='click to zoom'><img src='http://kentnguyen.wordpress.s3.amazonaws.com/KNMultiItemSelector/screenshots/ss2.png' height='480px' /></a>.
-<a href='http://kentnguyen.wordpress.s3.amazonaws.com/KNMultiItemSelector/screenshots/ss3.png' target='_blank' title='click to zoom'><img src='http://kentnguyen.wordpress.s3.amazonaws.com/KNMultiItemSelector/screenshots/ss3.png' height='480px' /></a>.
-<a href='http://kentnguyen.wordpress.s3.amazonaws.com/KNMultiItemSelector/screenshots/ss4.png' target='_blank' title='click to zoom'><img src='http://kentnguyen.wordpress.s3.amazonaws.com/KNMultiItemSelector/screenshots/ss4.png' height='480px' /></a>.
-<a href='http://kentnguyen.wordpress.s3.amazonaws.com/KNMultiItemSelector/screenshots/ss5.png' target='_blank' title='click to zoom'><img src='http://kentnguyen.wordpress.s3.amazonaws.com/KNMultiItemSelector/screenshots/ss5.png' height='480px' /></a>
+<a href='https://github.com/kentnguyen/KNMultiItemSelector/raw/master/Docs/screenshots/ss2.png' target='_blank' title='click to zoom'><img src='https://github.com/kentnguyen/KNMultiItemSelector/raw/master/Docs/screenshots/ss2.png' height='360px' /></a>.
+<a href='https://github.com/kentnguyen/KNMultiItemSelector/raw/master/Docs/screenshots/ss3.png' target='_blank' title='click to zoom'><img src='https://github.com/kentnguyen/KNMultiItemSelector/raw/master/Docs/screenshots/ss3.png' height='360px' /></a>.
+<a href='https://github.com/kentnguyen/KNMultiItemSelector/raw/master/Docs/screenshots/ss4.png' target='_blank' title='click to zoom'><img src='https://github.com/kentnguyen/KNMultiItemSelector/raw/master/Docs/screenshots/ss4.png' height='360px' /></a>.
 
-<a href='http://kentnguyen.wordpress.s3.amazonaws.com/KNMultiItemSelector/screenshots/ipad_ss1.png' target='_blank' title='click to zoom'><img src='http://kentnguyen.wordpress.s3.amazonaws.com/KNMultiItemSelector/screenshots/ipad_ss1.png' height='480px' /></a>.
-<a href='http://kentnguyen.wordpress.s3.amazonaws.com/KNMultiItemSelector/screenshots/ipad_ss2.png' target='_blank' title='click to zoom'><img src='http://kentnguyen.wordpress.s3.amazonaws.com/KNMultiItemSelector/screenshots/ipad_ss2.png' height='480px' /></a>.
-<a href='http://kentnguyen.wordpress.s3.amazonaws.com/KNMultiItemSelector/screenshots/ipad_ss3.png' target='_blank' title='click to zoom'><img src='http://kentnguyen.wordpress.s3.amazonaws.com/KNMultiItemSelector/screenshots/ipad_ss3.png' height='480px' /></a>.
-<a href='http://kentnguyen.wordpress.s3.amazonaws.com/KNMultiItemSelector/screenshots/ipad_ss4.png' target='_blank' title='click to zoom'><img src='http://kentnguyen.wordpress.s3.amazonaws.com/KNMultiItemSelector/screenshots/ipad_ss4.png' height='480px' /></a>
+<a href='https://github.com/kentnguyen/KNMultiItemSelector/raw/master/Docs/screenshots/ipad_ss1.png' target='_blank' title='click to zoom'><img src='https://github.com/kentnguyen/KNMultiItemSelector/raw/master/Docs/screenshots/ipad_ss1.png' height='240px' /></a>.
+<a href='https://github.com/kentnguyen/KNMultiItemSelector/raw/master/Docs/screenshots/ipad_ss2.png' target='_blank' title='click to zoom'><img src='https://github.com/kentnguyen/KNMultiItemSelector/raw/master/Docs/screenshots/ipad_ss2.png' height='240px' /></a>.
+<a href='https://github.com/kentnguyen/KNMultiItemSelector/raw/master/Docs/screenshots/ipad_ss3.png' target='_blank' title='click to zoom'><img src='https://github.com/kentnguyen/KNMultiItemSelector/raw/master/Docs/screenshots/ipad_ss3.png' height='240px' /></a>.
+<a href='https://github.com/kentnguyen/KNMultiItemSelector/raw/master/Docs/screenshots/ipad_ss4.png' target='_blank' title='click to zoom'><img src='https://github.com/kentnguyen/KNMultiItemSelector/raw/master/Docs/screenshots/ipad_ss4.png' height='240px' /></a>
 
 ### Usage examples and Documentation
 
