@@ -89,10 +89,10 @@
 						<float key="IBUIMaximumZoomScale">0.0</float>
 						<bool key="IBUIBouncesZoom">NO</bool>
 						<bool key="IBUIEditable">NO</bool>
-						<string type="base64-UTF8" key="IBUIText">QmVmb3JlIHdlIGJlZ2luLCBwbGVhc2UgY29ubmVjdCB5b3VyIEZhY2Vib29rIGFjY291bnQgYXMgdGhp
-cyBpcyBhIEZhY2Vib29rIEZyaWVuZCBzZWxlY3RvciBkZW1vLgoKVGhlIGFwcCAqZG9lcyBub3QqIGNv
-bGxlY3Qgb3IgYXNrIGZvciB5b3VyIGluZm8gc28gZG9uJ3Qgd29ycnkuIFlvdSBjYW4gY2hlY2sgdGhl
-IHNvdXJjZSBjb2RlIGFuZCBzZWUgZm9yIHlvdXJzZWxmLg</string>
+						<string type="base64-UTF8" key="IBUIText">QmVmb3JlIHdlIGJlZ2luLCBwbGVhc2UgY29ubmVjdCB5b3VyIEZhY2Vib29rIGFjY291bnQgc28gdGhl
+IGFwcCBjYW4gZmV0Y2ggYSBsaXN0IG9mIHlvdXIgRmFjZWJvb2sgZnJpZW5kcy4KClRoZSBhcHAgKmRv
+ZXMgbm90KiBjb2xsZWN0IG9yIGFzayBmb3IgeW91ciBpbmZvIHNvIGRvbid0IHdvcnJ5LiBZb3UgY2Fu
+IGNoZWNrIHRoZSBzb3VyY2UgY29kZSBhbmQgc2VlIGZvciB5b3Vyc2VsZi4</string>
 						<int key="IBUITextAlignment">1</int>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -141,6 +141,7 @@ IHNvdXJjZSBjb2RlIGFuZCBzZWUgZm9yIHlvdXJzZWxmLg</string>
 						<string key="NSFrame">{{81, 318}, {159, 29}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
