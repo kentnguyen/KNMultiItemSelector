@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>KNMultiItemSelector - Documentation</title>
+	<link rel="stylesheet" media="screen" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" >
+	<link rel="stylesheet" media="screen" href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css" >
+	<script src='http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js'></script>
+	<style>
+		a img {
+			border: 1px solid gray;
+			box-shadow: 0 0 4px rgba(0,0,0,0.3);
+		}
+		a img:hover {
+			border: 1px solid blue;
+		}
+		h2 {
+			font-size: 1.5em;
+		}
+		h1 {
+			background-color: #F6F6F6;
+			padding: 5px;
+			margin: 0;
+		}
+	</style>
+</head>
+
+<body onload="prettyPrint()">
+
+<div class="container-fluid">
+
+<div class="page-header">
+	<h1>KNMultiItemSelector <small>Facebook Friends Selector demo project</small></h1>
+</div>
+
+KNMultiItemSelector is a versatile drop in multiple items selector for iOS projects. It works with both iPhone and iPad for several usage scenarios. See features and screenshots below<BR><BR>
+
+<strong>Features:</strong>
+<ul>
+  <li>Multiple items selector with simple NSArray
+  <li>Subclass of UIViewController
+  <li>Enable/Disable table index
+  <li>Enable/Disable search control
+  <li>Enable/Disable recent items
+  <li>Optional image with out-of-box caching
+  <li>Facebook friends selector demo project
+</ul>
+
+<h2>Basic Demo &amp; Facebook Friends Selector Demo</h2>
+
+<iframe width="320" height="480" src="http://www.youtube.com/embed/6t2YK6fKohY?HD=1;rel=0;showinfo=0;controls=0;autoplay=1" frameborder="0" allowfullscreen></iframe>
+
+<h2>iPhone and iPad screenshots</h2>
+
+<a href='screenshots/ss1.png' target='_blank' title='click to zoom'><img src='screenshots/ss1.png' height='200px' /></a>
+<a href='screenshots/ss2.png' target='_blank' title='click to zoom'><img src='screenshots/ss2.png' height='200px' /></a>
+<a href='screenshots/ss3.png' target='_blank' title='click to zoom'><img src='screenshots/ss3.png' height='200px' /></a>
+<a href='screenshots/ss4.png' target='_blank' title='click to zoom'><img src='screenshots/ss4.png' height='200px' /></a>
+<a href='screenshots/ss5.png' target='_blank' title='click to zoom'><img src='screenshots/ss5.png' height='200px' /></a>
+<br><br>
+<a href='screenshots/ipad_ss1.png' target='_blank' title='click to zoom'><img src='screenshots/ipad_ss1.png' height='200px' /></a>
+<a href='screenshots/ipad_ss2.png' target='_blank' title='click to zoom'><img src='screenshots/ipad_ss2.png' height='200px' /></a>
+<a href='screenshots/ipad_ss3.png' target='_blank' title='click to zoom'><img src='screenshots/ipad_ss3.png' height='200px' /></a>
+<a href='screenshots/ipad_ss4.png' target='_blank' title='click to zoom'><img src='screenshots/ipad_ss4.png' height='200px' /></a>
+
+<div class="page-header">
+	<h1>Getting started <small>All configurations you need</small></h1>
+</div>
+
+<h2>Requirements</h2>
+
+<ul>
+	<li>Xcode 4.2 and above
+	<li>You are using ARC for this project
+	<li>Minimum deployment target is iOS 4.2
+</ul>
+
+<h2>Installation</h2>
+
+<ol>
+	<li>Drag and drop the entire <code>KNMultiItemSelector</code> into your project
+	<li><code>#import "KNMultiItemSelector.h"</code> in your implementation
+	<li>Add these required Frameworks in your project: <code>ImageIO</code>, <code>CoreGraphics</code>
+  <li>If your project already has <code>SDWebImage</code> you could remove the one bundled with this control
+  <li>See examples below or run <strong>KNFBFriendSelectorDemo</strong>
+</ol>
+
+<div class="page-header">
+  <h1>Usage examples</h1>
+</div>
+
+<h2>Creating array of items</h2>
+
+Simply create a NSArray which contains multiple KNSelectorItem. You can have a separate selected value such as user's ID as part of the item.
+<pre class="prettyprint">
+NSArray * items = [NSMutableArray array];
+[items addObject:[[KNSelectorItem alloc] initWithDisplayValue:@"Apple Seed"]];
+[items addObject:[[KNSelectorItem alloc] initWithDisplayValue:@"Apple Seed" selectValue:@"appl" imageUrl:nil]];
+</pre>
+
+<h2>Optional sorting</h2>
+
+There are two built-in sort methods to allow sorting by displayValue or selectValue. You must do this before creating the selector
+<pre class="prettyprint">
+NSArray * sortedItems = [items sortedArrayUsingSelector:@selector(compareByDisplayValue:)];
+NSArray * sortedItems = [items sortedArrayUsingSelector:@selector(compareBySelectValue:)];
+</pre>
+
+<h2>Creating and presenting the selector</h2>
+
+Create the selector instance using one of the init methods, you have the option to change the title string and the search control placeholder string here
+<pre class="prettyprint">
+KNMultiItemSelector * selector = [[KNMultiItemSelector alloc] initWithItems:items delegate:self];
+// or
+KNMultiItemSelector * selector = [[KNMultiItemSelector alloc] initWithItems:items
+                                                           preselectedItems:nil
+                                                                      title:@"Select a flavor"
+                                                            placeholderText:@"Search for something"
+                                                                   delegate:self];
+</pre>
+
+Then you can present the selector just like another UIViewController, take note of the UINavigationController.
+<pre class="prettyprint">
+UINavigationController * uinav = [[UINavigationController alloc] initWithRootViewController:selector];
+uinav.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal; // iPhone
+uinav.modalPresentationStyle = UIModalPresentationFormSheet;       // iPad only
+[self presentModalViewController:uinav animated:YES];
+</pre>
+
+
+<h2>Optional configurations</h2>
+
+You must set these properties before presenting the selector
+<pre class="prettyprint">
+// Turn on/off table index for items, default to NO
+selector.useTableIndex = YES;
+
+// Turn on/off search field at the top of the list, default to NO, only recommend for large list
+selector.allowSearchControl = YES;
+
+// Turn on/off displaying and storing of recent selected items.
+// recentItemStorageKey   : If you have multiple selectors in your app, you need to set different storage key for each of the selectors.
+// maxNumberOfRecentItems : Defaults to 5.
+selector.useRecentItems = YES;
+selector.recentItemStorageKey = @"your_key";
+selector.maxNumberOfRecentItems = 5;
+</pre>
+
+
+<h2>Image caching</h2>
+
+If you decide to set <code>imageUrl</code> for your <code>KNSelectorItem</code> items. Then these images will be loaded using <code>SDWebImage</code> library. It will handle image caching and loading automatically.
+
+<div class="page-header">
+	<h1>Features in the work</h1>
+</div>
+
+<h2>TODO</h2>
+<ul>
+  <li>Custom UItableViewCell class
+  <li>Custom row height
+  <li>Highlighted search term in result rows
+  <li>More language customization
+  <li>Supports landscape orientation on iPhone
+  <li>Option to use UISegmentedControl to switch modes
+</ul>
+
+<h2>Support</h2>
+For bug report and suggestions to improve the library, please contact me through my Twitter <a href='http://twitter.com/ntluan' target="_blank">@ntluan</a> or my website <a href="http://kentnguyen.com" target="_blank">kentnguyen.com</a>
+
+<br><br><br>
+</div>
+
+</body>
+
+</html>
