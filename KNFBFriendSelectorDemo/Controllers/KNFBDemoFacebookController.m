@@ -77,6 +77,7 @@
   selector.maxNumberOfRecentItems = 4;
   UINavigationController * uinav = [[UINavigationController alloc] initWithRootViewController:selector];
   uinav.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+  uinav.modalPresentationStyle = UIModalPresentationFormSheet;
   [self presentModalViewController:uinav animated:YES];
 }
 

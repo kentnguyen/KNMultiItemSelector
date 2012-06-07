@@ -77,6 +77,7 @@
 -(void)presentModalHelper:(UIViewController*)controller {
   UINavigationController * uinav = [[UINavigationController alloc] initWithRootViewController:controller];
   uinav.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+  uinav.modalPresentationStyle = UIModalPresentationFormSheet;
   [self presentModalViewController:uinav animated:YES];
 }
 
