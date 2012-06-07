@@ -35,7 +35,7 @@ Visit [Documentation](http://bit.ly/knselector) to see how it is used and other 
 
 ### License
 
-UIViewController+KNSemiModal is licensed under MIT License
+KNMultiItemSelector is licensed under MIT License
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
