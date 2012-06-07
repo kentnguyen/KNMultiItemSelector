@@ -99,7 +99,7 @@
   selector.useRecentItems     = YES;
   selector.maxNumberOfRecentItems = 8;
 
-  // But different in presenting method
+  // But different way of presenting only for iPad
   UINavigationController * uinav = [[UINavigationController alloc] initWithRootViewController:selector];
   self.popoverController = [[UIPopoverController alloc] initWithContentViewController:uinav];
   [self.popoverController presentPopoverFromRect:popoverButton.frame
