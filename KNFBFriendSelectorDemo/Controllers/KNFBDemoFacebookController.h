@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "KNMultiItemSelector.h"
+#import "FBConnect.h"
 
-@interface KNFBDemoFacebookController : UIViewController <KNMultiItemSelectorDelegate> {
+@interface KNFBDemoFacebookController : UIViewController <KNMultiItemSelectorDelegate, FBRequestDelegate> {
   NSMutableArray * friends;
 }
 

@@ -8,8 +8,6 @@
 
 #import "KNFBDemoFacebookController.h"
 #import "KNFBAppDelegate.h"
-#import "ASIHTTPRequest.h"
-#import "JSONKit.h"
 
 #import "KNMultiItemSelector.h"
 
@@ -37,32 +35,32 @@
   ipadOnlyLabel.hidden = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
 
   // Fetch all facebook friends and store in NSArray
-  NSString * ogEndpoint = [NSString stringWithFormat:@"https://graph.facebook.com/me/friends?access_token=%@", ApplicationDelegate.facebook.accessToken];
-  ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:ogEndpoint]];
-  [request setCompletionBlock:^{
-    [SVProgressHUD dismiss];
-    pickerButton.hidden = NO;
-    popoverButton.hidden = UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad;
-
-    NSDictionary * rawObject = [request.responseString objectFromJSONString];
-    NSArray * dataArray = [rawObject objectForKey:@"data"];
-    for (NSDictionary * f in dataArray) {
-      [friends addObject:[[KNSelectorItem alloc] initWithDisplayValue:[f objectForKey:@"name"]
-                                                          selectValue:[f objectForKey:@"id"]
-                                                             imageUrl:[NSString stringWithFormat:@"http://graph.facebook.com/%@/picture?type=square", [f objectForKey:@"id"]]]];
-    }
-    [friends sortUsingSelector:@selector(compareByDisplayValue:)];
-  }];
-  [request setFailedBlock:^{
-    [SVProgressHUD showErrorWithStatus:@"Facebook error, try again!"];
-    [SVProgressHUD dismissWithError:nil afterDelay:10];
-  }];
-  [request startAsynchronous];
-  [SVProgressHUD showWithStatus:@"Fetching friends"];
+  [ApplicationDelegate.facebook requestWithGraphPath:@"me/friends" andDelegate:self];
+  [SVProgressHUD showWithStatus:@"Fetching friends" maskType:SVProgressHUDMaskTypeGradient];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-  return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+
+#pragma mark - Handle Facebook request data
+
+- (void)request:(FBRequest *)request didFailWithError:(NSError *)error {
+  [SVProgressHUD showErrorWithStatus:@"Facebook error, try again!"];
+  [SVProgressHUD dismissWithError:nil afterDelay:10];
+}
+
+
+- (void)request:(FBRequest *)request didLoad:(id)result {
+  [SVProgressHUD dismiss];
+  pickerButton.hidden = NO;
+  popoverButton.hidden = UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad;
+
+  NSDictionary * rawObject = result;
+  NSArray * dataArray = [rawObject objectForKey:@"data"];
+  for (NSDictionary * f in dataArray) {
+    [friends addObject:[[KNSelectorItem alloc] initWithDisplayValue:[f objectForKey:@"name"]
+                                                        selectValue:[f objectForKey:@"id"]
+                                                           imageUrl:[NSString stringWithFormat:@"http://graph.facebook.com/%@/picture?type=square", [f objectForKey:@"id"]]]];
+  }
+  [friends sortUsingSelector:@selector(compareByDisplayValue:)];
 }
 
 #pragma mark - Presenting the selector
