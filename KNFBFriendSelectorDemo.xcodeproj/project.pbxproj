@@ -27,6 +27,10 @@
 		8B59C4EB157E2CA700532405 /* KNSelectorTip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B59C4E5157E2CA700532405 /* KNSelectorTip@2x.png */; };
 		8B59C4EC157E2CA700532405 /* KNZoomIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B59C4E6157E2CA700532405 /* KNZoomIcon.png */; };
 		8B59C4ED157E2CA700532405 /* KNZoomIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B59C4E7157E2CA700532405 /* KNZoomIcon@2x.png */; };
+		8B600DB815804C8200203F1B /* KNFBAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B600DB615804C8200203F1B /* KNFBAboutViewController.m */; };
+		8B600DB915804C8200203F1B /* KNFBAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B600DB715804C8200203F1B /* KNFBAboutViewController.xib */; };
+		8B600DBD15804FAC00203F1B /* TabAbout.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B600DBB15804FAC00203F1B /* TabAbout.png */; };
+		8B600DBE15804FAC00203F1B /* TabAbout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B600DBC15804FAC00203F1B /* TabAbout@2x.png */; };
 		8B775EB7157C90A700112752 /* KNMultiItemSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B775EB6157C90A700112752 /* KNMultiItemSelector.m */; };
 		8B775EBA157C926500112752 /* KNSelectorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B775EB9157C926500112752 /* KNSelectorItem.m */; };
 		8BE7B1851577EDAF00BC7787 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE7B1841577EDAF00BC7787 /* UIKit.framework */; };
@@ -87,6 +91,11 @@
 		8B59C4E5157E2CA700532405 /* KNSelectorTip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KNSelectorTip@2x.png"; sourceTree = "<group>"; };
 		8B59C4E6157E2CA700532405 /* KNZoomIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KNZoomIcon.png; sourceTree = "<group>"; };
 		8B59C4E7157E2CA700532405 /* KNZoomIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KNZoomIcon@2x.png"; sourceTree = "<group>"; };
+		8B600DB515804C8200203F1B /* KNFBAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KNFBAboutViewController.h; path = Controllers/KNFBAboutViewController.h; sourceTree = "<group>"; };
+		8B600DB615804C8200203F1B /* KNFBAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KNFBAboutViewController.m; path = Controllers/KNFBAboutViewController.m; sourceTree = "<group>"; };
+		8B600DB715804C8200203F1B /* KNFBAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KNFBAboutViewController.xib; path = Controllers/KNFBAboutViewController.xib; sourceTree = "<group>"; };
+		8B600DBB15804FAC00203F1B /* TabAbout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabAbout.png; sourceTree = "<group>"; };
+		8B600DBC15804FAC00203F1B /* TabAbout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabAbout@2x.png"; sourceTree = "<group>"; };
 		8B775EB5157C90A700112752 /* KNMultiItemSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNMultiItemSelector.h; sourceTree = "<group>"; };
 		8B775EB6157C90A700112752 /* KNMultiItemSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNMultiItemSelector.m; sourceTree = "<group>"; };
 		8B775EB8157C926500112752 /* KNSelectorItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNSelectorItem.h; sourceTree = "<group>"; };
@@ -280,6 +289,8 @@
 				8B443E0B157FC10800095931 /* TabBasic@2x.png */,
 				8B443E06157FC0F700095931 /* TabFacebook.png */,
 				8B443E07157FC0F700095931 /* TabFacebook@2x.png */,
+				8B600DBB15804FAC00203F1B /* TabAbout.png */,
+				8B600DBC15804FAC00203F1B /* TabAbout@2x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -423,6 +434,9 @@
 				8B2B6EE4157FD2990002B700 /* KNFBDemoFacebookController.h */,
 				8B2B6EE5157FD2990002B700 /* KNFBDemoFacebookController.m */,
 				8B2B6EE6157FD2990002B700 /* KNFBDemoFacebookController.xib */,
+				8B600DB515804C8200203F1B /* KNFBAboutViewController.h */,
+				8B600DB615804C8200203F1B /* KNFBAboutViewController.m */,
+				8B600DB715804C8200203F1B /* KNFBAboutViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -498,6 +512,9 @@
 				8B443DF8157FB59800095931 /* KNFBDemoBasicController.xib in Resources */,
 				8B2B6EE8157FD2990002B700 /* KNFBDemoFacebookController.xib in Resources */,
 				8B2B6EED157FD2B30002B700 /* KNFBIntroViewController.xib in Resources */,
+				8B600DB915804C8200203F1B /* KNFBAboutViewController.xib in Resources */,
+				8B600DBD15804FAC00203F1B /* TabAbout.png in Resources */,
+				8B600DBE15804FAC00203F1B /* TabAbout@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,6 +551,7 @@
 				8B443DF7157FB59800095931 /* KNFBDemoBasicController.m in Sources */,
 				8B2B6EE7157FD2990002B700 /* KNFBDemoFacebookController.m in Sources */,
 				8B2B6EEC157FD2B30002B700 /* KNFBIntroViewController.m in Sources */,
+				8B600DB815804C8200203F1B /* KNFBAboutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

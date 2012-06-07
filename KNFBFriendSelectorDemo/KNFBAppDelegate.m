@@ -11,6 +11,7 @@
 #import "KNFBDemoFacebookController.h"
 #import "KNFBDemoBasicController.h"
 #import "KNFBIntroViewController.h"
+#import "KNFBAboutViewController.h"
 
 @implementation KNFBAppDelegate
 
@@ -33,8 +34,9 @@
   // The tabs
   UIViewController *vc1 = [[KNFBDemoBasicController alloc] initWithNibName:@"KNFBDemoBasicController" bundle:nil];
   UIViewController *vc2 = [[KNFBDemoFacebookController alloc] initWithNibName:@"KNFBDemoFacebookController" bundle:nil];
+  UIViewController *vc3 = [[KNFBAboutViewController alloc] initWithNibName:@"KNFBAboutViewController" bundle:nil];
   self.tabBarController = [[UITabBarController alloc] init];
-  self.tabBarController.viewControllers = [NSArray arrayWithObjects:vc1, vc2, nil];
+  self.tabBarController.viewControllers = [NSArray arrayWithObjects:vc1, vc2, vc3, nil];
   self.window.rootViewController = self.tabBarController;
   [self.window makeKeyAndVisible];
 
@@ -48,7 +50,6 @@
 }
 
 -(void)beginFacebookAuthorization {
-  [self.window.rootViewController dismissModalViewControllerAnimated:YES];
   [facebook authorize:[NSArray arrayWithObjects:@"user_about_me",@"friends_about_me", nil]];
 }
 
@@ -63,7 +64,9 @@
   [defaults setObject:[facebook accessToken] forKey:@"FBAccessTokenKey"];
   [defaults setObject:[facebook expirationDate] forKey:@"FBExpirationDateKey"];
   [defaults synchronize];
+
   [SVProgressHUD dismissWithSuccess:@"Facebook"];
+  [self.window.rootViewController dismissModalViewControllerAnimated:YES];
 }
 
 - (void)fbDidNotLogin:(BOOL)cancelled {
