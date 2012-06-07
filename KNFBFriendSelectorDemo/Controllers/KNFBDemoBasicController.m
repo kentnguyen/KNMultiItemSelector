@@ -64,9 +64,14 @@
 
 - (IBAction)recentButtonDidTouch:(id)sender {
 
-  // Finally we can also track the recent selected items with a simple switch
+  // Finally we can track the recent selected items with a simple switch
+  // and use a different language string for the title and placeholder
   NSArray * sortedItems = [items sortedArrayUsingSelector:@selector(compareByDisplayValue:)];
-  KNMultiItemSelector * selector = [[KNMultiItemSelector alloc] initWithItems:sortedItems delegate:self];
+  KNMultiItemSelector * selector = [[KNMultiItemSelector alloc] initWithItems:sortedItems
+                                                             preselectedItems:nil
+                                                                        title:@"Select a flavor"
+                                                              placeholderText:@"Search for something"
+                                                                     delegate:self];
   selector.allowSearchControl = YES;
   selector.useRecentItems     = YES;
   selector.maxNumberOfRecentItems = 5;

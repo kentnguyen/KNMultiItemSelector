@@ -126,6 +126,7 @@
 						<bool key="IBUIScrollEnabled">NO</bool>
 						<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
 						<bool key="IBUIShowsVerticalScrollIndicator">NO</bool>
+						<bool key="IBUIEditable">NO</bool>
 						<string key="IBUIText">This basic example shows you how to call the Selector with minimal parameters</string>
 						<int key="IBUITextAlignment">1</int>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
@@ -145,7 +146,7 @@
 					<object class="IBUITextView" id="319974166">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">293</int>
-						<string key="NSFrame">{{13, 187}, {294, 47}}</string>
+						<string key="NSFrame">{{13, 179}, {294, 47}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1016529482"/>
@@ -158,6 +159,7 @@
 						<bool key="IBUIScrollEnabled">NO</bool>
 						<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
 						<bool key="IBUIShowsVerticalScrollIndicator">NO</bool>
+						<bool key="IBUIEditable">NO</bool>
 						<string key="IBUIText">We now sort the items alphabetically and enable table index</string>
 						<int key="IBUITextAlignment">1</int>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
@@ -199,7 +201,7 @@
 					<object class="IBUITextView" id="181897885">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">293</int>
-						<string key="NSFrame">{{10, 296}, {300, 28}}</string>
+						<string key="NSFrame">{{10, 280}, {300, 47}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="673917463"/>
@@ -212,7 +214,8 @@
 						<bool key="IBUIScrollEnabled">NO</bool>
 						<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
 						<bool key="IBUIShowsVerticalScrollIndicator">NO</bool>
-						<string key="IBUIText">Now also enable recent items, and searching</string>
+						<bool key="IBUIEditable">NO</bool>
+						<string key="IBUIText">Now also enable recent items, searching and custom title+placeholder string</string>
 						<int key="IBUITextAlignment">1</int>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 							<int key="IBUIAutocapitalizationType">2</int>
@@ -263,7 +266,7 @@
 					<object class="IBUIButton" id="1016529482">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">293</int>
-						<string key="NSFrame">{{100, 237}, {120, 28}}</string>
+						<string key="NSFrame">{{100, 229}, {120, 28}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="181897885"/>
@@ -289,6 +292,7 @@
 						<string key="NSFrame">{{100, 347}, {120, 28}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<int key="IBUIContentMode">4</int>
@@ -387,8 +391,8 @@
 							<reference ref="319974166"/>
 							<reference ref="362986946"/>
 							<reference ref="673917463"/>
-							<reference ref="181897885"/>
 							<reference ref="595701318"/>
+							<reference ref="181897885"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
