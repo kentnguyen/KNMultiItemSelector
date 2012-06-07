@@ -251,7 +251,7 @@
   if (searchString.length > 0) {
     selectorMode = KNSelectorModeSearch;
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"displayValue LIKE[cd] %@ OR displayValue LIKE[cd] %@",
-                         [self.searchTextField.text stringByAppendingString:@"*"],
+                         [searchString stringByAppendingString:@"*"],
                          [NSString stringWithFormat:@"* %@*",searchString]];
     filteredItems = [items filteredArrayUsingPredicate:pred];
   } else {
