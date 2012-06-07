@@ -15,7 +15,11 @@
 
 @property (unsafe_unretained, nonatomic) IBOutlet UITextView *textView;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *pickerButton;
+@property (unsafe_unretained, nonatomic) IBOutlet UIButton *popoverButton;
+@property (unsafe_unretained, nonatomic) IBOutlet UILabel *ipadOnlyLabel;
+@property (strong, nonatomic) UIPopoverController * popoverController;
 
+- (IBAction)popoverButtonDidTouch:(id)sender;
 - (IBAction)pickerButtonDidTouch:(id)sender;
 
 @end

@@ -16,6 +16,9 @@
 @implementation KNFBDemoFacebookController
 @synthesize textView;
 @synthesize pickerButton;
+@synthesize popoverButton;
+@synthesize ipadOnlyLabel;
+@synthesize popoverController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -31,6 +34,7 @@
 							
 - (void)viewDidLoad {
   [super viewDidLoad];
+  ipadOnlyLabel.hidden = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
 
   // Fetch all facebook friends and store in NSArray
   NSString * ogEndpoint = [NSString stringWithFormat:@"https://graph.facebook.com/me/friends?access_token=%@", ApplicationDelegate.facebook.accessToken];
@@ -38,6 +42,7 @@
   [request setCompletionBlock:^{
     [SVProgressHUD dismiss];
     pickerButton.hidden = NO;
+    popoverButton.hidden = UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad;
 
     NSDictionary * rawObject = [request.responseString objectFromJSONString];
     NSArray * dataArray = [rawObject objectForKey:@"data"];
@@ -81,14 +86,43 @@
   [self presentModalViewController:uinav animated:YES];
 }
 
+
+- (IBAction)popoverButtonDidTouch:(id)sender {
+  // Same code as above
+  KNMultiItemSelector * selector = [[KNMultiItemSelector alloc] initWithItems:friends
+                                                             preselectedItems:nil
+                                                                        title:@"Select friends"
+                                                              placeholderText:@"Search by name"
+                                                                     delegate:self];
+  selector.allowSearchControl = YES;
+  selector.useTableIndex      = YES;
+  selector.useRecentItems     = YES;
+  selector.maxNumberOfRecentItems = 8;
+
+  // But different in presenting method
+  UINavigationController * uinav = [[UINavigationController alloc] initWithRootViewController:selector];
+  self.popoverController = [[UIPopoverController alloc] initWithContentViewController:uinav];
+  [self.popoverController presentPopoverFromRect:popoverButton.frame
+                                          inView:self.view
+                        permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+
 #pragma mark - Handle delegate callback
 
 -(void)selectorDidCancelSelection {
   [self dismissModalViewControllerAnimated:YES];
+  if (self.popoverController) {
+    [self.popoverController dismissPopoverAnimated:YES];
+    self.popoverController = nil;
+  }
 }
 
 -(void)selectorDidFinishSelectionWithItems:(NSArray *)selectedItems {
   [self dismissModalViewControllerAnimated:YES];
+  if (self.popoverController) {
+    [self.popoverController dismissPopoverAnimated:YES];
+    self.popoverController = nil;
+  }
 
   textView.text = @"You have selected:\n";
   for (KNSelectorItem * i in selectedItems) {
@@ -100,6 +134,9 @@
 
 - (void)viewDidUnload {
   [self setPickerButton:nil];
+  [self setPopoverButton:nil];
+  [self setIpadOnlyLabel:nil];
+  [self setPopoverController:nil];
   [super viewDidUnload];
 }
 @end
