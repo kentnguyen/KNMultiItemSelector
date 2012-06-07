@@ -109,7 +109,7 @@ IHNvdXJjZSBjb2RlIGFuZCBzZWUgZm9yIHlvdXJzZWxmLg</string>
 					</object>
 					<object class="IBUILabel" id="210176176">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">290</int>
 						<string key="NSFrameSize">{320, 43}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
@@ -137,11 +137,10 @@ IHNvdXJjZSBjb2RlIGFuZCBzZWUgZm9yIHlvdXJzZWxmLg</string>
 					</object>
 					<object class="IBUIButton" id="907907136">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">293</int>
 						<string key="NSFrame">{{81, 318}, {159, 29}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
