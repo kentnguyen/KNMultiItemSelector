@@ -124,7 +124,7 @@
     self.popoverController = nil;
   }
 
-  textView.text = @"You have selected:\n";
+  textView.text = selectedItems.count ? @"You have selected:\n" : @"You have not selected any friend";
   for (KNSelectorItem * i in selectedItems) {
     textView.text = [textView.text stringByAppendingFormat:@"%@ - %@\n", i.selectValue, i.displayValue];
   }
