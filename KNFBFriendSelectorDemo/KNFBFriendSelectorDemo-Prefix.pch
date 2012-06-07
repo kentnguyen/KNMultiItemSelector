@@ -12,5 +12,4 @@
   #import <UIKit/UIKit.h>
   #import <Foundation/Foundation.h>
   #import "SVProgressHUD.h"
-  #import "UIViewAdditions.h"
 #endif

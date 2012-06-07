@@ -41,9 +41,9 @@
 		8B600DD315805FA200203F1B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B600DCF15805FA200203F1B /* Default.png */; };
 		8B600DD415805FA200203F1B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B600DD015805FA200203F1B /* Default@2x.png */; };
 		8B600DD515805FA200203F1B /* Default~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B600DD115805FA200203F1B /* Default~ipad.png */; };
-		8B600DD615805FA200203F1B /* Default~iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B600DD215805FA200203F1B /* Default~iPad@2x.png */; };
 		8B775EB7157C90A700112752 /* KNMultiItemSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B775EB6157C90A700112752 /* KNMultiItemSelector.m */; };
 		8B775EBA157C926500112752 /* KNSelectorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B775EB9157C926500112752 /* KNSelectorItem.m */; };
+		8B7CF6C1158071BF00496BB9 /* Default~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B7CF6C0158071BF00496BB9 /* Default~ipad@2x.png */; };
 		8BE7B1851577EDAF00BC7787 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE7B1841577EDAF00BC7787 /* UIKit.framework */; };
 		8BE7B1871577EDAF00BC7787 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE7B1861577EDAF00BC7787 /* Foundation.framework */; };
 		8BE7B1891577EDAF00BC7787 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE7B1881577EDAF00BC7787 /* CoreGraphics.framework */; };
@@ -61,7 +61,6 @@
 		8BE7B2251577EEE400BC7787 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8BE7B1DE1577EEE400BC7787 /* FBDialog.bundle */; };
 		8BE7B2261577EEE400BC7787 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE7B1E41577EEE400BC7787 /* libfacebook_ios_sdk.a */; };
 		8BE7B2271577EEE400BC7787 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE7B1ED1577EEE400BC7787 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		8BE7B2291577EEE400BC7787 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE7B1F11577EEE400BC7787 /* UIViewAdditions.m */; };
 		8BE7B22B1577EEE400BC7787 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE7B1F51577EEE400BC7787 /* SDImageCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8BE7B22C1577EEE400BC7787 /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE7B1F91577EEE400BC7787 /* SDWebImageDecoder.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8BE7B22D1577EEE400BC7787 /* SDWebImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE7B1FB1577EEE400BC7787 /* SDWebImageDownloader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -117,11 +116,11 @@
 		8B600DCF15805FA200203F1B /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		8B600DD015805FA200203F1B /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		8B600DD115805FA200203F1B /* Default~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default~ipad.png"; sourceTree = "<group>"; };
-		8B600DD215805FA200203F1B /* Default~iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default~iPad@2x.png"; sourceTree = "<group>"; };
 		8B775EB5157C90A700112752 /* KNMultiItemSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNMultiItemSelector.h; sourceTree = "<group>"; };
 		8B775EB6157C90A700112752 /* KNMultiItemSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNMultiItemSelector.m; sourceTree = "<group>"; };
 		8B775EB8157C926500112752 /* KNSelectorItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNSelectorItem.h; sourceTree = "<group>"; };
 		8B775EB9157C926500112752 /* KNSelectorItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNSelectorItem.m; sourceTree = "<group>"; };
+		8B7CF6C0158071BF00496BB9 /* Default~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default~ipad@2x.png"; sourceTree = "<group>"; };
 		8BE7B1801577EDAF00BC7787 /* KNFBFriendSelectorDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KNFBFriendSelectorDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BE7B1841577EDAF00BC7787 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8BE7B1861577EDAF00BC7787 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -170,8 +169,6 @@
 		8BE7B1EA1577EEE400BC7787 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		8BE7B1EC1577EEE400BC7787 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		8BE7B1ED1577EEE400BC7787 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
-		8BE7B1F01577EEE400BC7787 /* UIViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewAdditions.h; sourceTree = "<group>"; };
-		8BE7B1F11577EEE400BC7787 /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewAdditions.m; sourceTree = "<group>"; };
 		8BE7B1F41577EEE400BC7787 /* SDImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageCache.h; sourceTree = "<group>"; };
 		8BE7B1F51577EEE400BC7787 /* SDImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDImageCache.m; sourceTree = "<group>"; };
 		8BE7B1F61577EEE400BC7787 /* SDImageCacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageCacheDelegate.h; sourceTree = "<group>"; };
@@ -253,7 +250,7 @@
 				8B600DCF15805FA200203F1B /* Default.png */,
 				8B600DD015805FA200203F1B /* Default@2x.png */,
 				8B600DD115805FA200203F1B /* Default~ipad.png */,
-				8B600DD215805FA200203F1B /* Default~iPad@2x.png */,
+				8B7CF6C0158071BF00496BB9 /* Default~ipad@2x.png */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -351,7 +348,6 @@
 				8BE7B1C21577EEE400BC7787 /* ASIHTTPRequest */,
 				8BE7B1DB1577EEE400BC7787 /* facebook-ios-sdk */,
 				8BE7B1EB1577EEE400BC7787 /* JSONKit */,
-				8BE7B1EF1577EEE400BC7787 /* KNAdditions */,
 				8BE7B1F21577EEE400BC7787 /* SDWebImage */,
 				8BE7B2061577EEE400BC7787 /* SVProgressHUD */,
 			);
@@ -425,15 +421,6 @@
 				8BE7B1ED1577EEE400BC7787 /* JSONKit.m */,
 			);
 			path = JSONKit;
-			sourceTree = "<group>";
-		};
-		8BE7B1EF1577EEE400BC7787 /* KNAdditions */ = {
-			isa = PBXGroup;
-			children = (
-				8BE7B1F01577EEE400BC7787 /* UIViewAdditions.h */,
-				8BE7B1F11577EEE400BC7787 /* UIViewAdditions.m */,
-			);
-			path = KNAdditions;
 			sourceTree = "<group>";
 		};
 		8BE7B1F21577EEE400BC7787 /* SDWebImage */ = {
@@ -574,7 +561,7 @@
 				8B600DD315805FA200203F1B /* Default.png in Resources */,
 				8B600DD415805FA200203F1B /* Default@2x.png in Resources */,
 				8B600DD515805FA200203F1B /* Default~ipad.png in Resources */,
-				8B600DD615805FA200203F1B /* Default~iPad@2x.png in Resources */,
+				8B7CF6C1158071BF00496BB9 /* Default~ipad@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,7 +574,6 @@
 			files = (
 				8BE7B1911577EDAF00BC7787 /* main.m in Sources */,
 				8BE7B1951577EDAF00BC7787 /* KNFBAppDelegate.m in Sources */,
-				8BE7B2291577EEE400BC7787 /* UIViewAdditions.m in Sources */,
 				8BE7B2241577EEE400BC7787 /* Reachability.m in Sources */,
 				8BE7B21B1577EEE400BC7787 /* ASIAuthenticationDialog.m in Sources */,
 				8BE7B21C1577EEE400BC7787 /* ASIDataCompressor.m in Sources */,
