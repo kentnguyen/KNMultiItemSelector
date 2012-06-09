@@ -54,7 +54,7 @@ typedef enum {
 // Turn on/off search field at the top of the list, default to NO, only recommend for large list
 @property (nonatomic) BOOL allowSearchControl;
 
-// Turn on/off mode buttons and tip view at the bottom, default to NO
+// Turn on/off mode buttons and tip view at the bottom, default to YES
 @property (nonatomic) BOOL allowModeButtons;
 
 // Turn on/off displaying and storing of recent selected items.
