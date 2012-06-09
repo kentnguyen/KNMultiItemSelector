@@ -18,17 +18,19 @@
 
 #pragma mark - Implementation
 
-@implementation KNMultiItemSelector
+@implementation KNMultiItemSelector {
+  NSString * placeholderText;
+}
 
-@synthesize tableView, useTableIndex, selectedItems, searchTextField, allowSearchControl;
+@synthesize tableView, useTableIndex, selectedItems, searchTextField, allowSearchControl, allowModeButtons;
 @synthesize useRecentItems, maxNumberOfRecentItems, recentItemStorageKey;
 
 -(id)initWithItems:(NSArray*)_items
           delegate:(id)_delegate {
   return [self initWithItems:_items
             preselectedItems:nil
-                       title:@"Select items"
-             placeholderText:@"Search by keywords"
+                       title:NSLocalizedString(@"Select items", nil)
+             placeholderText:NSLocalizedString(@"Search by keywords", nil)
                     delegate:_delegate];
 }
 
@@ -41,11 +43,13 @@
   if (self) {
     delegate = delegateObject;
     self.title = title;
-    self.view.backgroundColor = [UIColor whiteColor];
     self.maxNumberOfRecentItems = 5;
     self.useRecentItems = NO;
     self.recentItemStorageKey = @"recent_selected_items";
-
+    self.allowModeButtons = YES;
+    
+    placeholderText = _placeholder;
+    
     // Initialize item arrays
     items = [_items mutableCopy];
     if (selectedItems) {
@@ -77,73 +81,74 @@
       NSMutableArray * a = [indices objectForKey:letter];
       [a addObject:i];
     }
-
-    // Initialize tableView
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    self.tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    [self.view addSubview:self.tableView];
-
-    // Initialize search text field
-    textFieldWrapper = [[UIView alloc] initWithFrame:CGRectZero];
-    textFieldWrapper.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    textFieldWrapper.autoresizesSubviews = YES;
-    textFieldWrapper.backgroundColor = [UIColor whiteColor];
-    textFieldWrapper.layer.shadowColor = [[UIColor blackColor] CGColor];
-    textFieldWrapper.layer.shadowOffset = CGSizeMake(0,1);
-    textFieldWrapper.layer.shadowRadius = 5.0f;
-    textFieldWrapper.layer.shadowOpacity = 0.2;
-    self.searchTextField = [[UITextField alloc] initWithFrame:CGRectZero];
-    self.searchTextField.backgroundColor = [UIColor whiteColor];
-    self.searchTextField.clipsToBounds = NO;
-    self.searchTextField.keyboardType = UIKeyboardTypeASCIICapable;
-    self.searchTextField.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.searchTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    self.searchTextField.returnKeyType = UIReturnKeyDone;
-    self.searchTextField.clearButtonMode = UITextFieldViewModeAlways;
-    self.searchTextField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    self.searchTextField.delegate = self;
-    self.searchTextField.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"KNZoomIcon"]];
-    self.searchTextField.leftViewMode = UITextFieldViewModeAlways;
-    self.searchTextField.placeholder = _placeholder ? _placeholder : @"Search by keywords";
-    self.searchTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    [self.view addSubview:textFieldWrapper];
-    [textFieldWrapper addSubview:self.searchTextField];
-
-    // Image indicator
-    modeIndicatorImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"KNSelectorTip"]];
-    modeIndicatorImageView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
-    modeIndicatorImageView.contentMode = UIViewContentModeCenter;
-    [self.view addSubview:modeIndicatorImageView];
-
-    // Two mode buttons
-    normalModeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    selectedModeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [normalModeButton setTitle:@"All" forState:UIControlStateNormal];
-    [selectedModeButton setTitle:@"Selected (0)" forState:UIControlStateNormal];
-    [normalModeButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [selectedModeButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [normalModeButton setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
-    [selectedModeButton setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
-    [normalModeButton addTarget:self action:@selector(modeButtonDidTouch:) forControlEvents:UIControlEventTouchUpInside];
-    [selectedModeButton addTarget:self action:@selector(modeButtonDidTouch:) forControlEvents:UIControlEventTouchUpInside];
-    normalModeButton.titleLabel.font = selectedModeButton.titleLabel.font = [UIFont boldSystemFontOfSize:13];
-    normalModeButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    selectedModeButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    [normalModeButton setSelected:YES];
-    [self.view addSubview:normalModeButton];
-    [self.view addSubview:selectedModeButton];
-
-    // Nav bar button
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(didFinish)];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(didCancel)];
   }
   return self;
 }
 
--(void)viewDidLoad {
-  [super viewDidLoad];
+-(void)loadView {
+  self.view = [[UIView alloc] initWithFrame:CGRectZero];  
+  self.view.backgroundColor = [UIColor whiteColor];
+  
+  // Initialize tableView
+  self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+  self.tableView.delegate = self;
+  self.tableView.dataSource = self;
+  self.tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+  [self.view addSubview:self.tableView];
+  
+  // Initialize search text field
+  textFieldWrapper = [[UIView alloc] initWithFrame:CGRectZero];
+  textFieldWrapper.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+  textFieldWrapper.autoresizesSubviews = YES;
+  textFieldWrapper.backgroundColor = [UIColor whiteColor];
+  textFieldWrapper.layer.shadowColor = [[UIColor blackColor] CGColor];
+  textFieldWrapper.layer.shadowOffset = CGSizeMake(0,1);
+  textFieldWrapper.layer.shadowRadius = 5.0f;
+  textFieldWrapper.layer.shadowOpacity = 0.2;
+  self.searchTextField = [[UITextField alloc] initWithFrame:CGRectZero];
+  self.searchTextField.backgroundColor = [UIColor whiteColor];
+  self.searchTextField.clipsToBounds = NO;
+  self.searchTextField.keyboardType = UIKeyboardTypeASCIICapable;
+  self.searchTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+  self.searchTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+  self.searchTextField.returnKeyType = UIReturnKeyDone;
+  self.searchTextField.clearButtonMode = UITextFieldViewModeAlways;
+  self.searchTextField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+  self.searchTextField.delegate = self;
+  self.searchTextField.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"KNZoomIcon"]];
+  self.searchTextField.leftViewMode = UITextFieldViewModeAlways;
+  self.searchTextField.placeholder = placeholderText ? placeholderText : NSLocalizedString(@"Search by keywords", nil);
+  self.searchTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+  [self.view addSubview:textFieldWrapper];
+  [textFieldWrapper addSubview:self.searchTextField];
+  
+  // Image indicator
+  modeIndicatorImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"KNSelectorTip"]];
+  modeIndicatorImageView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
+  modeIndicatorImageView.contentMode = UIViewContentModeCenter;
+  [self.view addSubview:modeIndicatorImageView];
+  
+  // Two mode buttons
+  normalModeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+  selectedModeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+  [normalModeButton setTitle:NSLocalizedString(@"All", nil) forState:UIControlStateNormal];
+  [selectedModeButton setTitle:NSLocalizedString(@"Selected (0)", @"0 is the initial count; nothing selected") forState:UIControlStateNormal];
+  [normalModeButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+  [selectedModeButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+  [normalModeButton setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
+  [selectedModeButton setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
+  [normalModeButton addTarget:self action:@selector(modeButtonDidTouch:) forControlEvents:UIControlEventTouchUpInside];
+  [selectedModeButton addTarget:self action:@selector(modeButtonDidTouch:) forControlEvents:UIControlEventTouchUpInside];
+  normalModeButton.titleLabel.font = selectedModeButton.titleLabel.font = [UIFont boldSystemFontOfSize:13];
+  normalModeButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+  selectedModeButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+  [normalModeButton setSelected:YES];
+  [self.view addSubview:normalModeButton];
+  [self.view addSubview:selectedModeButton];
+  
+  // Nav bar button
+  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(didFinish)];
+  self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(didCancel)];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -164,6 +169,27 @@
   normalModeButton.frame = CGRectMake(f.size.width/2-90, f.size.height-44, 90, 44);
   selectedModeButton.frame = CGRectMake(f.size.width/2, f.size.height-44, 90, 44);
   modeIndicatorImageView.center = CGPointMake(normalModeButton.center.x, f.size.height-44+modeIndicatorImageView.frame.size.height/2);
+
+  [self showHideModeButtons];
+}
+
+-(void)showHideModeButtons {  
+  normalModeButton.hidden = selectedModeButton.hidden = modeIndicatorImageView.hidden = !self.allowModeButtons;
+
+  CGRect tableFrame = self.tableView.frame;
+
+  if (self.allowModeButtons) {
+    tableFrame.size.height = CGRectGetMinY(modeIndicatorImageView.frame) - CGRectGetMinY(tableFrame);
+  } else {
+    tableFrame.size.height = CGRectGetHeight(self.view.bounds) - CGRectGetMinY(tableFrame);
+  }
+
+  self.tableView.frame = tableFrame;
+}
+
+-(void)setAllowModeButtons:(BOOL)allow {
+  allowModeButtons = allow;
+  [self showHideModeButtons];
 }
 
 #pragma mark - UITableView Datasource
@@ -223,7 +249,7 @@
   item.selected = !item.selected;
 
   // Recount selected items
-  [selectedModeButton setTitle:[NSString stringWithFormat:@"Selected (%d)", self.selectedItems.count] forState:UIControlStateNormal];
+  [selectedModeButton setTitle:[NSString stringWithFormat:NSLocalizedString(@"Selected (%d)", @"%d is the count of selected items"), self.selectedItems.count] forState:UIControlStateNormal];
 
   // Update UI
   [_tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -399,7 +425,7 @@
 - (NSString *)tableView:(UITableView *)aTableView titleForHeaderInSection:(NSInteger)section {
   if (selectorMode == KNSelectorModeNormal) {
     if (self.useRecentItems && recentItems.count) {
-      if (section==0) return @"Recent";
+      if (section==0) return NSLocalizedString(@"Recent", nil);
       if (!useTableIndex) return @" ";
     }
     if (useTableIndex) {
@@ -434,14 +460,12 @@
 }
 
 - (void)viewDidUnload {
-  [self.tableView removeFromSuperview];
-  [self.searchTextField removeFromSuperview];
-  [textFieldWrapper removeFromSuperview];
-  [modeIndicatorImageView removeFromSuperview];
-  [normalModeButton removeFromSuperview];
-  [selectedModeButton removeFromSuperview];
-  delegate = nil;
-  items = nil;
+  self.tableView = nil;
+  self.searchTextField = nil;
+  textFieldWrapper = nil;
+  modeIndicatorImageView = nil;
+  normalModeButton = nil;
+  selectedModeButton = nil;
   
   [super viewDidUnload];
 }
