@@ -54,6 +54,9 @@ typedef enum {
 // Turn on/off search field at the top of the list, default to NO, only recommend for large list
 @property (nonatomic) BOOL allowSearchControl;
 
+// Turn on/off mode buttons and tip view at the bottom, default to NO
+@property (nonatomic) BOOL allowModeButtons;
+
 // Turn on/off displaying and storing of recent selected items.
 // recentItemStorageKey   : If you have multiple selectors in your app, you need to set different storage key for each of the selectors.
 // maxNumberOfRecentItems : Defaults to 5.

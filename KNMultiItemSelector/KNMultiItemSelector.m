@@ -20,7 +20,7 @@
 
 @implementation KNMultiItemSelector
 
-@synthesize tableView, useTableIndex, selectedItems, searchTextField, allowSearchControl;
+@synthesize tableView, useTableIndex, selectedItems, searchTextField, allowSearchControl, allowModeButtons;
 @synthesize useRecentItems, maxNumberOfRecentItems, recentItemStorageKey;
 
 -(id)initWithItems:(NSArray*)_items
@@ -45,6 +45,7 @@
     self.maxNumberOfRecentItems = 5;
     self.useRecentItems = NO;
     self.recentItemStorageKey = @"recent_selected_items";
+    self.allowModeButtons = YES;
 
     // Initialize item arrays
     items = [_items mutableCopy];
@@ -164,6 +165,27 @@
   normalModeButton.frame = CGRectMake(f.size.width/2-90, f.size.height-44, 90, 44);
   selectedModeButton.frame = CGRectMake(f.size.width/2, f.size.height-44, 90, 44);
   modeIndicatorImageView.center = CGPointMake(normalModeButton.center.x, f.size.height-44+modeIndicatorImageView.frame.size.height/2);
+
+  [self showHideModeButtons];
+}
+
+- (void)showHideModeButtons {  
+  normalModeButton.hidden = selectedModeButton.hidden = modeIndicatorImageView.hidden = !self.allowModeButtons;
+
+  CGRect tableFrame = self.tableView.frame;
+
+  if (self.allowModeButtons) {
+    tableFrame.size.height = CGRectGetMinY(modeIndicatorImageView.frame) - CGRectGetMinY(tableFrame);
+  } else {
+    tableFrame.size.height = CGRectGetHeight(self.view.bounds) - CGRectGetMinY(tableFrame);
+  }
+
+  self.tableView.frame = tableFrame;
+}
+
+- (void)setAllowModeButtons:(BOOL)allow {
+  allowModeButtons = allow;
+  [self showHideModeButtons];
 }
 
 #pragma mark - UITableView Datasource
