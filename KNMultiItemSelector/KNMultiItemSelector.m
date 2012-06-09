@@ -29,8 +29,8 @@
           delegate:(id)_delegate {
   return [self initWithItems:_items
             preselectedItems:nil
-                       title:@"Select items"
-             placeholderText:@"Search by keywords"
+                       title:NSLocalizedString(@"Select items", nil)
+             placeholderText:NSLocalizedString(@"Search by keywords", nil)
                     delegate:_delegate];
 }
 
@@ -117,7 +117,7 @@
   self.searchTextField.delegate = self;
   self.searchTextField.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"KNZoomIcon"]];
   self.searchTextField.leftViewMode = UITextFieldViewModeAlways;
-  self.searchTextField.placeholder = placeholderText ? placeholderText : @"Search by keywords";
+  self.searchTextField.placeholder = placeholderText ? placeholderText : NSLocalizedString(@"Search by keywords", nil);
   self.searchTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
   [self.view addSubview:textFieldWrapper];
   [textFieldWrapper addSubview:self.searchTextField];
@@ -131,8 +131,8 @@
   // Two mode buttons
   normalModeButton = [UIButton buttonWithType:UIButtonTypeCustom];
   selectedModeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-  [normalModeButton setTitle:@"All" forState:UIControlStateNormal];
-  [selectedModeButton setTitle:@"Selected (0)" forState:UIControlStateNormal];
+  [normalModeButton setTitle:NSLocalizedString(@"All", nil) forState:UIControlStateNormal];
+  [selectedModeButton setTitle:NSLocalizedString(@"Selected (0)", @"0 is the initial count; nothing selected") forState:UIControlStateNormal];
   [normalModeButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
   [selectedModeButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
   [normalModeButton setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
@@ -249,7 +249,7 @@
   item.selected = !item.selected;
 
   // Recount selected items
-  [selectedModeButton setTitle:[NSString stringWithFormat:@"Selected (%d)", self.selectedItems.count] forState:UIControlStateNormal];
+  [selectedModeButton setTitle:[NSString stringWithFormat:NSLocalizedString(@"Selected (%d)", @"%d is the count of selected items"), self.selectedItems.count] forState:UIControlStateNormal];
 
   // Update UI
   [_tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -425,7 +425,7 @@
 - (NSString *)tableView:(UITableView *)aTableView titleForHeaderInSection:(NSInteger)section {
   if (selectorMode == KNSelectorModeNormal) {
     if (self.useRecentItems && recentItems.count) {
-      if (section==0) return @"Recent";
+      if (section==0) return NSLocalizedString(@"Recent", nil);
       if (!useTableIndex) return @" ";
     }
     if (useTableIndex) {
