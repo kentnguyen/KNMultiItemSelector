@@ -33,6 +33,8 @@ Visit [Documentation](http://bit.ly/knselector) to see how it is used and other 
 
 ### License
 
+In short: MIT aka Buy me coffee license [![](http://kentnguyen.com/KNCoffeeButton.png)](http://bit.ly/knselector)
+
 KNMultiItemSelector is licensed under MIT License
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
