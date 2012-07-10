@@ -52,8 +52,9 @@
     
     // Initialize item arrays
     items = [_items mutableCopy];
-    if (selectedItems) {
-      for (KNSelectorItem * i in selectedItems) {
+    if (_preselectedItems) {
+      selectedItems = _preselectedItems;
+      for (KNSelectorItem * i in self.selectedItems) {
         if ([items containsObject:i]) {
           i.selected = YES;
         }
@@ -132,7 +133,6 @@
   normalModeButton = [UIButton buttonWithType:UIButtonTypeCustom];
   selectedModeButton = [UIButton buttonWithType:UIButtonTypeCustom];
   [normalModeButton setTitle:NSLocalizedString(@"All", nil) forState:UIControlStateNormal];
-  [selectedModeButton setTitle:NSLocalizedString(@"Selected (0)", @"0 is the initial count; nothing selected") forState:UIControlStateNormal];
   [normalModeButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
   [selectedModeButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
   [normalModeButton setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
@@ -145,6 +145,7 @@
   [normalModeButton setSelected:YES];
   [self.view addSubview:normalModeButton];
   [self.view addSubview:selectedModeButton];
+  [self updateSelectedCount];
   
   // Nav bar button
   self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(didFinish)];
@@ -190,6 +191,15 @@
 -(void)setAllowModeButtons:(BOOL)allow {
   allowModeButtons = allow;
   [self showHideModeButtons];
+}
+
+-(void)updateSelectedCount {
+  NSUInteger count = self.selectedItems.count;
+  if (count == 0) {
+    [selectedModeButton setTitle:NSLocalizedString(@"Selected (0)", @"0 is the initial count; nothing selected.") forState:UIControlStateNormal];
+  } else {
+    [selectedModeButton setTitle:[NSString stringWithFormat:NSLocalizedString(@"Selected (%d)", @"%d is the count of selected items"), self.selectedItems.count] forState:UIControlStateNormal];
+  }
 }
 
 #pragma mark - UITableView Datasource
@@ -247,9 +257,9 @@
   // Which item?
   KNSelectorItem * item = [self itemAtIndexPath:indexPath];
   item.selected = !item.selected;
-
+  
   // Recount selected items
-  [selectedModeButton setTitle:[NSString stringWithFormat:NSLocalizedString(@"Selected (%d)", @"%d is the count of selected items"), self.selectedItems.count] forState:UIControlStateNormal];
+  [self updateSelectedCount];
 
   // Update UI
   [_tableView deselectRowAtIndexPath:indexPath animated:YES];
