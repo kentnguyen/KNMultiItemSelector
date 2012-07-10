@@ -9,6 +9,7 @@
 #import "KNFBDemoBasicController.h"
 
 @implementation KNFBDemoBasicController
+
 @synthesize resultLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -35,6 +36,8 @@
     [items addObject:[[KNSelectorItem alloc] initWithDisplayValue:@"Vanilla"      selectValue:@"vani" imageUrl:nil]];
     [items addObject:[[KNSelectorItem alloc] initWithDisplayValue:@"Watermelon"   selectValue:@"melo" imageUrl:nil]];
     [items addObject:[[KNSelectorItem alloc] initWithDisplayValue:@"Zucchini"     selectValue:@"zucc" imageUrl:nil]];
+    
+    currentItems = [NSArray array];
   }
   return self;
 }
@@ -48,7 +51,11 @@
 - (IBAction)basicButtonDidTouch:(id)sender {
 
   // The very basic demo with default parameters
-  KNMultiItemSelector * selector = [[KNMultiItemSelector alloc] initWithItems:items delegate:self];
+  KNMultiItemSelector * selector = [[KNMultiItemSelector alloc] initWithItems:items
+                                                             preselectedItems:currentItems
+                                                                        title:@"Select a flavor"
+                                                              placeholderText:nil
+                                                                     delegate:self];
   [self presentModalHelper:selector];
 }
 
@@ -56,7 +63,11 @@
 
   // Now we sort the array by its display values and enable table index
   NSArray * sortedItems = [items sortedArrayUsingSelector:@selector(compareByDisplayValue:)];
-  KNMultiItemSelector * selector = [[KNMultiItemSelector alloc] initWithItems:sortedItems delegate:self];
+  KNMultiItemSelector * selector = [[KNMultiItemSelector alloc] initWithItems:sortedItems
+                                                             preselectedItems:currentItems
+                                                                        title:@"Select a flavor"
+                                                              placeholderText:nil
+                                                                     delegate:self];
   selector.useTableIndex = YES;
 
   [self presentModalHelper:selector];
@@ -68,7 +79,7 @@
   // and use a different language string for the title and placeholder
   NSArray * sortedItems = [items sortedArrayUsingSelector:@selector(compareByDisplayValue:)];
   KNMultiItemSelector * selector = [[KNMultiItemSelector alloc] initWithItems:sortedItems
-                                                             preselectedItems:nil
+                                                             preselectedItems:currentItems
                                                                         title:@"Select a flavor"
                                                               placeholderText:@"Search for something"
                                                                      delegate:self];
@@ -101,9 +112,12 @@
 -(void)selectorDidFinishSelectionWithItems:(NSArray *)selectedItems {
   // Do whatever you want with the selected items
   NSString * text = @"Selected: ";
-  for (KNSelectorItem * i in selectedItems)
+  for (KNSelectorItem * i in selectedItems) {
     text = [text stringByAppendingFormat:@"%@,", i.selectValue];
+  }
   self.resultLabel.text = text;
+  
+  currentItems = selectedItems;
 
   // You should dismiss modal controller here, it doesn't do that by itself
   [self dismissModalViewControllerAnimated:YES];

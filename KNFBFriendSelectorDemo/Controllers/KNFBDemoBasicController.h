@@ -9,7 +9,8 @@
 #import "KNMultiItemSelector.h"
 
 @interface KNFBDemoBasicController : UIViewController <KNMultiItemSelectorDelegate> {
-  NSMutableArray * items;
+    NSMutableArray * items;
+    NSArray * currentItems;
 }
 
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *resultLabel;
