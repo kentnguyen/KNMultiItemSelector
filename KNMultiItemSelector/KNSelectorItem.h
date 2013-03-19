@@ -11,6 +11,7 @@
 @property (strong,nonatomic) NSString * displayValue;
 @property (strong,nonatomic) NSString * selectValue;
 @property (strong,nonatomic) NSString * imageUrl;
+@property (strong, nonatomic) UIImage *image;
 @property (nonatomic) BOOL selected;
 
 // Init with a simple value and no image
@@ -20,6 +21,10 @@
 -(id)initWithDisplayValue:(NSString*)displayVal
               selectValue:(NSString*)selectVal
                  imageUrl:(NSString*)image;
+
+-(id)initWithDisplayValue:(NSString*)displayVal
+              selectValue:(NSString*)selectVal
+                    image:(UIImage*)image;
 
 // You can use these to sort items using [NSArray sortedArrayUsingSelector:]
 // Refer to Facebook Friend selector example

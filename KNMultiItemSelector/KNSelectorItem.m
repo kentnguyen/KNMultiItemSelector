@@ -10,7 +10,11 @@
 
 @implementation KNSelectorItem
 
-@synthesize displayValue, selectValue, imageUrl, selected;
+@synthesize displayValue = _displayValue,
+            selectValue = _selectValue,
+            imageUrl = _imageUrl,
+            image = _image,
+            selected = _selected;
 
 -(id)initWithDisplayValue:(NSString*)displayVal {
   return [self initWithDisplayValue:displayVal selectValue:displayVal imageUrl:nil];
@@ -25,6 +29,16 @@
     self.imageUrl = image;
   }
   return self;
+}
+
+-(id)initWithDisplayValue:(NSString*)displayVal
+              selectValue:(NSString*)selectVal
+                    image:(UIImage*)image {
+    self = [self initWithDisplayValue:displayVal selectValue:selectVal imageUrl:nil];
+    if (self) {
+        self.image = image;
+    }
+    return self;
 }
 
 #pragma mark - Sort comparison
