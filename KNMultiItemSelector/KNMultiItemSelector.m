@@ -23,7 +23,7 @@
 }
 
 @synthesize tableView, useTableIndex, selectedItems, searchTextField, allowSearchControl, allowModeButtons;
-@synthesize useRecentItems, maxNumberOfRecentItems, recentItemStorageKey, maximumItemsSelected;
+@synthesize useRecentItems, maxNumberOfRecentItems, recentItemStorageKey, maximumItemsSelected, tag;
 
 -(id)initWithItems:(NSArray*)_items
           delegate:(id)_delegate {
@@ -286,9 +286,9 @@
         
         // Delegate callback
         if (item.selected) {
-            if ([delegate respondsToSelector:@selector(selectorDidSelectItem:)]) [delegate selectorDidSelectItem:item];
+            if ([delegate respondsToSelector:@selector(selector:didSelectItem:)]) [delegate selector:self didSelectItem:item];
         } else {
-            if ([delegate respondsToSelector:@selector(selectorDidDeselectItem:)]) [delegate selectorDidDeselectItem:item];
+            if ([delegate respondsToSelector:@selector(selectorDidDeselectItem:)]) [delegate selector:self didDeselectItem:item];
             if (selectorMode==KNSelectorModeSelected) {
                 [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
             }
@@ -388,7 +388,7 @@
 -(void)didFinish {
   // Delegate callback
   if ([delegate respondsToSelector:@selector(selectorDidFinishSelectionWithItems:)]) {
-    [delegate selectorDidFinishSelectionWithItems:self.selectedItems];
+    [delegate selector:self didFinishSelectionWithItems:self.selectedItems];
   }
 
   // Store recent items FIFO

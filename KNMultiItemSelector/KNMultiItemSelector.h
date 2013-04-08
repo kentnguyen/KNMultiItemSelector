@@ -15,14 +15,16 @@ typedef enum {
   KNSelectorModeSelected
 } KNSelectorMode;
 
+@class KNMultiItemSelector;
+
 #pragma mark - MultiItemSelectorDelegate protocol
 
 @protocol KNMultiItemSelectorDelegate <NSObject>
 -(void)selectorDidCancelSelection;
--(void)selectorDidFinishSelectionWithItems:(NSArray*)selectedItems;
+-(void)selector:(KNMultiItemSelector *)selector didFinishSelectionWithItems:(NSArray*)selectedItems;
 @optional
--(void)selectorDidSelectItem:(KNSelectorItem*)selectedItem;
--(void)selectorDidDeselectItem:(KNSelectorItem*)selectedItem;
+-(void)selector:(KNMultiItemSelector *)selector didSelectItem:(KNSelectorItem*)selectedItem;
+-(void)selector:(KNMultiItemSelector *)selector didDeselectItem:(KNSelectorItem*)selectedItem;
 @end
 
 #pragma mark - MultiItemSelector Interface
@@ -39,6 +41,7 @@ typedef enum {
   UIView * textFieldWrapper;
     
   NSInteger maximumItemsSelected;
+  NSInteger tag;
 
   KNSelectorMode selectorMode;
   id<KNMultiItemSelectorDelegate> delegate;
@@ -50,6 +53,7 @@ typedef enum {
 @property (nonatomic, strong) UITextField * searchTextField;
 @property (nonatomic, readonly) NSArray * selectedItems;
 @property (nonatomic, assign) NSInteger maximumItemsSelected;
+@property (nonatomic, assign) NSInteger tag;
 
 // Turn on/off table index for items, default to NO
 @property (nonatomic) BOOL useTableIndex;
