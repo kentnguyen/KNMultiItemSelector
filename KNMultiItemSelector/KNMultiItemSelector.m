@@ -259,7 +259,6 @@
 
 -(void)tableView:(UITableView *)_tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSLog(@"maximumItemsSelected = %d, self.selectedItems.count = %d, [self itemAtIndexPath:indexPath].selected = %@", maximumItemsSelected, self.selectedItems.count, [self itemAtIndexPath:indexPath].selected?@"YES":@"NO");
     if(maximumItemsSelected > 0 && (self.selectedItems.count >= maximumItemsSelected && [self itemAtIndexPath:indexPath].selected == NO))
     { 
         [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Hint", @"")
