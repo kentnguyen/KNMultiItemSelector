@@ -37,6 +37,8 @@ typedef enum {
   UIButton * selectedModeButton;
   UIImageView * modeIndicatorImageView;
   UIView * textFieldWrapper;
+    
+  NSInteger maximumItemsSelected;
 
   KNSelectorMode selectorMode;
   id<KNMultiItemSelectorDelegate> delegate;
@@ -47,6 +49,7 @@ typedef enum {
 @property (nonatomic, strong) UITableView * tableView;
 @property (nonatomic, strong) UITextField * searchTextField;
 @property (nonatomic, readonly) NSArray * selectedItems;
+@property (nonatomic, assign) NSInteger maximumItemsSelected;
 
 // Turn on/off table index for items, default to NO
 @property (nonatomic) BOOL useTableIndex;
