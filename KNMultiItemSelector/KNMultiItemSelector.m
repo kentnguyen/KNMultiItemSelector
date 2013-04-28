@@ -23,7 +23,7 @@
 }
 
 @synthesize tableView, useTableIndex, selectedItems, searchTextField, allowSearchControl, allowModeButtons;
-@synthesize useRecentItems, maxNumberOfRecentItems, recentItemStorageKey;
+@synthesize useRecentItems, maxNumberOfRecentItems, recentItemStorageKey, maximumItemsSelected, tag;
 
 -(id)initWithItems:(NSArray*)_items
           delegate:(id)_delegate {
@@ -258,30 +258,42 @@
 #pragma mark - UITableView Delegate
 
 -(void)tableView:(UITableView *)_tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  // Which item?
-  KNSelectorItem * item = [self itemAtIndexPath:indexPath];
-  item.selected = !item.selected;
-  
-  // Recount selected items
-  [self updateSelectedCount];
-
-  // Update UI
-  [_tableView deselectRowAtIndexPath:indexPath animated:YES];
-  [_tableView cellForRowAtIndexPath:indexPath].accessoryType = item.selected ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
-  if ([self.searchTextField isFirstResponder]) {
-    self.searchTextField.tag = 1;
-    [self.searchTextField resignFirstResponder];
-  }
-
-  // Delegate callback
-  if (item.selected) {
-    if ([delegate respondsToSelector:@selector(selectorDidSelectItem:)]) [delegate selectorDidSelectItem:item];
-  } else {
-    if ([delegate respondsToSelector:@selector(selectorDidDeselectItem:)]) [delegate selectorDidDeselectItem:item];
-    if (selectorMode==KNSelectorModeSelected) {
-      [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if(maximumItemsSelected > 0 && (self.selectedItems.count >= maximumItemsSelected && [self itemAtIndexPath:indexPath].selected == NO))
+    { 
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Hint", @"")
+                                    message:NSLocalizedString(@"You've reached the maximum number of selectable items.", @"")
+                                   delegate:nil
+                          cancelButtonTitle:NSLocalizedString(@"OK", @"")
+                          otherButtonTitles:nil, nil] show];
     }
-  }
+    else
+    {
+        // Which item?
+        KNSelectorItem * item = [self itemAtIndexPath:indexPath];
+        item.selected = !item.selected;
+        
+        // Recount selected items
+        [self updateSelectedCount];
+        
+        // Update UI
+        [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+        [_tableView cellForRowAtIndexPath:indexPath].accessoryType = item.selected ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+        if ([self.searchTextField isFirstResponder]) {
+            self.searchTextField.tag = 1;
+            [self.searchTextField resignFirstResponder];
+        }
+        
+        // Delegate callback
+        if (item.selected) {
+            if ([delegate respondsToSelector:@selector(selector:didSelectItem:)]) [delegate selector:self didSelectItem:item];
+        } else {
+            if ([delegate respondsToSelector:@selector(selectorDidDeselectItem:)]) [delegate selector:self didDeselectItem:item];
+            if (selectorMode==KNSelectorModeSelected) {
+                [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            }
+        }
+    }
 }
 
 #pragma mark - UITextfield Delegate & Filtering
@@ -376,7 +388,7 @@
 -(void)didFinish {
   // Delegate callback
   if ([delegate respondsToSelector:@selector(selectorDidFinishSelectionWithItems:)]) {
-    [delegate selectorDidFinishSelectionWithItems:self.selectedItems];
+    [delegate selector:self didFinishSelectionWithItems:self.selectedItems];
   }
 
   // Store recent items FIFO

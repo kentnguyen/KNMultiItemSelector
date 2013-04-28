@@ -99,17 +99,17 @@
 
 #pragma mark - KNMultiItemSelectorDelegate
 
--(void)selectorDidSelectItem:(KNSelectorItem *)selectedItem {
+-(void)selector:(KNMultiItemSelector *)selector didSelectItem:(KNSelectorItem *)selectedItem {
   // This is optional, in case you want to do something as soon as user selects an item
   NSLog(@"Selected %@", selectedItem.selectValue);
 }
 
--(void)selectorDidDeselectItem:(KNSelectorItem *)selectedItem {
+-(void)selector:(KNMultiItemSelector *)selector didDeselectItem:(KNSelectorItem *)selectedItem {
   // This is optional, in case you want to revert something you have done earlier
   NSLog(@"Removed %@", selectedItem.selectValue);
 }
 
--(void)selectorDidFinishSelectionWithItems:(NSArray *)selectedItems {
+-(void)selector:(KNMultiItemSelector *)selector didFinishSelectionWithItems:(NSArray *)selectedItems {
   // Do whatever you want with the selected items
   NSString * text = @"Selected: ";
   for (KNSelectorItem * i in selectedItems) {
