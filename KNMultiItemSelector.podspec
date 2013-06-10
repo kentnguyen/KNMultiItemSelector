@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.homepage = 'https://github.com/kentnguyen/KNMultiItemSelector'
   s.author   = { 'Kent Nguyen' => 'nguyen.dmz@gmail.com' }
   s.platform = :ios
-  s.version  = 1.0.1 
+  s.version  = '1.0.1'
   s.source_files = 'KNMultiItemSelector/KNMultiItemSelector.{h,m}', 'KNMultiItemSelector/KNSelectorItem.{h,m}'
   s.resources = "KNMultiItemSelector/Images/*.png"
 
