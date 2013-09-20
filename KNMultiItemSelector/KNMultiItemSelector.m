@@ -172,7 +172,7 @@
     NSString *ver = [[UIDevice currentDevice] systemVersion];
     float ver_float = [ver floatValue];
     if(ver_float >= 7.0){
-        textFieldWrapper.frame = CGRectMake(0, self.tableView.frame.origin.y+20, f.size.width, 44);
+        self.navigationController.navigationBar.translucent = NO;
     }
 
 
