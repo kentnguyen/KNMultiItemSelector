@@ -560,7 +560,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KNFBFriendSelectorDemo/KNFBFriendSelectorDemo-Prefix.pch";
 				INFOPLIST_FILE = "KNFBFriendSelectorDemo/KNFBFriendSelectorDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/KNFBFriendSelectorDemo/Libraries/facebook-ios-sdk\"",
@@ -576,7 +576,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KNFBFriendSelectorDemo/KNFBFriendSelectorDemo-Prefix.pch";
 				INFOPLIST_FILE = "KNFBFriendSelectorDemo/KNFBFriendSelectorDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/KNFBFriendSelectorDemo/Libraries/facebook-ios-sdk\"",

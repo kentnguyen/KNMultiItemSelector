@@ -94,7 +94,7 @@
   UINavigationController * uinav = [[UINavigationController alloc] initWithRootViewController:controller];
   uinav.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
   uinav.modalPresentationStyle = UIModalPresentationFormSheet;
-  [self presentModalViewController:uinav animated:YES];
+  [self presentViewController:uinav animated:YES completion:nil];
 }
 
 #pragma mark - KNMultiItemSelectorDelegate
@@ -120,12 +120,12 @@
   currentItems = selectedItems;
 
   // You should dismiss modal controller here, it doesn't do that by itself
-  [self dismissModalViewControllerAnimated:YES];
+  [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)selectorDidCancelSelection {
   // You should dismiss modal controller here, it doesn't do that by itself
-  [self dismissModalViewControllerAnimated:YES];
+  [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)viewDidUnload {
