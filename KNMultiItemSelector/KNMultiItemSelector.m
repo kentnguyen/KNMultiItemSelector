@@ -288,7 +288,7 @@
         if (item.selected) {
             if ([delegate respondsToSelector:@selector(selector:didSelectItem:)]) [delegate selector:self didSelectItem:item];
         } else {
-            if ([delegate respondsToSelector:@selector(selectorDidDeselectItem:)]) [delegate selector:self didDeselectItem:item];
+            if ([delegate respondsToSelector:@selector(selector:didDeselectItem:)]) [delegate selector:self didDeselectItem:item];
             if (selectorMode==KNSelectorModeSelected) {
                 [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
             }
@@ -387,7 +387,7 @@
 
 -(void)didFinish {
   // Delegate callback
-  if ([delegate respondsToSelector:@selector(selectorDidFinishSelectionWithItems:)]) {
+    if ([delegate respondsToSelector:@selector(selector:didFinishSelectionWithItems:)]) {
     [delegate selector:self didFinishSelectionWithItems:self.selectedItems];
   }
 
