@@ -52,17 +52,9 @@
     
     // Initialize item arrays
     items = [_items mutableCopy];
-    if (_preselectedItems) {
-      selectedItems = _preselectedItems;
-      for (KNSelectorItem * i in self.selectedItems) {
-        if ([items containsObject:i]) {
-          i.selected = YES;
-        }
-      }
-    } else {
-      for (KNSelectorItem * i in self.selectedItems) {
-        i.selected = NO;
-      }
+
+    for (KNSelectorItem * item in items) {
+        item.selected = [_preselectedItems containsObject:item];
     }
 
     // Recent selected items section
