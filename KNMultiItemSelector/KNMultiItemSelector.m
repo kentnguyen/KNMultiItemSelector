@@ -52,17 +52,9 @@
     
     // Initialize item arrays
     items = [_items mutableCopy];
-    if (_preselectedItems) {
-      selectedItems = _preselectedItems;
-      for (KNSelectorItem * i in self.selectedItems) {
-        if ([items containsObject:i]) {
-          i.selected = YES;
-        }
-      }
-    } else {
-      for (KNSelectorItem * i in self.selectedItems) {
-        i.selected = NO;
-      }
+
+    for (KNSelectorItem * item in items) {
+        item.selected = [_preselectedItems containsObject:item];
     }
 
     // Recent selected items section
@@ -288,7 +280,7 @@
         if (item.selected) {
             if ([delegate respondsToSelector:@selector(selector:didSelectItem:)]) [delegate selector:self didSelectItem:item];
         } else {
-            if ([delegate respondsToSelector:@selector(selectorDidDeselectItem:)]) [delegate selector:self didDeselectItem:item];
+            if ([delegate respondsToSelector:@selector(selector:didDeselectItem:)]) [delegate selector:self didDeselectItem:item];
             if (selectorMode==KNSelectorModeSelected) {
                 [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
             }
@@ -387,7 +379,7 @@
 
 -(void)didFinish {
   // Delegate callback
-  if ([delegate respondsToSelector:@selector(selectorDidFinishSelectionWithItems:)]) {
+    if ([delegate respondsToSelector:@selector(selector:didFinishSelectionWithItems:)]) {
     [delegate selector:self didFinishSelectionWithItems:self.selectedItems];
   }
 
