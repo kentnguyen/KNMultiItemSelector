@@ -11,6 +11,13 @@
 
 @implementation KNFBIntroViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    [self setTitle:@"KNPMultiItemSelector"];
+}
+
 -(IBAction)facebookButtonDidTouch:(id)sender {
   [ApplicationDelegate beginFacebookAuthorization];
 }

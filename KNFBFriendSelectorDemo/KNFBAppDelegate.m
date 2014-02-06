@@ -32,9 +32,9 @@
   }
 
   // The tabs
-  UIViewController *vc1 = [[KNFBDemoBasicController alloc] initWithNibName:@"KNFBDemoBasicController" bundle:nil];
-  UIViewController *vc2 = [[KNFBDemoFacebookController alloc] initWithNibName:@"KNFBDemoFacebookController" bundle:nil];
-  UIViewController *vc3 = [[KNFBAboutViewController alloc] initWithNibName:@"KNFBAboutViewController" bundle:nil];
+  UIViewController *vc1 = [[UINavigationController alloc] initWithRootViewController:[[KNFBDemoBasicController alloc] initWithNibName:@"KNFBDemoBasicController" bundle:nil]];
+  UIViewController *vc2 = [[UINavigationController alloc] initWithRootViewController:[[KNFBDemoFacebookController alloc] initWithNibName:@"KNFBDemoFacebookController" bundle:nil]];
+  UIViewController *vc3 = [[UINavigationController alloc] initWithRootViewController:[[KNFBAboutViewController alloc] initWithNibName:@"KNFBAboutViewController" bundle:nil]];
   self.tabBarController = [[UITabBarController alloc] init];
   self.tabBarController.viewControllers = [NSArray arrayWithObjects:vc1, vc2, vc3, nil];
   self.window.rootViewController = self.tabBarController;
@@ -42,8 +42,11 @@
 
   // Intro screen, connect to Facebook
   if (![facebook isSessionValid]) {
-    [self.window.rootViewController presentModalViewController:[[KNFBIntroViewController alloc] initWithNibName:@"KNFBIntroViewController" bundle:nil]
-                                                      animated:NO];
+      
+      UINavigationController * navController = [[UINavigationController alloc] initWithRootViewController:[[KNFBIntroViewController alloc] initWithNibName:@"KNFBIntroViewController" bundle:nil]];
+      
+    [self.window.rootViewController presentViewController:navController
+                                                      animated:NO completion:nil];
   }
 
   return YES;
@@ -66,7 +69,7 @@
   [defaults synchronize];
 
   [SVProgressHUD dismissWithSuccess:@"Facebook"];
-  [self.window.rootViewController dismissModalViewControllerAnimated:YES];
+  [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)fbDidNotLogin:(BOOL)cancelled {
