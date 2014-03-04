@@ -26,12 +26,12 @@
 @synthesize useRecentItems, maxNumberOfRecentItems, recentItemStorageKey, maximumItemsSelected, tag;
 
 -(id)initWithItems:(NSArray*)_items
-          delegate:(id)_delegate {
+          delegate:(id)delegate {
   return [self initWithItems:_items
             preselectedItems:nil
                        title:NSLocalizedString(@"Select items", nil)
              placeholderText:NSLocalizedString(@"Search by keywords", nil)
-                    delegate:_delegate];
+                    delegate:delegate];
 }
 
 -(id)initWithItems:(NSArray*)_items
@@ -41,7 +41,7 @@
           delegate:(id)delegateObject {
   self = [super init];
   if (self) {
-    delegate = delegateObject;
+    self.delegate = delegateObject;
     self.title = title;
     self.maxNumberOfRecentItems = 5;
     self.useRecentItems = NO;
@@ -290,9 +290,9 @@
         
         // Delegate callback
         if (item.selected) {
-            if ([delegate respondsToSelector:@selector(selector:didSelectItem:)]) [delegate selector:self didSelectItem:item];
+            if ([self.delegate respondsToSelector:@selector(selector:didSelectItem:)]) [self.delegate selector:self didSelectItem:item];
         } else {
-            if ([delegate respondsToSelector:@selector(selectorDidDeselectItem:)]) [delegate selector:self didDeselectItem:item];
+            if ([self.delegate respondsToSelector:@selector(selectorDidDeselectItem:)]) [self.delegate selector:self didDeselectItem:item];
             if (selectorMode==KNSelectorModeSelected) {
                 [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
             }
@@ -384,15 +384,15 @@
     i.selected = NO;
   }
   // Delegate callback
-  if ([delegate respondsToSelector:@selector(selectorDidCancelSelection)]) {
-    [delegate selectorDidCancelSelection];
+  if ([self.delegate respondsToSelector:@selector(selectorDidCancelSelection)]) {
+    [self.delegate selectorDidCancelSelection];
   }
 }
 
 -(void)didFinish {
   // Delegate callback
-  if ([delegate respondsToSelector:@selector(selector:didFinishSelectionWithItems:)]) {
-    [delegate selector:self didFinishSelectionWithItems:self.selectedItems];
+  if ([self.delegate respondsToSelector:@selector(selector:didFinishSelectionWithItems:)]) {
+    [self.delegate selector:self didFinishSelectionWithItems:self.selectedItems];
   }
 
   // Store recent items FIFO
