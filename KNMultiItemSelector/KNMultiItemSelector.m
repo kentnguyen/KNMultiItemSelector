@@ -214,7 +214,7 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
   if (selectorMode == KNSelectorModeNormal) {
-    int noSec = useTableIndex ? [[self sortedIndices] count] : 1;
+    NSUInteger noSec = useTableIndex ? [[self sortedIndices] count] : 1;
     return self.useRecentItems && recentItems.count ? noSec+1 : noSec;
   } else {
     return 1;
@@ -355,8 +355,8 @@
 
 -(KNSelectorItem*)itemAtIndexPath:(NSIndexPath*)indexPath {
   // Determine the correct item at different settings
-  int r = indexPath.row;
-  int s = indexPath.section;
+  NSUInteger r = indexPath.row;
+  NSUInteger s = indexPath.section;
   if (selectorMode == KNSelectorModeSearch) {
     return [filteredItems objectAtIndex:r];
   }
