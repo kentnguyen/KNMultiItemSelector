@@ -142,6 +142,8 @@
   // Nav bar button
   self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(didFinish)];
   self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(didCancel)];
+
+  [self updateSelectedCount];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -201,8 +203,10 @@
   NSUInteger count = self.selectedItems.count;
   if (count == 0) {
     [selectedModeButton setTitle:NSLocalizedString(@"Selected (0)", @"0 is the initial count; nothing selected.") forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem.enabled = NO;
   } else {
     [selectedModeButton setTitle:[NSString stringWithFormat:NSLocalizedString(@"Selected (%d)", @"%d is the count of selected items"), self.selectedItems.count] forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem.enabled = YES;
   }
 }
 
