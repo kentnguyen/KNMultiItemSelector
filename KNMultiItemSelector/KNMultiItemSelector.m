@@ -296,7 +296,7 @@
         if (item.selected) {
             if ([self.delegate respondsToSelector:@selector(selector:didSelectItem:)]) [self.delegate selector:self didSelectItem:item];
         } else {
-            if ([self.delegate respondsToSelector:@selector(selectorDidDeselectItem:)]) [self.delegate selector:self didDeselectItem:item];
+            if ([self.delegate respondsToSelector:@selector(selector:didDeselectItem:)]) [self.delegate selector:self didDeselectItem:item];
             if (selectorMode==KNSelectorModeSelected) {
                 [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
             }
