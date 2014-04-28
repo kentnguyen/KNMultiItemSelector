@@ -44,11 +44,11 @@ typedef enum {
   NSInteger tag;
 
   KNSelectorMode selectorMode;
-  id<KNMultiItemSelectorDelegate> delegate;
 }
 
 #pragma mark - Public properties
 
+@property (nonatomic, weak) id<KNMultiItemSelectorDelegate> delegate;
 @property (nonatomic, strong) UITableView * tableView;
 @property (nonatomic, strong) UITextField * searchTextField;
 @property (nonatomic, readonly) NSArray * selectedItems;

@@ -26,12 +26,12 @@
 @synthesize useRecentItems, maxNumberOfRecentItems, recentItemStorageKey, maximumItemsSelected, tag;
 
 -(id)initWithItems:(NSArray*)_items
-          delegate:(id)_delegate {
+          delegate:(id)delegate {
   return [self initWithItems:_items
             preselectedItems:nil
                        title:NSLocalizedString(@"Select items", nil)
              placeholderText:NSLocalizedString(@"Search by keywords", nil)
-                    delegate:_delegate];
+                    delegate:delegate];
 }
 
 -(id)initWithItems:(NSArray*)_items
@@ -41,7 +41,7 @@
           delegate:(id)delegateObject {
   self = [super init];
   if (self) {
-    delegate = delegateObject;
+    self.delegate = delegateObject;
     self.title = title;
     self.maxNumberOfRecentItems = 5;
     self.useRecentItems = NO;
@@ -142,6 +142,8 @@
   // Nav bar button
   self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(didFinish)];
   self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(didCancel)];
+
+  [self updateSelectedCount];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -201,8 +203,10 @@
   NSUInteger count = self.selectedItems.count;
   if (count == 0) {
     [selectedModeButton setTitle:NSLocalizedString(@"Selected (0)", @"0 is the initial count; nothing selected.") forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem.enabled = NO;
   } else {
     [selectedModeButton setTitle:[NSString stringWithFormat:NSLocalizedString(@"Selected (%d)", @"%d is the count of selected items"), self.selectedItems.count] forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem.enabled = YES;
   }
 }
 
@@ -210,7 +214,7 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
   if (selectorMode == KNSelectorModeNormal) {
-    int noSec = useTableIndex ? [[self sortedIndices] count] : 1;
+    NSUInteger noSec = useTableIndex ? [[self sortedIndices] count] : 1;
     return self.useRecentItems && recentItems.count ? noSec+1 : noSec;
   } else {
     return 1;
@@ -290,9 +294,9 @@
         
         // Delegate callback
         if (item.selected) {
-            if ([delegate respondsToSelector:@selector(selector:didSelectItem:)]) [delegate selector:self didSelectItem:item];
+            if ([self.delegate respondsToSelector:@selector(selector:didSelectItem:)]) [self.delegate selector:self didSelectItem:item];
         } else {
-            if ([delegate respondsToSelector:@selector(selectorDidDeselectItem:)]) [delegate selector:self didDeselectItem:item];
+            if ([self.delegate respondsToSelector:@selector(selector:didDeselectItem:)]) [self.delegate selector:self didDeselectItem:item];
             if (selectorMode==KNSelectorModeSelected) {
                 [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
             }
@@ -351,8 +355,8 @@
 
 -(KNSelectorItem*)itemAtIndexPath:(NSIndexPath*)indexPath {
   // Determine the correct item at different settings
-  int r = indexPath.row;
-  int s = indexPath.section;
+  NSUInteger r = indexPath.row;
+  NSUInteger s = indexPath.section;
   if (selectorMode == KNSelectorModeSearch) {
     return [filteredItems objectAtIndex:r];
   }
@@ -384,15 +388,15 @@
     i.selected = NO;
   }
   // Delegate callback
-  if ([delegate respondsToSelector:@selector(selectorDidCancelSelection)]) {
-    [delegate selectorDidCancelSelection];
+  if ([self.delegate respondsToSelector:@selector(selectorDidCancelSelection)]) {
+    [self.delegate selectorDidCancelSelection];
   }
 }
 
 -(void)didFinish {
   // Delegate callback
-  if ([delegate respondsToSelector:@selector(selector:didFinishSelectionWithItems:)]) {
-    [delegate selector:self didFinishSelectionWithItems:self.selectedItems];
+  if ([self.delegate respondsToSelector:@selector(selector:didFinishSelectionWithItems:)]) {
+    [self.delegate selector:self didFinishSelectionWithItems:self.selectedItems];
   }
 
   // Store recent items FIFO
