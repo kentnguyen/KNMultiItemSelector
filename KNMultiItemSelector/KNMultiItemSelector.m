@@ -144,6 +144,15 @@
   self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(didCancel)];
 }
 
+-(void)viewDidLoad {
+  [super viewDidLoad];
+    
+  if (([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) && ([self respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)])) {
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+  }
+}
+
 -(void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
 
