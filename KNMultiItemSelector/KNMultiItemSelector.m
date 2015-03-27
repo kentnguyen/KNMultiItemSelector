@@ -16,11 +16,17 @@
 
 @end
 
+enum EnumLeftButtonType {
+  kLeftButtonCancel,
+  kLeftButtonBack
+};
+
 #pragma mark - Implementation
 
 @implementation KNMultiItemSelector {
   NSString * placeholderText;
   KNSelectorGroup* selectedGroup;
+  enum EnumLeftButtonType leftButtonType;
 }
 
 @synthesize tableView, useTableIndex, selectedItems, searchTextField, allowSearchControl, allowModeButtons;
@@ -162,7 +168,30 @@
   
   // Nav bar button
   self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(didFinish)];
-  self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(didCancel)];
+  self.navigationItem.leftBarButtonItem = [self createCancelButton];
+  leftButtonType = kLeftButtonCancel;
+}
+
+- (void)setCancelButton {
+  if (leftButtonType != kLeftButtonCancel) {
+    [self.navigationItem setLeftBarButtonItem:[self createCancelButton] animated:YES];
+    leftButtonType = kLeftButtonCancel;
+  }
+}
+
+- (void)setBackButton {
+  if (leftButtonType != kLeftButtonBack) {
+    [self.navigationItem setLeftBarButtonItem:[self createBackButton] animated:YES];
+    leftButtonType = kLeftButtonBack;
+  }
+}
+
+- (UIBarButtonItem*)createCancelButton {
+    return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(didCancel)];
+}
+
+- (UIBarButtonItem*)createBackButton {
+    return [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", nil) style:UIBarButtonItemStylePlain target:self action:@selector(goBack)];
 }
 
 -(void)viewDidLoad {
@@ -328,6 +357,8 @@
         // Update the UI
         NSIndexSet* sections = [NSIndexSet indexSetWithIndex:0];
         [_tableView reloadSections:sections withRowAnimation:UITableViewRowAnimationLeft];
+        
+        [self setBackButton];
     }
     else
     {
@@ -455,6 +486,19 @@
   }
 }
 
+-(void)goBack {
+  // Unselect current group
+  selectedGroup = nil;
+    
+  selectorMode = KNSelectorModeGroups;
+    
+  // Update the UI
+  NSIndexSet* sections = [NSIndexSet indexSetWithIndex:0];
+  [self.tableView reloadSections:sections withRowAnimation:UITableViewRowAnimationLeft];
+    
+  [self setCancelButton];
+}
+
 -(void)didFinish {
   // Delegate callback
   if ([delegate respondsToSelector:@selector(selector:didFinishSelectionWithItems:)]) {
@@ -486,6 +530,8 @@
   CGRect targetTableFrame;
   CGFloat targetIndicatorX;
   CGFloat targetTextFieldAlpha = 0;
+    
+  [self setCancelButton];
 
   if (s == normalModeButton) {
     selectorMode = self.searchTextField.text.length > 0 ? KNSelectorModeSearch : KNSelectorModeNormal;
