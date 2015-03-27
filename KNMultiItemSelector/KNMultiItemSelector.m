@@ -187,12 +187,18 @@
 
    
 
-  int buttonCount = 3;
+  int buttonCount = 2;
+  BOOL hasGroups = ((self.groups != nil) && (self.groups.count > 0));
+  if (hasGroups) {
+    buttonCount += 1;
+  }
   CGFloat xPos = f.size.width/2 - 90 * (buttonCount / 2.0);
   normalModeButton.frame = CGRectMake(xPos, f.size.height-44, 90, 44);
   xPos += 90;
-  groupsModeButton.frame = CGRectMake(xPos, f.size.height-44, 90, 44);
-  xPos += 90;
+  if (hasGroups) {
+    groupsModeButton.frame = CGRectMake(xPos, f.size.height-44, 90, 44);
+    xPos += 90;
+  }
   selectedModeButton.frame = CGRectMake(xPos, f.size.height-44, 90, 44);
   modeIndicatorImageView.center = CGPointMake(normalModeButton.center.x, f.size.height-44+modeIndicatorImageView.frame.size.height/2);
 
@@ -200,7 +206,10 @@
 }
 
 -(void)showHideModeButtons {  
-  normalModeButton.hidden = selectedModeButton.hidden = groupsModeButton.hidden = modeIndicatorImageView.hidden = !self.allowModeButtons;
+  normalModeButton.hidden = selectedModeButton.hidden = modeIndicatorImageView.hidden = !self.allowModeButtons;
+
+  BOOL hasGroups = ((self.groups != nil) && (self.groups.count > 0));
+  groupsModeButton.hidden = normalModeButton.hidden || !hasGroups;
 
   CGRect tableFrame = self.tableView.frame;
 
