@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "KNSelectorItem.h"
+#import "KNSelectorGroup.h"
 
 typedef enum {
   KNSelectorModeNormal,
   KNSelectorModeSearch,
-  KNSelectorModeSelected
+  KNSelectorModeSelected,
+  KNSelectorModeGroups,
+  KNSelectorModeGroupMembers
 } KNSelectorMode;
 
 @class KNMultiItemSelector;
@@ -37,6 +40,7 @@ typedef enum {
 
   UIButton * normalModeButton;
   UIButton * selectedModeButton;
+  UIButton * groupsModeButton;
   UIImageView * modeIndicatorImageView;
   UIView * textFieldWrapper;
     
@@ -54,6 +58,7 @@ typedef enum {
 @property (nonatomic, readonly) NSArray * selectedItems;
 @property (nonatomic, assign) NSInteger maximumItemsSelected;
 @property (nonatomic, assign) NSInteger tag;
+@property (nonatomic, copy) NSArray * groups;
 
 // Turn on/off table index for items, default to NO
 @property (nonatomic) BOOL useTableIndex;

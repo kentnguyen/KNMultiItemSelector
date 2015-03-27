@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 Kent Nguyen. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
+
 @interface KNSelectorItem : NSObject
 
 @property (strong,nonatomic) NSString * displayValue;

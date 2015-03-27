@@ -20,6 +20,7 @@
 
 @implementation KNMultiItemSelector {
   NSString * placeholderText;
+  KNSelectorGroup* selectedGroup;
 }
 
 @synthesize tableView, useTableIndex, selectedItems, searchTextField, allowSearchControl, allowModeButtons;
@@ -121,21 +122,28 @@
   modeIndicatorImageView.contentMode = UIViewContentModeCenter;
   [self.view addSubview:modeIndicatorImageView];
   
-  // Two mode buttons
+  // Three mode buttons
   normalModeButton = [UIButton buttonWithType:UIButtonTypeCustom];
   selectedModeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+  groupsModeButton = [UIButton buttonWithType:UIButtonTypeCustom];
   [normalModeButton setTitle:NSLocalizedString(@"All", nil) forState:UIControlStateNormal];
   [normalModeButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
   [selectedModeButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+  [groupsModeButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+  [groupsModeButton setTitle:NSLocalizedString(@"Groups", nil) forState:UIControlStateNormal];
   [normalModeButton setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
   [selectedModeButton setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
+  [groupsModeButton setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
   [normalModeButton addTarget:self action:@selector(modeButtonDidTouch:) forControlEvents:UIControlEventTouchUpInside];
   [selectedModeButton addTarget:self action:@selector(modeButtonDidTouch:) forControlEvents:UIControlEventTouchUpInside];
-  normalModeButton.titleLabel.font = selectedModeButton.titleLabel.font = [UIFont boldSystemFontOfSize:13];
+  [groupsModeButton addTarget:self action:@selector(modeButtonDidTouch:) forControlEvents:UIControlEventTouchUpInside];
+  normalModeButton.titleLabel.font = groupsModeButton.titleLabel.font = selectedModeButton.titleLabel.font = [UIFont boldSystemFontOfSize:13];
   normalModeButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
   selectedModeButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+  groupsModeButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
   [normalModeButton setSelected:YES];
   [self.view addSubview:normalModeButton];
+  [self.view addSubview:groupsModeButton];
   [self.view addSubview:selectedModeButton];
   [self updateSelectedCount];
   
@@ -179,16 +187,20 @@
 
    
 
-
-  normalModeButton.frame = CGRectMake(f.size.width/2-90, f.size.height-44, 90, 44);
-  selectedModeButton.frame = CGRectMake(f.size.width/2, f.size.height-44, 90, 44);
+  int buttonCount = 3;
+  CGFloat xPos = f.size.width/2 - 90 * (buttonCount / 2.0);
+  normalModeButton.frame = CGRectMake(xPos, f.size.height-44, 90, 44);
+  xPos += 90;
+  groupsModeButton.frame = CGRectMake(xPos, f.size.height-44, 90, 44);
+  xPos += 90;
+  selectedModeButton.frame = CGRectMake(xPos, f.size.height-44, 90, 44);
   modeIndicatorImageView.center = CGPointMake(normalModeButton.center.x, f.size.height-44+modeIndicatorImageView.frame.size.height/2);
 
   [self showHideModeButtons];
 }
 
 -(void)showHideModeButtons {  
-  normalModeButton.hidden = selectedModeButton.hidden = modeIndicatorImageView.hidden = !self.allowModeButtons;
+  normalModeButton.hidden = selectedModeButton.hidden = groupsModeButton.hidden = modeIndicatorImageView.hidden = !self.allowModeButtons;
 
   CGRect tableFrame = self.tableView.frame;
 
@@ -239,6 +251,10 @@
     } else {
       return items.count;
     }
+  } else if (selectorMode == KNSelectorModeGroups) {
+    return self.groups.count;
+  } else if (selectorMode == KNSelectorModeGroupMembers) {
+    return selectedGroup.groupMembers.count;
   } else {
     return self.selectedItems.count;
   }
@@ -279,6 +295,17 @@
                                    delegate:nil
                           cancelButtonTitle:NSLocalizedString(@"OK", @"")
                           otherButtonTitles:nil, nil] show];
+    }
+    else if (selectorMode == KNSelectorModeGroups)
+    {
+        // Select the group that was tapped on
+        selectedGroup = [self.groups objectAtIndex:indexPath.row];
+        
+        selectorMode = KNSelectorModeGroupMembers;
+        
+        // Update the UI
+        NSIndexSet* sections = [NSIndexSet indexSetWithIndex:0];
+        [_tableView reloadSections:sections withRowAnimation:UITableViewRowAnimationLeft];
     }
     else
     {
@@ -381,6 +408,21 @@
   if (selectorMode == KNSelectorModeSelected) {
     return [self.selectedItems objectAtIndex:r];
   }
+    
+  if (selectorMode == KNSelectorModeGroups) {
+    return [self.groups objectAtIndex:r];
+  }
+    
+  if (selectorMode == KNSelectorModeGroupMembers) {
+    KNSelectorItem* groupMember = [selectedGroup.groupMembers objectAtIndex:r];
+    for (NSUInteger i = 0; i < items.count; i ++) {
+      KNSelectorItem* item = [items objectAtIndex:i];
+      if ([item.selectValue isEqualToString:groupMember.selectValue]) {
+        return item;
+      }
+    }
+    return groupMember;
+  }
 
   return [items objectAtIndex:r];
 }
@@ -425,38 +467,61 @@
 -(void)modeButtonDidTouch:(id)sender {
   UIButton * s = (UIButton*)sender;
   if (s.selected) return;
+    
+  CGRect targetTableFrame;
+  CGFloat targetIndicatorX;
+  CGFloat targetTextFieldAlpha = 0;
 
   if (s == normalModeButton) {
     selectorMode = self.searchTextField.text.length > 0 ? KNSelectorModeSearch : KNSelectorModeNormal;
     normalModeButton.selected = YES;
+    groupsModeButton.selected = NO;
     selectedModeButton.selected = NO;
     [self.tableView reloadData];
-    [UIView animateWithDuration:0.3 animations:^{
-      if (!textFieldWrapper.hidden) {
-        CGRect f = self.tableView.frame;
-        f.origin.y = textFieldWrapper.frame.size.height;
-        f.size.height -= f.origin.y;
-        self.tableView.frame = f;
-        textFieldWrapper.alpha = 1;
-      }
-      modeIndicatorImageView.center = CGPointMake(normalModeButton.center.x, modeIndicatorImageView.center.y);
-    }];
+    
+    CGRect f = self.tableView.frame;
+    f.origin.y = textFieldWrapper.frame.size.height;
+    f.size.height -= f.origin.y;
+    targetTableFrame = f;
+    targetTextFieldAlpha = 1;
+    targetIndicatorX = normalModeButton.center.x;
+    
+  } else if (s == groupsModeButton) {
+    selectorMode = KNSelectorModeGroups;
+    selectedGroup = nil;
+    normalModeButton.selected = NO;
+    groupsModeButton.selected = YES;
+    selectedModeButton.selected = NO;
+    [self.tableView reloadData];
+      
+    CGRect f = self.tableView.frame;
+    f.origin.y = 0;
+    f.size.height += textFieldWrapper.frame.size.height;
+    targetTableFrame = f;
+    targetTextFieldAlpha = 0;
+    targetIndicatorX = groupsModeButton.center.x;
   } else {
     selectorMode = KNSelectorModeSelected;
     normalModeButton.selected = NO;
+    groupsModeButton.selected = NO;
     selectedModeButton.selected = YES;
     [self.tableView reloadData];
-    [UIView animateWithDuration:0.3 animations:^{
-      if (!textFieldWrapper.hidden) {
-        CGRect f = self.tableView.frame;
-        f.origin.y = 0;
-        f.size.height += textFieldWrapper.frame.size.height;
-        self.tableView.frame = f;
-        textFieldWrapper.alpha = 0;
-      }
-      modeIndicatorImageView.center = CGPointMake(selectedModeButton.center.x, modeIndicatorImageView.center.y);
-    }];
+      
+    CGRect f = self.tableView.frame;
+    f.origin.y = 0;
+    f.size.height += textFieldWrapper.frame.size.height;
+    targetTableFrame = f;
+    targetTextFieldAlpha = 0;
+    targetIndicatorX = selectedModeButton.center.x;
   }
+    
+  [UIView animateWithDuration:0.3 animations:^{
+    if (!textFieldWrapper.hidden) {
+      self.tableView.frame = targetTableFrame;
+      textFieldWrapper.alpha = targetTextFieldAlpha;
+    }
+    modeIndicatorImageView.center = CGPointMake(targetIndicatorX, modeIndicatorImageView.center.y);
+  }];
 }
 
 #pragma mark - Table indices
@@ -505,6 +570,7 @@
   modeIndicatorImageView = nil;
   normalModeButton = nil;
   selectedModeButton = nil;
+  groupsModeButton = nil;
   
   [super viewDidUnload];
 }
