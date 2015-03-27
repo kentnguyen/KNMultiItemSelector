@@ -40,6 +40,17 @@
              title:(NSString*)title
    placeholderText:(NSString*)_placeholder
           delegate:(id)delegateObject {
+    
+    return [self initWithItems:_items preselectedItems:_preselectedItems groups:nil title:title placeholderText:_placeholder delegate:delegateObject];
+}
+
+-(id)initWithItems:(NSArray*)_items
+  preselectedItems:(NSArray*)_preselectedItems
+            groups:(NSArray*)groups
+             title:(NSString*)title
+   placeholderText:(NSString*)_placeholder
+          delegate:(id)delegateObject {
+    
   self = [super init];
   if (self) {
     delegate = delegateObject;
@@ -75,6 +86,8 @@
       NSMutableArray * a = [indices objectForKey:letter];
       [a addObject:i];
     }
+      
+    self.groups = [self mapGroups:groups];
   }
   return self;
 }
@@ -423,14 +436,7 @@
   }
     
   if (selectorMode == KNSelectorModeGroupMembers) {
-    KNSelectorItem* groupMember = [selectedGroup.groupMembers objectAtIndex:r];
-    for (NSUInteger i = 0; i < items.count; i ++) {
-      KNSelectorItem* item = [items objectAtIndex:i];
-      if ([item.selectValue isEqualToString:groupMember.selectValue]) {
-        return item;
-      }
-    }
-    return groupMember;
+    return [selectedGroup.groupMembers objectAtIndex:r];
   }
 
   return [items objectAtIndex:r];
@@ -582,6 +588,35 @@
   groupsModeButton = nil;
   
   [super viewDidUnload];
+}
+
+#pragma mark - Group stuff
+
+- (NSArray*)mapGroups:(NSArray*)groups {
+    NSMutableArray* mappedGroups = [NSMutableArray arrayWithCapacity:groups.count];
+    for (KNSelectorGroup* group in groups) {
+        [mappedGroups addObject:[self mapGroup:group]];
+    }
+    return mappedGroups;
+}
+
+- (KNSelectorGroup*)mapGroup:(KNSelectorGroup*)group {
+    NSMutableArray* mappedItems = [NSMutableArray arrayWithCapacity:group.groupMembers.count];
+    for (KNSelectorItem* item in group.groupMembers) {
+        [mappedItems addObject:[self itemForGroupMember:item]];
+    }
+    group.groupMembers = mappedItems;
+    return group;
+}
+
+- (KNSelectorItem*)itemForGroupMember:(KNSelectorItem*)groupMember {
+    for (NSUInteger i = 0; i < items.count; i ++) {
+        KNSelectorItem* item = [items objectAtIndex:i];
+        if ([item.selectValue isEqualToString:groupMember.selectValue]) {
+            return item;
+        }
+    }
+    return groupMember;
 }
 
 @end

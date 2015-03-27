@@ -87,4 +87,11 @@ typedef enum {
    placeholderText:(NSString*)_placeholder
           delegate:(id)delegateObject;
 
+-(id)initWithItems:(NSArray*)_items
+  preselectedItems:(NSArray*)_preselectedItems
+            groups:(NSArray*)groups
+             title:(NSString*)title
+   placeholderText:(NSString*)_placeholder
+          delegate:(id)delegateObject;
+
 @end
