@@ -10,6 +10,7 @@
 #import "KNFBAppDelegate.h"
 
 #import "KNMultiItemSelector.h"
+#import "KNFBIntroViewController.h"
 
 @implementation KNFBDemoFacebookController
 @synthesize textView;
@@ -34,9 +35,18 @@
   [super viewDidLoad];
   ipadOnlyLabel.hidden = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
 
-  // Fetch all facebook friends and store in NSArray
-  [ApplicationDelegate.facebook requestWithGraphPath:@"me/friends" andDelegate:self];
-  [SVProgressHUD showWithStatus:@"Fetching friends" maskType:SVProgressHUDMaskTypeGradient];
+  //Intro screen, connect to Facebook if not already
+  if (![ApplicationDelegate.facebook isSessionValid]) {
+
+    UINavigationController * navController = [[UINavigationController alloc] initWithRootViewController:[[KNFBIntroViewController alloc] initWithNibName:@"KNFBIntroViewController" bundle:nil]];
+
+    [ApplicationDelegate.window.rootViewController presentViewController:navController animated:NO completion:nil];
+  }
+  else {
+      // Fetch all facebook friends and store in NSArray
+      [ApplicationDelegate.facebook requestWithGraphPath:@"me/friends" andDelegate:self];
+      [SVProgressHUD showWithStatus:@"Fetching friends" maskType:SVProgressHUDMaskTypeGradient];
+  }
 }
 
 
