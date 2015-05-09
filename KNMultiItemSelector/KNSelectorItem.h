@@ -6,7 +6,17 @@
 //  Copyright (c) 2012 Kent Nguyen. All rights reserved.
 //
 
-@interface KNSelectorItem : NSObject
+@protocol KNSelectorItem <NSObject>
+
+@property (strong,nonatomic) NSString * displayValue;
+@property (strong,nonatomic) NSString * selectValue;
+@property (strong,nonatomic) NSString * imageUrl;
+@property (strong, nonatomic) UIImage *image;
+@property (nonatomic) BOOL selected;
+
+@end
+
+@interface KNSelectorItem : NSObject<KNSelectorItem>
 
 @property (strong,nonatomic) NSString * displayValue;
 @property (strong,nonatomic) NSString * selectValue;

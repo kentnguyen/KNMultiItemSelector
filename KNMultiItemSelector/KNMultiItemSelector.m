@@ -53,7 +53,7 @@
     // Initialize item arrays
     items = [_items mutableCopy];
 
-    for (KNSelectorItem * item in items) {
+    for (id<KNSelectorItem> item in items) {
         item.selected = [_preselectedItems containsObject:item];
     }
 
@@ -63,7 +63,7 @@
 
     // Preparing indices and Recent items
     indices = [NSMutableDictionary dictionary];
-    for (KNSelectorItem * i in items) {
+    for (id<KNSelectorItem> i in items) {
       NSString * letter = [i.displayValue substringToIndex:1];
       if (![indices objectForKey:letter]) {
         [indices setObject:[NSMutableArray array] forKey:letter];
@@ -243,7 +243,7 @@
   }
 
   // Which item?
-  KNSelectorItem * item = [self itemAtIndexPath:indexPath];
+  id<KNSelectorItem> item = [self itemAtIndexPath:indexPath];
 
   // Change the cell appearance
   cell.textLabel.text = item.displayValue;
@@ -274,7 +274,7 @@
     else
     {
         // Which item?
-        KNSelectorItem * item = [self itemAtIndexPath:indexPath];
+        id<KNSelectorItem> item = [self itemAtIndexPath:indexPath];
         item.selected = !item.selected;
         
         // Recount selected items
@@ -349,7 +349,7 @@
 
 #pragma mark - Helpers
 
--(KNSelectorItem*)itemAtIndexPath:(NSIndexPath*)indexPath {
+-(id<KNSelectorItem>)itemAtIndexPath:(NSIndexPath*)indexPath {
   // Determine the correct item at different settings
   int r = indexPath.row;
   int s = indexPath.section;
@@ -380,7 +380,7 @@
 
 -(void)didCancel {
   // Clear all selections
-  for (KNSelectorItem * i in self.selectedItems) {
+  for (id<KNSelectorItem> i in self.selectedItems) {
     i.selected = NO;
   }
   // Delegate callback
@@ -400,7 +400,7 @@
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray * array = [(NSMutableArray*)[defaults objectForKey:self.recentItemStorageKey] mutableCopy];
     if (!array) array = [NSMutableArray array];
-    for (KNSelectorItem * i in self.selectedItems) {
+    for (id<KNSelectorItem> i in self.selectedItems) {
       [array insertObject:i.selectValue atIndex:0];
     }
     while (array.count > self.maxNumberOfRecentItems) {
