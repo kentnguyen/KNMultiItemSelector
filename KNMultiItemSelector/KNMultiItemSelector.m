@@ -53,8 +53,11 @@
     // Initialize item arrays
     items = [_items mutableCopy];
 
-    for (id<KNSelectorItem> item in items) {
+    // Only change original selection if provided explicit preselected array.
+    if (_preselectedItems.count > 0) {
+      for (id<KNSelectorItem> item in items) {
         item.selected = [_preselectedItems containsObject:item];
+      }
     }
 
     // Recent selected items section
@@ -210,7 +213,7 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
   if (selectorMode == KNSelectorModeNormal) {
-    int noSec = useTableIndex ? [[self sortedIndices] count] : 1;
+    NSInteger noSec = useTableIndex ? [[self sortedIndices] count] : 1;
     return self.useRecentItems && recentItems.count ? noSec+1 : noSec;
   } else {
     return 1;
@@ -248,7 +251,7 @@
   // Change the cell appearance
   cell.textLabel.text = item.displayValue;
   if (item.imageUrl) {
-    [cell.imageView setImageWithURL:[NSURL URLWithString:item.imageUrl] placeholderImage:[UIImage imageNamed:@"KNDefaultImage"]];
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:item.imageUrl] placeholderImage:[UIImage imageNamed:@"KNDefaultImage"]];
   }
   if (item.image) {
     [cell.imageView setImage:item.image];
@@ -292,7 +295,7 @@
         if (item.selected) {
             if ([delegate respondsToSelector:@selector(selector:didSelectItem:)]) [delegate selector:self didSelectItem:item];
         } else {
-            if ([delegate respondsToSelector:@selector(selectorDidDeselectItem:)]) [delegate selector:self didDeselectItem:item];
+            if ([delegate respondsToSelector:@selector(selector:didDeselectItem:)]) [delegate selector:self didDeselectItem:item];
             if (selectorMode==KNSelectorModeSelected) {
                 [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
             }
@@ -343,6 +346,14 @@
   return [items filteredArrayUsingPredicate:pred];
 }
 
+-(NSUInteger)selectedBitmask {
+    __block NSUInteger bitmask = 0UL;
+    [items enumerateObjectsUsingBlock:^(KNSelectorItem *item, NSUInteger idx, BOOL *stop) {
+        bitmask ^= ((unsigned long)(item.selected) << idx);        
+    }];
+    return bitmask;
+}
+
 -(NSArray*)sortedIndices {
   return [indices.allKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
 }
@@ -351,8 +362,8 @@
 
 -(id<KNSelectorItem>)itemAtIndexPath:(NSIndexPath*)indexPath {
   // Determine the correct item at different settings
-  int r = indexPath.row;
-  int s = indexPath.section;
+  NSInteger r = indexPath.row;
+  NSInteger s = indexPath.section;
   if (selectorMode == KNSelectorModeSearch) {
     return [filteredItems objectAtIndex:r];
   }
@@ -384,7 +395,10 @@
     i.selected = NO;
   }
   // Delegate callback
-  if ([delegate respondsToSelector:@selector(selectorDidCancelSelection)]) {
+  if ([delegate respondsToSelector:@selector(selectorDidCancelSelection:)]) {
+    [delegate selectorDidCancelSelection:self];
+  }
+  else if ([delegate respondsToSelector:@selector(selectorDidCancelSelection)]) {
     [delegate selectorDidCancelSelection];
   }
 }
@@ -476,28 +490,10 @@
     }
   }
   return nil;
-  return selectorMode == KNSelectorModeNormal && useTableIndex ? [self sortedIndices] : nil;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
   return index;
-}
-
-#pragma mark - Other memory stuff
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-  return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-- (void)viewDidUnload {
-  self.tableView = nil;
-  self.searchTextField = nil;
-  textFieldWrapper = nil;
-  modeIndicatorImageView = nil;
-  normalModeButton = nil;
-  selectedModeButton = nil;
-  
-  [super viewDidUnload];
 }
 
 @end

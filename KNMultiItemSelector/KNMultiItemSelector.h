@@ -23,6 +23,7 @@ typedef enum {
 -(void)selectorDidCancelSelection;
 -(void)selector:(KNMultiItemSelector *)selector didFinishSelectionWithItems:(NSArray*)selectedItems;
 @optional
+-(void)selectorDidCancelSelection:(KNMultiItemSelector *)selector;
 -(void)selector:(KNMultiItemSelector *)selector didSelectItem:(KNSelectorItem*)selectedItem;
 -(void)selector:(KNMultiItemSelector *)selector didDeselectItem:(KNSelectorItem*)selectedItem;
 @end
@@ -52,6 +53,7 @@ typedef enum {
 @property (nonatomic, strong) UITableView * tableView;
 @property (nonatomic, strong) UITextField * searchTextField;
 @property (nonatomic, readonly) NSArray * selectedItems;
+@property (nonatomic, readonly) NSUInteger selectedBitmask;
 @property (nonatomic, assign) NSInteger maximumItemsSelected;
 @property (nonatomic, assign) NSInteger tag;
 
