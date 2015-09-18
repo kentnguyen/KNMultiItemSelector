@@ -228,23 +228,39 @@ enum EnumLeftButtonType {
 
 
    
-
-  int buttonCount = 2;
-  BOOL hasGroups = ((self.groups != nil) && (self.groups.count > 0));
-  if (hasGroups) {
-    buttonCount += 1;
-  }
-  CGFloat xPos = f.size.width/2 - 90 * (buttonCount / 2.0);
-  normalModeButton.frame = CGRectMake(xPos, f.size.height-44, 90, 44);
-  xPos += 90;
-  if (hasGroups) {
-    groupsModeButton.frame = CGRectMake(xPos, f.size.height-44, 90, 44);
-    xPos += 90;
-  }
-  selectedModeButton.frame = CGRectMake(xPos, f.size.height-44, 90, 44);
-  modeIndicatorImageView.center = CGPointMake(normalModeButton.center.x, f.size.height-44+modeIndicatorImageView.frame.size.height/2);
+    if (![self.view respondsToSelector:@selector(readableContentGuide)]) {
+        [self positionButtons];
+    }
 
   [self showHideModeButtons];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if ([self.view respondsToSelector:@selector(readableContentGuide)]) {
+        // In iOS9+, wait until view has actually appeared
+        [self positionButtons];
+    }
+}
+
+- (void)positionButtons {
+    CGRect f = self.view.frame;
+    
+    int buttonCount = 2;
+    BOOL hasGroups = ((self.groups != nil) && (self.groups.count > 0));
+    if (hasGroups) {
+        buttonCount += 1;
+    }
+    CGFloat xPos = f.size.width/2 - 90 * (buttonCount / 2.0);
+    normalModeButton.frame = CGRectMake(xPos, f.size.height-44, 90, 44);
+    xPos += 90;
+    if (hasGroups) {
+        groupsModeButton.frame = CGRectMake(xPos, f.size.height-44, 90, 44);
+        xPos += 90;
+    }
+    selectedModeButton.frame = CGRectMake(xPos, f.size.height-44, 90, 44);
+    modeIndicatorImageView.center = CGPointMake(normalModeButton.center.x, f.size.height-44+modeIndicatorImageView.frame.size.height/2);
 }
 
 -(void)showHideModeButtons {  
