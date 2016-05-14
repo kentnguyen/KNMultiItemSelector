@@ -40,15 +40,6 @@
   self.window.rootViewController = self.tabBarController;
   [self.window makeKeyAndVisible];
 
-  // Intro screen, connect to Facebook
-  if (![facebook isSessionValid]) {
-      
-      UINavigationController * navController = [[UINavigationController alloc] initWithRootViewController:[[KNFBIntroViewController alloc] initWithNibName:@"KNFBIntroViewController" bundle:nil]];
-      
-    [self.window.rootViewController presentViewController:navController
-                                                      animated:NO completion:nil];
-  }
-
   return YES;
 }
 
