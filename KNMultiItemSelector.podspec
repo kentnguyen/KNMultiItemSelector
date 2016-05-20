@@ -5,6 +5,7 @@ Pod::Spec.new do |s|
   s.homepage = 'https://github.com/kentnguyen/KNMultiItemSelector'
   s.author   = { 'Kent Nguyen' => 'nguyen.dmz@gmail.com' }
   s.platform = :ios
+  s.ios.deployment_target = '5.0'
   s.version  = '1.0.1'
   s.source   = { :git => 'https://github.com/kentnguyen/KNMultiItemSelector.git', :tag => '1.0' }
 
