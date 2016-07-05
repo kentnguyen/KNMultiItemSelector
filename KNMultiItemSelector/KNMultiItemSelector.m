@@ -16,10 +16,17 @@
 
 @end
 
+enum EnumLeftButtonType {
+  kLeftButtonCancel,
+  kLeftButtonBack
+};
+
 #pragma mark - Implementation
 
 @implementation KNMultiItemSelector {
   NSString * placeholderText;
+  KNSelectorGroup* selectedGroup;
+  enum EnumLeftButtonType leftButtonType;
 }
 
 @synthesize tableView, useTableIndex, selectedItems, searchTextField, allowSearchControl, allowModeButtons;
@@ -39,6 +46,17 @@
              title:(NSString*)title
    placeholderText:(NSString*)_placeholder
           delegate:(id)delegateObject {
+    
+    return [self initWithItems:_items preselectedItems:_preselectedItems groups:nil title:title placeholderText:_placeholder delegate:delegateObject];
+}
+
+-(id)initWithItems:(NSArray*)_items
+  preselectedItems:(NSArray*)_preselectedItems
+            groups:(NSArray*)groups
+             title:(NSString*)title
+   placeholderText:(NSString*)_placeholder
+          delegate:(id)delegateObject {
+    
   self = [super init];
   if (self) {
     delegate = delegateObject;
@@ -74,6 +92,8 @@
       NSMutableArray * a = [indices objectForKey:letter];
       [a addObject:i];
     }
+      
+    self.groups = [self mapGroups:groups];
   }
   return self;
 }
@@ -121,27 +141,66 @@
   modeIndicatorImageView.contentMode = UIViewContentModeCenter;
   [self.view addSubview:modeIndicatorImageView];
   
-  // Two mode buttons
+  // Three mode buttons
   normalModeButton = [UIButton buttonWithType:UIButtonTypeCustom];
   selectedModeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+  groupsModeButton = [UIButton buttonWithType:UIButtonTypeCustom];
   [normalModeButton setTitle:NSLocalizedString(@"All", nil) forState:UIControlStateNormal];
   [normalModeButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
   [selectedModeButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+  [groupsModeButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+  [groupsModeButton setTitle:NSLocalizedString(@"Groups", nil) forState:UIControlStateNormal];
   [normalModeButton setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
   [selectedModeButton setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
+  [groupsModeButton setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
   [normalModeButton addTarget:self action:@selector(modeButtonDidTouch:) forControlEvents:UIControlEventTouchUpInside];
   [selectedModeButton addTarget:self action:@selector(modeButtonDidTouch:) forControlEvents:UIControlEventTouchUpInside];
-  normalModeButton.titleLabel.font = selectedModeButton.titleLabel.font = [UIFont boldSystemFontOfSize:13];
+  [groupsModeButton addTarget:self action:@selector(modeButtonDidTouch:) forControlEvents:UIControlEventTouchUpInside];
+  normalModeButton.titleLabel.font = groupsModeButton.titleLabel.font = selectedModeButton.titleLabel.font = [UIFont boldSystemFontOfSize:13];
   normalModeButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
   selectedModeButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+  groupsModeButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
   [normalModeButton setSelected:YES];
   [self.view addSubview:normalModeButton];
+  [self.view addSubview:groupsModeButton];
   [self.view addSubview:selectedModeButton];
   [self updateSelectedCount];
   
   // Nav bar button
   self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(didFinish)];
-  self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(didCancel)];
+  self.navigationItem.leftBarButtonItem = [self createCancelButton];
+  leftButtonType = kLeftButtonCancel;
+}
+
+- (void)setCancelButton {
+  if (leftButtonType != kLeftButtonCancel) {
+    [self.navigationItem setLeftBarButtonItem:[self createCancelButton] animated:YES];
+    leftButtonType = kLeftButtonCancel;
+  }
+}
+
+- (void)setBackButton {
+  if (leftButtonType != kLeftButtonBack) {
+    [self.navigationItem setLeftBarButtonItem:[self createBackButton] animated:YES];
+    leftButtonType = kLeftButtonBack;
+  }
+}
+
+- (UIBarButtonItem*)createCancelButton {
+    return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(didCancel)];
+}
+
+- (UIBarButtonItem*)createBackButton {
+    return [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", nil) style:UIBarButtonItemStylePlain target:self action:@selector(goBack)];
+}
+
+-(void)viewDidLoad {
+  [super viewDidLoad];
+    
+  if (([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) && ([self respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)])) {
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+  }
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -169,17 +228,46 @@
 
 
    
-
-
-  normalModeButton.frame = CGRectMake(f.size.width/2-90, f.size.height-44, 90, 44);
-  selectedModeButton.frame = CGRectMake(f.size.width/2, f.size.height-44, 90, 44);
-  modeIndicatorImageView.center = CGPointMake(normalModeButton.center.x, f.size.height-44+modeIndicatorImageView.frame.size.height/2);
+    if (![self.view respondsToSelector:@selector(readableContentGuide)]) {
+        [self positionButtons];
+    }
 
   [self showHideModeButtons];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if ([self.view respondsToSelector:@selector(readableContentGuide)]) {
+        // In iOS9+, wait until view has actually appeared
+        [self positionButtons];
+    }
+}
+
+- (void)positionButtons {
+    CGRect f = self.view.frame;
+    
+    int buttonCount = 2;
+    BOOL hasGroups = ((self.groups != nil) && (self.groups.count > 0));
+    if (hasGroups) {
+        buttonCount += 1;
+    }
+    CGFloat xPos = f.size.width/2 - 90 * (buttonCount / 2.0);
+    normalModeButton.frame = CGRectMake(xPos, f.size.height-44, 90, 44);
+    xPos += 90;
+    if (hasGroups) {
+        groupsModeButton.frame = CGRectMake(xPos, f.size.height-44, 90, 44);
+        xPos += 90;
+    }
+    selectedModeButton.frame = CGRectMake(xPos, f.size.height-44, 90, 44);
+    modeIndicatorImageView.center = CGPointMake(normalModeButton.center.x, f.size.height-44+modeIndicatorImageView.frame.size.height/2);
+}
+
 -(void)showHideModeButtons {  
   normalModeButton.hidden = selectedModeButton.hidden = modeIndicatorImageView.hidden = !self.allowModeButtons;
+
+  BOOL hasGroups = ((self.groups != nil) && (self.groups.count > 0));
+  groupsModeButton.hidden = normalModeButton.hidden || !hasGroups;
 
   CGRect tableFrame = self.tableView.frame;
 
@@ -230,6 +318,10 @@
     } else {
       return items.count;
     }
+  } else if (selectorMode == KNSelectorModeGroups) {
+    return self.groups.count;
+  } else if (selectorMode == KNSelectorModeGroupMembers) {
+    return selectedGroup.groupMembers.count;
   } else {
     return self.selectedItems.count;
   }
@@ -270,6 +362,19 @@
                                    delegate:nil
                           cancelButtonTitle:NSLocalizedString(@"OK", @"")
                           otherButtonTitles:nil, nil] show];
+    }
+    else if (selectorMode == KNSelectorModeGroups)
+    {
+        // Select the group that was tapped on
+        selectedGroup = [self.groups objectAtIndex:indexPath.row];
+        
+        selectorMode = KNSelectorModeGroupMembers;
+        
+        // Update the UI
+        NSIndexSet* sections = [NSIndexSet indexSetWithIndex:0];
+        [_tableView reloadSections:sections withRowAnimation:UITableViewRowAnimationLeft];
+        
+        [self setBackButton];
     }
     else
     {
@@ -372,6 +477,14 @@
   if (selectorMode == KNSelectorModeSelected) {
     return [self.selectedItems objectAtIndex:r];
   }
+    
+  if (selectorMode == KNSelectorModeGroups) {
+    return [self.groups objectAtIndex:r];
+  }
+    
+  if (selectorMode == KNSelectorModeGroupMembers) {
+    return [selectedGroup.groupMembers objectAtIndex:r];
+  }
 
   return [items objectAtIndex:r];
 }
@@ -387,6 +500,19 @@
   if ([delegate respondsToSelector:@selector(selectorDidCancelSelection)]) {
     [delegate selectorDidCancelSelection];
   }
+}
+
+-(void)goBack {
+  // Unselect current group
+  selectedGroup = nil;
+    
+  selectorMode = KNSelectorModeGroups;
+    
+  // Update the UI
+  NSIndexSet* sections = [NSIndexSet indexSetWithIndex:0];
+  [self.tableView reloadSections:sections withRowAnimation:UITableViewRowAnimationLeft];
+    
+  [self setCancelButton];
 }
 
 -(void)didFinish {
@@ -416,38 +542,63 @@
 -(void)modeButtonDidTouch:(id)sender {
   UIButton * s = (UIButton*)sender;
   if (s.selected) return;
+    
+  CGRect targetTableFrame;
+  CGFloat targetIndicatorX;
+  CGFloat targetTextFieldAlpha = 0;
+    
+  [self setCancelButton];
 
   if (s == normalModeButton) {
     selectorMode = self.searchTextField.text.length > 0 ? KNSelectorModeSearch : KNSelectorModeNormal;
     normalModeButton.selected = YES;
+    groupsModeButton.selected = NO;
     selectedModeButton.selected = NO;
     [self.tableView reloadData];
-    [UIView animateWithDuration:0.3 animations:^{
-      if (!textFieldWrapper.hidden) {
-        CGRect f = self.tableView.frame;
-        f.origin.y = textFieldWrapper.frame.size.height;
-        f.size.height -= f.origin.y;
-        self.tableView.frame = f;
-        textFieldWrapper.alpha = 1;
-      }
-      modeIndicatorImageView.center = CGPointMake(normalModeButton.center.x, modeIndicatorImageView.center.y);
-    }];
+    
+    CGRect f = self.tableView.frame;
+    f.origin.y = textFieldWrapper.frame.size.height;
+    f.size.height -= f.origin.y;
+    targetTableFrame = f;
+    targetTextFieldAlpha = 1;
+    targetIndicatorX = normalModeButton.center.x;
+    
+  } else if (s == groupsModeButton) {
+    selectorMode = KNSelectorModeGroups;
+    selectedGroup = nil;
+    normalModeButton.selected = NO;
+    groupsModeButton.selected = YES;
+    selectedModeButton.selected = NO;
+    [self.tableView reloadData];
+      
+    CGRect f = self.tableView.frame;
+    f.origin.y = 0;
+    f.size.height += textFieldWrapper.frame.size.height;
+    targetTableFrame = f;
+    targetTextFieldAlpha = 0;
+    targetIndicatorX = groupsModeButton.center.x;
   } else {
     selectorMode = KNSelectorModeSelected;
     normalModeButton.selected = NO;
+    groupsModeButton.selected = NO;
     selectedModeButton.selected = YES;
     [self.tableView reloadData];
-    [UIView animateWithDuration:0.3 animations:^{
-      if (!textFieldWrapper.hidden) {
-        CGRect f = self.tableView.frame;
-        f.origin.y = 0;
-        f.size.height += textFieldWrapper.frame.size.height;
-        self.tableView.frame = f;
-        textFieldWrapper.alpha = 0;
-      }
-      modeIndicatorImageView.center = CGPointMake(selectedModeButton.center.x, modeIndicatorImageView.center.y);
-    }];
+      
+    CGRect f = self.tableView.frame;
+    f.origin.y = 0;
+    f.size.height += textFieldWrapper.frame.size.height;
+    targetTableFrame = f;
+    targetTextFieldAlpha = 0;
+    targetIndicatorX = selectedModeButton.center.x;
   }
+    
+  [UIView animateWithDuration:0.3 animations:^{
+    if (!textFieldWrapper.hidden) {
+      self.tableView.frame = targetTableFrame;
+      textFieldWrapper.alpha = targetTextFieldAlpha;
+    }
+    modeIndicatorImageView.center = CGPointMake(targetIndicatorX, modeIndicatorImageView.center.y);
+  }];
 }
 
 #pragma mark - Table indices
@@ -496,8 +647,38 @@
   modeIndicatorImageView = nil;
   normalModeButton = nil;
   selectedModeButton = nil;
+  groupsModeButton = nil;
   
   [super viewDidUnload];
+}
+
+#pragma mark - Group stuff
+
+- (NSArray*)mapGroups:(NSArray*)groups {
+    NSMutableArray* mappedGroups = [NSMutableArray arrayWithCapacity:groups.count];
+    for (KNSelectorGroup* group in groups) {
+        [mappedGroups addObject:[self mapGroup:group]];
+    }
+    return mappedGroups;
+}
+
+- (KNSelectorGroup*)mapGroup:(KNSelectorGroup*)group {
+    NSMutableArray* mappedItems = [NSMutableArray arrayWithCapacity:group.groupMembers.count];
+    for (KNSelectorItem* item in group.groupMembers) {
+        [mappedItems addObject:[self itemForGroupMember:item]];
+    }
+    group.groupMembers = mappedItems;
+    return group;
+}
+
+- (KNSelectorItem*)itemForGroupMember:(KNSelectorItem*)groupMember {
+    for (NSUInteger i = 0; i < items.count; i ++) {
+        KNSelectorItem* item = [items objectAtIndex:i];
+        if ([item.selectValue isEqualToString:groupMember.selectValue]) {
+            return item;
+        }
+    }
+    return groupMember;
 }
 
 @end
