@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.summary  = 'KNMultiItemSelector is a versatile drop in multiple items selector for iOS projects.'
   s.homepage = 'https://github.com/kentnguyen/KNMultiItemSelector'
   s.author   = { 'Kent Nguyen' => 'nguyen.dmz@gmail.com' }
-  s.platform = :ios
+  s.platform = :ios, '5.0'
   s.version  = '1.0.1'
   s.source   = { :git => 'https://github.com/kentnguyen/KNMultiItemSelector.git', :tag => '1.0' }
 
